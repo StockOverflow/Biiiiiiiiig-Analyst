@@ -3,5 +3,4 @@
  */
 
 var wWidth = $(window).width();
-//console.log(wWidth);
 $('body').css('zoom', wWidth / 720);

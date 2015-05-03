@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/Desktop/Code/Intellij/Web/Web.iml" filepath="$USER_HOME$/Desktop/Code/Intellij/Web/Web.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/analyst.iml" filepath="$PROJECT_DIR$/.idea/analyst.iml" />
     </modules>
   </component>
 </project>
-
