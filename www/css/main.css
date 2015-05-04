@@ -172,3 +172,12 @@ body {
     padding: 5px 10px;
     margin: auto 5px;
 }
+
+
+.selected {
+    background: #ededed;
+}
+
+.unselected {
+    background: #FFFFFF;
+}

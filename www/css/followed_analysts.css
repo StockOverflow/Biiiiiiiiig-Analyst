@@ -29,13 +29,6 @@ table > tbody > tr > td {
     border-bottom: 4px dotted #cccccc;
 }
 
-.selected {
-    background: #ededed;
-}
-
-.unselected {
-    background: #FFFFFF;
-}
 
 .followed-item-avatar {
     width: 86px;
