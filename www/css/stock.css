@@ -1,0 +1,163 @@
+.analyst-title {
+    font-size: 34px;
+    color: #616161;
+}
+
+td.col1 {
+    width: 250px;
+}
+
+td.col2 {
+    width: 200px;
+    position: relative;
+}
+
+td.col3 {
+    width: 200px;
+}
+
+td.col4 {
+    width: 200px;
+}
+
+td.col5 {
+    width: 75px;
+}
+
+td.col6 {
+    width: 170px;
+}
+
+td.col7 {
+    width: 450px;
+}
+
+td.col8 {
+    width: 100px;
+}
+
+table > tbody > tr > td {
+    font-size: 33px;
+    text-align: center;
+}
+
+.stock-di-item {
+    border-bottom: 2px solid #cccccc;
+}
+
+.stock-di-item > table > tbody > tr > td {
+    height: 124px;
+    vertical-align: middle;
+}
+
+.follow-bar {
+    top: 310px;
+}
+
+.di-div {
+    padding-top: 278px;
+}
+
+.stock-di-green {
+    font-size: 33px;
+    color: rgb(45, 125, 20);
+}
+
+.stock-di-red {
+    font-size: 33px;
+    color: rgb(199, 42, 42);
+}
+
+div.stock-di-stock-item {
+    margin: 20px 60px 20px 60px;
+}
+
+div.stock-ci-stock-item {
+    height: 154px;
+    border-bottom: 4px dotted #cccccc;
+}
+
+div.stock-di-item > table > tbody > tr > td {
+    height: 154px;
+    vertical-align: middle;
+}
+
+.ci-div {
+    padding-top: 278px;
+}
+
+div.stock-ci-stock-item-avatar {
+    background: url("../img/130-130man.png") no-repeat;
+    width: 86px;
+    height: 86px;
+    background-size: 86px 86px;
+    border-radius: 43px;
+    vertical-align: top;
+    margin: 15px 20px 0 40px;
+    display: block;
+    position: relative;
+}
+
+div.homepage-item {
+    position: fixed;
+    top: 96px;
+    z-index: 999;
+}
+
+div.stock-di-time {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: rgb(181, 181, 181);
+}
+
+div.homepage-item-detail {
+    margin-left: 36px;
+    margin-top: 10px;
+}
+
+div.line {
+    font-size: 29px;
+    margin: 5px 0;
+}
+
+span.stock-title, span.stock-num {
+    vertical-align: middle;
+}
+
+.green {
+    color: rgb(45, 125, 20);
+    font-size: 41px;
+}
+
+.red {
+    color: rgb(177, 104, 0);
+    font-size: 41px;
+}
+
+.blue {
+    color: #259bed;
+    font-size: 41px;
+}
+
+div.stock-tofollow {
+    vertical-align: middle;
+    display: inline-block;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+
+div.stock-di-item-avatar{
+    background: url("../img/130-130man.png") no-repeat;
+    width: 86px;
+    height: 86px;
+    background-size: 86px 86px;
+    border-radius: 43px;
+    vertical-align: top;
+    /*margin: 15px 20px 0 40px;*/
+    margin: auto;
+    display: block;
+    position: relative;
+}

@@ -1,0 +1,113 @@
+.analyst-title {
+    font-size: 34px;
+    color: #616161;
+}
+
+td.col1 {
+    width: 250px;
+}
+
+td.col2 {
+    width: 200px;
+    position: relative;
+}
+
+td.col3 {
+    width: 200px;
+}
+
+td.col4 {
+    width: 200px;
+}
+
+td.col5 {
+    width: 75px;
+}
+
+td.col6 {
+    width: 170px;
+}
+
+td.col7 {
+    width: 450px;
+}
+
+td.col8 {
+    width: 100px;
+}
+
+table > tbody > tr > td {
+    font-size: 33px;
+    text-align: center;
+}
+
+.analyst-di-item {
+    border-bottom: 2px solid #cccccc;
+}
+
+.analyst-di-item > table > tbody > tr > td {
+    height: 124px;
+    vertical-align: middle;
+}
+
+.follow-bar {
+    top: 310px;
+}
+
+.di-div {
+    padding-top: 278px;
+}
+
+.analyst-di-green {
+    font-size: 33px;
+    color: rgb(45, 125, 20);
+}
+
+.analyst-di-red {
+    font-size: 33px;
+    color: rgb(199, 42, 42);
+}
+
+div.analyst-di-stock-item {
+    margin: 20px 60px 20px 60px;
+}
+
+div.analyst-ci-stock-item {
+    height: 154px;
+    border-bottom: 4px dotted #cccccc;
+}
+
+div.analyst-di-item > table > tbody > tr > td {
+    height: 154px;
+    vertical-align: middle;
+}
+
+.ci-div {
+    padding-top: 278px;
+}
+
+div.analyst-ci-stock-item-avatar {
+    background: url("../img/130-130man.png") no-repeat;
+    width: 86px;
+    height: 86px;
+    background-size: 86px 86px;
+    border-radius: 43px;
+    vertical-align: top;
+    margin: 15px 20px 0 40px;
+    display: block;
+    position: relative;
+}
+
+div.homepage-item {
+    position: fixed;
+    top: 96px;
+    z-index: 999;
+}
+
+div.analyst-di-time {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: rgb(181,181,181);
+}
