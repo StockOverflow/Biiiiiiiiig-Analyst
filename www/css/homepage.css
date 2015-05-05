@@ -58,7 +58,7 @@
     background-size: 126px 126px;
     border-radius: 63px;
     vertical-align: top;
-    margin: 42px 26px auto 26px;
+    margin: 42px 26px auto 38px;
     display: inline-block;
     position: relative;
 }
@@ -109,4 +109,11 @@
 
 .homepage-item-follow {
     font-size: 25px;
+}
+
+.homepage-item-avatar-tofollow {
+    /*position: absolute;*/
+    /*right: 5px;*/
+    /*top: 5px;*/
+    float: right;
 }

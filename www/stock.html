@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title>大分析师</title>
+    <script src="js/lib/jquery-2.1.3.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+    <link type="text/css" rel="stylesheet" href="css/stock.css">
+    <link type="text/css" rel="stylesheet" href="css/homepage.css">
+</head>
+<body>
+<div class="inner-wrapper">
+    <div class="nav-bar">
+        <img class="nav-icon left" src="img/back.png">
+        <span class="title">平安银行(000001)</span>
+        <img class="nav-icon right" src="img/nav-search.png">
+    </div>
+    <div class="content with-foot-bar">
+        <div class="homepage-item unselected">
+            <div class="homepage-item-detail">
+                <div class="line">
+                    <span class="stock-title">昨日收益&nbsp;&nbsp;&nbsp;：</span>
+                    <span class="stock-num green">16.93</span>
+                    <img class="homepage-item-avatar-tofollow icon" src="img/down.png">
+                </div>
+                <div class="line">
+                    <span class="stock-title">期望价格&nbsp;&nbsp;&nbsp;：</span>
+                    <span class="stock-num red">17.20</span>
+                </div>
+                <div class="line">
+                    <span class="stock-title">当前研报数：</span>
+                    <span class="stock-num blue">2383</span>
+                </div>
+            </div>
+            <div class="stock-tofollow">
+                <img class="homepage-item-avatar-tofollow icon" src="img/tofollow.png">
+            </div>
+        </div>
+        <!--综合消息-->
+        <div class="rt-div"></div>
+        <!--细分信息-->
+        <div class="di-div" style="display: none">
+            <div class="follow-bar">
+                <table>
+                    <tr>
+                        <td class="col1">
+                            分析师
+                        </td>
+                        <td class="col2">
+                            目标价
+                        </td>
+                        <td class="col3">
+                            收益率
+                        </td>
+                        <td class="col4">
+                            偏移度
+                        </td>
+                        <td class="col5"></td>
+                    </tr>
+                </table>
+            </div>
+            <!--stock item goes here-->
+            <div class="stock-di-item">
+                <table>
+                    <tr>
+                        <td class="col1">
+                            <div class="stock-di-item-avatar"></div>
+                            <span class="stock-di-stock">胡子欣</span>
+                        </td>
+                        <td class="col2">
+                            <span class="stock-di-red">+15%</span>
+
+                            <div class="stock-di-time">2014-4-24</div>
+                        </td>
+                        <td class="col3">
+                            <span class="stock-di-red">+80%</span>
+                        </td>
+                        <td class="col4">
+                            <span class="stock-di-green">-30%</span>
+                        </td>
+                        <td class="col5">
+                            <img class="stock-di-fold" src="img/fold.png">
+                        </td>
+                    </tr>
+                </table>
+                <!--该分析师对股票的研报集合，默认收起-->
+                <div class="analyst-di-stock-items">
+                    <!--item goes here-->
+                    <div class="stock-di-stock-item">广发证券-和平股份-603077-喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵-20141212</div>
+                    <div class="stock-di-stock-item">广发证券-和平股份-603077-喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵-20141212</div>
+                    <div class="stock-di-stock-item">广发证券-和平股份-603077-喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵-20141212</div>
+                </div>
+            </div>
+
+        </div>
+        <!--相关研报-->
+        <div class="ci-div" style="display: none">
+            <div class="follow-bar">
+                <table>
+                    <tr>
+                        <td class="col6">
+                            分析师
+                        </td>
+                        <td class="col7">
+                            发布内容
+                        </td>
+                        <td class="col8">
+                            时间
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--该分析师的所有研报集合-->
+            <div class="stock-ci-stock-items">
+                <!--item goes here-->
+                <div class="stock-ci-stock-item">
+                    <table>
+                        <tr>
+                            <td class="col6">
+                                <div class="stock-ci-stock-item-avatar"></div>
+                                <span class="stock-ci-stock-item-name">广发证券</span>
+                            </td>
+                            <td class="col7" style="text-align: left;padding: 10px">
+                                <span class="stock-ci-stock-item-content">广发证券-和平股份-603077-喵喵喵喵喵喵喵喵喵喵喵-20141212</span>
+                            </td>
+                            <td class="col8">
+                                <span class="stock-ci-stock-item-time">2014-12-12</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot-bar">
+        <div class="tab" id="rt-tab">
+            <img src="img/integration.png" class="foot-icon">
+            <span class="foot-title">综合消息</span>
+        </div>
+        <div class="tab" id="di-tab">
+            <img src="img/Information%20subdivision-normal.png" class="foot-icon">
+            <span class="foot-title">细分信息</span>
+        </div>
+        <div class="tab" id="ci-tab">
+            <img src="img/Comments-normal.png" class="foot-icon">
+            <span class="foot-title">相关研报</span>
+        </div>
+    </div>
+</div>
+<script src="js/zoom.js"></script>
+</body>
+</html>
