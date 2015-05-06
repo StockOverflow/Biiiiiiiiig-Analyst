@@ -1,16 +1,16 @@
 <div class="homepage-item-detail">
     <div class="line">
         <span class="stock-title">昨日收益&nbsp;&nbsp;&nbsp;：</span>
-        <span class="stock-num green">16.93</span>
-        <img class="homepage-item-avatar-tofollow icon" src="img/down.png">
+        <span class="stock-num green">{{yesterday_price}}</span>
+        <img class="homepage-item-avatar-tofollow icon" src="img/updown{{up}}.png">
     </div>
     <div class="line">
         <span class="stock-title">期望价格&nbsp;&nbsp;&nbsp;：</span>
-        <span class="stock-num red">17.20</span>
+        <span class="stock-num red">{{expected_price}}</span>
     </div>
     <div class="line">
         <span class="stock-title">当前研报数：</span>
-        <span class="stock-num blue">2383</span>
+        <span class="stock-num blue">{{num_of_researches}}</span>
     </div>
 </div>
 <div class="stock-tofollow">

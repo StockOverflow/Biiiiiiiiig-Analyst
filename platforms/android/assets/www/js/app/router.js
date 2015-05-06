@@ -10,7 +10,8 @@ define(function(){
             '': 'homepageRoute',
             'homepage': 'homepageRoute',
             'usersign': 'usersignRoute',
-            'analyst': 'analystRoute'
+            'analyst': 'analystRoute',
+            'stock': 'stockRoute'
         },
 
         initialize: function () {
@@ -47,6 +48,15 @@ define(function(){
                 });
             });
         },
+
+        stockRoute: function(){
+            require(['app/stock'], function (stock) {
+                $('#main_entry').html((new stock()).el);
+                require(['app/zoom'], function (zoom) {
+                    zoom();
+                });
+            });
+        }
 
 //        pushHistory: function (hash, css) {
 //            loadCSS(css);

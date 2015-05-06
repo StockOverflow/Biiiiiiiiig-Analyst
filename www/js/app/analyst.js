@@ -18,7 +18,8 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'click #rt-tab': 'tabOne',
                 'click #di-tab': 'tabTwo',
                 'click #ci-tab': 'tabThree',
-                'click .left': 'back'
+                'click .left': 'back',
+                'click .analyst-di-stock': 'enter_stock'
             },
 
             initialize: function () {
@@ -32,25 +33,25 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 this.$('.homepage-item').append(info);
             },
 
-            tabOne: function(){
-                if (this.tabNumber != 1){
+            tabOne: function () {
+                if (this.tabNumber != 1) {
                     this.tabNumber = 1;
                     this.hideAllTab();
                     this.$('.content').append(tab1);
                 }
             },
 
-            tabTwo: function(){
-                if (this.tabNumber != 2){
+            tabTwo: function () {
+                if (this.tabNumber != 2) {
                     this.tabNumber = 2;
                     this.hideAllTab();
                     this.$('.content').append(tab2);
                 }
             },
 
-            tabThree: function(){
+            tabThree: function () {
                 console.log(tab3);
-                if (this.tabNumber != 3){
+                if (this.tabNumber != 3) {
                     this.tabNumber = 3;
                     this.hideAllTab();
                     this.$('.content').append(tab3);
@@ -64,11 +65,14 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             back: function () {
-                //TODO: handle CSS
                 history.back();
 //                Router.popHistory();
-            }
+            },
 
+
+            enter_stock: function () {
+                Router.navigate('stock/1', {trigger: true});
+            }
         });
 
         return AnalystView;

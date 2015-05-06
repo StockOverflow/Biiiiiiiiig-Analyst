@@ -2,7 +2,7 @@
  * Created by lifengshuang on 5/4/15.
  */
 
-define(function(){
+define(function () {
 
     var AppRouter = Backbone.Router.extend({
 
@@ -10,14 +10,15 @@ define(function(){
             '': 'homepageRoute',
             'homepage': 'homepageRoute',
             'usersign': 'usersignRoute',
-            'analyst': 'analystRoute'
+            'analyst': 'analystRoute',
+            'stock/:s_id': 'stockRoute'
         },
 
         initialize: function () {
             console.log('router start');
         },
 
-        blank: function(){
+        blank: function () {
 
         },
 
@@ -47,6 +48,15 @@ define(function(){
                 });
             });
         },
+
+        stockRoute: function (s_id) {
+            require(['app/stock'], function (stock) {
+                $('#main_entry').html((new stock({'s_id': s_id})).el);
+                require(['app/zoom'], function (zoom) {
+                    zoom();
+                });
+            });
+        }
 
 //        pushHistory: function (hash, css) {
 //            loadCSS(css);

@@ -9,7 +9,7 @@ require(['./config'], function () {
         window.jQuery = $;
         window.Backbone = Backbone;
         window.HandleBars = HandleBars;
-        window.historyRecord = [];
+//        window.historyRecord = [];
 
         window.loadCSS = function (css) {
             $('link').remove();
