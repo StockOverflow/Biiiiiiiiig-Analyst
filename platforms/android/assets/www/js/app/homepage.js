@@ -2,12 +2,12 @@
  * Created by lifengshuang on 5/4/15.
  */
 
-define(['jquery', 'backbone', 'handlebars', 'text!html/homepage/index.html', 'text!html/homepage/analyst_item.html'],
-    function ($, Backbone, HandleBars, index, analyst) {
+define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html', 'text!html/homepage/css_homepage.html'],
+    function (index, analyst, css) {
 //    console.log(index);
 //    console.log(analyst);
 
-    var Analyst = Backbone.Model.extend({
+    var AnalystModel = Backbone.Model.extend({
         defaults: {
             'name': '胡子欣',
             'title': '东海证券分析员',
@@ -20,13 +20,13 @@ define(['jquery', 'backbone', 'handlebars', 'text!html/homepage/index.html', 'te
     });
 
     var AnalystList = Backbone.Collection.extend({
-        model: Analyst
+        model: AnalystModel
     });
 
     var Analysts = new AnalystList();
         //TODO: load data to Analysts
 //        console.log((new Analyst()).attributes);
-        Analysts.add(new Analyst());
+        Analysts.add(new AnalystModel());
 
     var AnalystView = Backbone.View.extend({
 
@@ -34,40 +34,53 @@ define(['jquery', 'backbone', 'handlebars', 'text!html/homepage/index.html', 'te
 
         initialize: function () {
             this.listenTo(this.model, 'change', this.render);
-//            this.render();
+            this.render();
         },
 
         render: function () {
-            var context = {name: this.model.get('name'), title: this.model.get('title'),
-                            rate: this.model.get('rate'), rate_num: this.model.get('rate_num'),
-                            bias: this.model.get('bias'), bias_num: this.model.get('bias_num'),
-                            badge: this.model.get('badge')[0]};//TODO: badge with correct counts
-//            console.log(this.model.toJSON());
-            this.$el.html(this.template(context));
+            this.$el.html(this.template(this.model.toJSON()));
+//            console.log('render');
         }
+
+
     });
 
     var HomePageView = Backbone.View.extend({
 
         el: index,
 
+        events: {
+            'click #homepage-search-cancel': 'searchCancel',
+            'click .homepage-item': 'click'
+        },
+
         initialize: function () {
-            $('head').append('<link type="text/css" rel="stylesheet" href="css/main.css"><link type="text/css" rel="stylesheet" href="css/homepage.css">');
+            console.log('homepageView initialize');
+            loadCSS(css);
             this.render();
         },
 
         render: function () {
+            console.log('homepageView render');
             Analysts.each(this.show, this);
+//            console.log(this.el)
         },
 
-        show: function (analyst) {
-            console.log(analyst.toJSON());
-            var view = new AnalystView({model: analyst});
-//            this.$el('#content').append(view.el);
-            console.log(this.$el);
+        show: function (model) {
+            var view = new AnalystView({model: model});
+            this.$('.content').append(view.el.innerHTML);
+        },
+
+        searchCancel: function () {
+            console.log('cancel click');
+            this.$('#homepage-search').val('');
+        },
+
+        click: function () {
+            Router.navigate('analyst', {trigger: true});
         }
 
     });
 
-    return new HomePageView();
+    return HomePageView;
 });

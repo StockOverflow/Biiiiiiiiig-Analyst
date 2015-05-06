@@ -2,8 +2,8 @@
  * Created by lifengshuang on 5/4/15.
  */
 
-define(['text!html/homepage/index.html', 'text!html/homepage/analyst_item.html'],
-    function (index, analyst) {
+define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html', 'text!html/homepage/css_homepage.html'],
+    function (index, analyst, css) {
 //    console.log(index);
 //    console.log(analyst);
 
@@ -38,14 +38,11 @@ define(['text!html/homepage/index.html', 'text!html/homepage/analyst_item.html']
         },
 
         render: function () {
-//            var context = {name: this.model.get('name'), title: this.model.get('title'),
-//                            rate: this.model.get('rate'), rate_num: this.model.get('rate_num'),
-//                            bias: this.model.get('bias'), bias_num: this.model.get('bias_num'),
-//                            badge: this.model.get('badge')[0]};//TODO: badge with correct counts
-//            console.log(this.model.toJSON());
             this.$el.html(this.template(this.model.toJSON()));
 //            console.log('render');
         }
+
+
     });
 
     var HomePageView = Backbone.View.extend({
@@ -53,17 +50,20 @@ define(['text!html/homepage/index.html', 'text!html/homepage/analyst_item.html']
         el: index,
 
         events: {
-            'click #homepage-search-cancel': 'searchCancel'
+            'click #homepage-search-cancel': 'searchCancel',
+            'click .homepage-item': 'click'
         },
 
         initialize: function () {
-            $('head').append('<link type="text/css" rel="stylesheet" href="css/main.css"><link type="text/css" rel="stylesheet" href="css/homepage.css">');
+            console.log('homepageView initialize');
+            loadCSS(css);
             this.render();
         },
 
         render: function () {
+            console.log('homepageView render');
             Analysts.each(this.show, this);
-            console.log(this.el)
+//            console.log(this.el)
         },
 
         show: function (model) {
@@ -74,9 +74,13 @@ define(['text!html/homepage/index.html', 'text!html/homepage/analyst_item.html']
         searchCancel: function () {
             console.log('cancel click');
             this.$('#homepage-search').val('');
+        },
+
+        click: function () {
+            Router.navigate('analyst', {trigger: true});
         }
 
     });
 
-    return new HomePageView();
+    return HomePageView;
 });

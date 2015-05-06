@@ -9,6 +9,12 @@ require(['./config'], function () {
         window.jQuery = $;
         window.Backbone = Backbone;
         window.HandleBars = HandleBars;
+//        window.historyRecord = [];
+
+        window.loadCSS = function (css) {
+            $('link').remove();
+            $('head').append(css);
+        };
 
         require(['app/router'], function () {
 

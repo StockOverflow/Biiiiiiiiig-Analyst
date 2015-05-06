@@ -4,9 +4,24 @@
 
 
 require(['./config'], function () {
-    require(['app/router'], function () {
+
+    require(['jquery', 'backbone', 'handlebars'], function ($, Backbone, HandleBars) {
+        window.jQuery = $;
+        window.Backbone = Backbone;
+        window.HandleBars = HandleBars;
+        window.historyRecord = [];
+
+        window.loadCSS = function (css) {
+            $('link').remove();
+            $('head').append(css);
+        };
+
+        require(['app/router'], function () {
+
+        });
 
     });
+
 });
 
 

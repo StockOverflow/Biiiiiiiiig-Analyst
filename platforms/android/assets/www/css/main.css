@@ -11,6 +11,9 @@ body {
 
 .inner-wrapper {
     width: 720px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
 }
 
 /*nav bar related goes here*/
@@ -34,10 +37,16 @@ body {
 .nav-icon {
     width: 50px;
     height: 50px;
-
     position: absolute;
     top: 20px;
+}
+
+.nav-icon.left {
     left: 25px;
+}
+
+.nav-icon.right {
+    right: 25px;
 }
 
 .left {
@@ -58,6 +67,9 @@ body {
     height: 88px;
     background: rgb(237, 237, 237);
     vertical-align: middle;
+    position: fixed;
+    top: 96px;
+    z-index: 999;
 }
 
 .search-button {
@@ -86,7 +98,7 @@ body {
 }
 
 .search-text {
-    margin: 12px 0 8px 20px;
+    margin: 10px 0 8px 20px;
     outline: none;
     border: none;
     width: 380px;
@@ -123,15 +135,49 @@ body {
     margin: 0;
 }
 
+/*follow list bar goes here*/
+.follow-bar {
+    width: 720px;
+    height: 68px;
+    line-height: 68px;
+    background: rgb(237, 237, 237);
+    vertical-align: middle;
+    position: fixed;
+    top: 96px;
+    z-index: 999;
+}
+
 /*content goes here*/
 .content {
     position: relative;
     top: 96px;
+    overflow: hidden;
+}
+
+.content.with-search-bar {
+    top: 184px;
+}
+
+.content.with-follow-bar {
+    top: 164px;
+}
+
+.content.with-foot-bar {
     margin-bottom: 96px;
 }
 
 .badge {
     background: rgb(231, 231, 231);
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 5px 10px;
+    margin: auto 5px;
+}
+
+
+.selected {
+    background: #ededed;
+}
+
+.unselected {
+    background: #FFFFFF;
 }

@@ -2,14 +2,15 @@
  * Created by lifengshuang on 5/4/15.
  */
 
-define(['jquery', 'backbone'], function($, Backbone){
+define(function(){
 
     var AppRouter = Backbone.Router.extend({
 
         routes: {
             '': 'homepageRoute',
             'homepage': 'homepageRoute',
-            'usersign': 'usersignRoute'
+            'usersign': 'usersignRoute',
+            'analyst': 'analystRoute'
         },
 
         initialize: function () {
@@ -21,19 +22,49 @@ define(['jquery', 'backbone'], function($, Backbone){
         },
 
         homepageRoute: function () {
-            require(['app/homepage', 'app/zoom'], function (homepage, zoom) {
+            console.log('homepageRouter');
+            require(['app/homepage'], function (homepage) {
+                console.log('homepageRouter');
+
                 console.log(homepage);
-                $('#main_entry').html(homepage.el);
-                zoom();
+                $('#main_entry').html((new homepage()).el);
+                require(['app/zoom'], function (zoom) {
+                    zoom();
+                });
             });
         },
 
         usersignRoute: function () {
 
-        }
+        },
+
+        analystRoute: function () {
+            console.log('analystRouter');
+            require(['app/analyst'], function (analyst) {
+                $('#main_entry').html((new analyst()).el);
+                require(['app/zoom'], function (zoom) {
+                    zoom();
+                });
+            });
+        },
+
+//        pushHistory: function (hash, css) {
+//            loadCSS(css);
+//            historyRecord.push([hash, css]);
+//        },
+//
+//        popHistory: function () {
+//            historyRecord.pop();
+//            var pair = historyRecord.pop();
+////            this.navigate(pair[0], {trigger: true});
+//            location.hash = pair[0];
+//            loadCSS(pair[1]);
+////            location.reload();
+//        }
+
 
     });
 
-    var appRouter = new AppRouter();
+    window.Router = new AppRouter();
     Backbone.history.start();
 });
