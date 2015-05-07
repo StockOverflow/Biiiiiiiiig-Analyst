@@ -5,8 +5,8 @@
 define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
         'text!html/stock/tab1_stock.html', 'text!html/stock/tab2_stock.html',
         'text!html/stock/tab3_stock.html', 'text!html/stock/info_stock.html',
-        'app/model/stock_model'],
-    function (index, css, tab1, tab2, tab3, info) {
+        'app/chartwrapper'],
+    function (index, css, tab1, tab2, tab3, info, chartwrapper) {
 
         var StockView = Backbone.View.extend({
 
@@ -25,8 +25,10 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             initialize: function () {
                 console.log('analystView initialize');
                 loadCSS(css);
-                this.tabTwo();
-                this.getStockInfo(this.s_id, 0, true);
+                this.tabOne();
+                //this.renderStockChart();
+
+                this.getStockInfo(this.s_id, 60, true);
                 //this.render();
             },
 
@@ -73,20 +75,42 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             getStockInfo: function (s_id, days, need_basic_info) {
                 var base_url = 'http://stock.whytouch.com/stockpages/get_stock_price.php?s_id=' + s_id
                     + '&days=' + days + '&need_basic_info=' + need_basic_info;
+                var ctx = this;
                 $.get(base_url, function (data) {
-                    var template = HandleBars.compile(info);
-                    var basic_info = JSON.parse(data.basic_info);
-                    var injected = template({'yesterday_price': basic_info.yesterday_price,
+                    ctx.renderStockInfo(data.basic_info);
+                    ctx.renderStockChart(data.price);
+                    ctx.renderTitle(s_id, data.basic_info);
+
+                    /*TODO: save tab contents*/
+                }, 'json');
+            },
+
+            renderStockInfo: function (data) {
+                var basic_info = JSON.parse(data);
+                var template = HandleBars.compile(info);
+                var injected = template({
+                        'yesterday_price': basic_info.yesterday_price,
                         'up': basic_info.up,
                         'expected_price': basic_info.expected_price,
-                        'num_of_researches': basic_info.num_of_researches}
-                        );
+                        'num_of_researches': basic_info.num_of_researches
+                    }
+                );
+                $('.homepage-item').append(injected);
+            },
 
-                    $('.homepage-item').append(injected);
+            renderStockChart: function (data) {
+                var price = JSON.parse(data);
+                var wrapped = stocklinechart(price);
 
-                }, 'json');
+                // Get the context of the canvas element we want to select
+                var ctx = $("#stockChart").get(0).getContext("2d");
+                new Chart(ctx).Line(wrapped[0], wrapped[1]);
+            },
+
+            renderTitle: function (s_id, data) {
+                var basic_info = JSON.parse(data);
+                $(".nav-bar>.title").html(basic_info.name + "(" + s_id + ")");
             }
-
         });
 
         return StockView;

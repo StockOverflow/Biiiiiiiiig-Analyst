@@ -54,6 +54,10 @@ table > tbody > tr > td {
     top: 310px;
 }
 
+.rt-div {
+    padding-top: 210px;
+}
+
 .di-div {
     padding-top: 278px;
 }
@@ -124,6 +128,8 @@ div.line {
 
 span.stock-title, span.stock-num {
     vertical-align: middle;
+    width: 160px;
+    display: inline-block;
 }
 
 .green {
@@ -159,4 +165,9 @@ div.stock-di-item-avatar {
     margin: auto;
     display: block;
     position: relative;
+}
+
+canvas#stockChart {
+    display: block;
+    margin: 50px auto;
 }

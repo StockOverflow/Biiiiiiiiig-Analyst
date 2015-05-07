@@ -15,7 +15,8 @@ requirejs.config({
         jquery: 'jquery-2.1.3.min',
         backbone: 'backbone-min',
         handlebars: 'handlebars-v3.0.1',
-        underscore: 'underscore-min'
+        underscore: 'underscore-min',
+        chart: 'Chart.min'
     },
 
     shim: {

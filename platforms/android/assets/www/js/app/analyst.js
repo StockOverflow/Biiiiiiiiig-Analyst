@@ -69,19 +69,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 //                Router.popHistory();
             },
 
-            stock: function () {
-                Router.navigate('stock', {trigger: true});
-            },
 
             enter_stock: function () {
-                var s_id = '1';
-                $.ajax({
-                    url: 'http://stock.whytouch.com/stockpages/get_stock_price.php?s_id=1&days=2&need_basic_info=true',
-                    success: function () {
-                        alert(1);
-                    },
-                    dataType:'json'
-                })
+                Router.navigate('stock/1', {trigger: true});
             }
         });
 

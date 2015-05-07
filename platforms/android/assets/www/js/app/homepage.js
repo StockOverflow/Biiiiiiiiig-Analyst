@@ -49,6 +49,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
         el: index,
 
+
         events: {
             'click #homepage-search-cancel': 'searchCancel',
             'click .homepage-item': 'click'
