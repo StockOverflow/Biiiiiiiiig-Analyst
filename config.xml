@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.analyst" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>大分析师</name>
+    <name>analyst</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -16,6 +16,14 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+
+	<feature name="StatusBar">
+            <param name="ios-package" value="CDVStatusBar" onload="true" />
+        </feature>
+
+<preference name="StatusBarOverlaysWebView" value="false" /> 
+<preference name="StatusBarBackgroundColor" value="#259bed" />
+<preference name="DisallowOverscroll" value="true" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
