@@ -17,7 +17,9 @@ requirejs.config({
         handlebars: 'handlebars-v3.0.1',
         underscore: 'underscore-min',
         chart: 'Chart.min',
-        fastclick:'fastclick'
+        fastclick:'fastclick',
+        jui:'jquery-ui.min'
+
     },
 
     shim: {
