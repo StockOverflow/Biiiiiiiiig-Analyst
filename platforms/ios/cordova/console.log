@@ -271,3 +271,19 @@ To disable web storage backup to iCloud, set the BackupWebStorage preference to 
 2015-05-08 13:56:39.430 analyst[8476:310884] Resetting plugins due to page load.
 2015-05-08 13:56:39.469 analyst[8476:310884] Finished load of: file:///Users/lifengshuang/Library/Developer/CoreSimulator/Devices/ECF75F7A-8FAD-4D99-ABA4-E28F9132AA1B/data/Containers/Bundle/Application/22F416CC-9C15-4448-9CFC-FFF41C26D957/analyst.app/www/index.html
 2015-05-08 14:09:55.173 analyst[8476:321495] Terminating since there is no system app.
+2015-05-09 01:29:21.576 analyst[12335:584104] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/lifengshuang/Library/Developer/CoreSimulator/Devices/ECF75F7A-8FAD-4D99-ABA4-E28F9132AA1B/data/Containers/Data/Application/FAAFB401-BB44-41BF-9630-F803165C8B89/Library/Cookies/Cookies.binarycookies
+2015-05-09 01:29:21.664 analyst[12335:584104] Apache Cordova native platform version 3.8.0 is starting.
+2015-05-09 01:29:21.665 analyst[12335:584104] Multi-tasking -> Device: YES, App: YES
+2015-05-09 01:29:21.667 analyst[12335:584104] Unlimited access to network resources
+2015-05-09 01:29:21.670 analyst[12335:584104] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-05-09 01:29:21.784 analyst[12335:584104] [CDVTimer][statusbar] 34.242034ms
+2015-05-09 01:29:21.784 analyst[12335:584104] [CDVTimer][TotalPluginStartup] 34.404993ms
+2015-05-09 01:29:21.851 analyst[12335:584104] Resetting plugins due to page load.
+2015-05-09 01:29:21.892 analyst[12335:584104] Finished load of: file:///Users/lifengshuang/Library/Developer/CoreSimulator/Devices/ECF75F7A-8FAD-4D99-ABA4-E28F9132AA1B/data/Containers/Bundle/Application/F967E501-3050-4255-AC35-649A11BEC471/analyst.app/www/index.html

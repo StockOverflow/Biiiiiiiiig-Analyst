@@ -80,6 +80,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             },
 
             click: function () {
+                Slider.direction = 'left';
                 Router.navigate('analyst', {trigger: true});
             }
 
