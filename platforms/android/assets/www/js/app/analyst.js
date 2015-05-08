@@ -46,6 +46,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     this.tabNumber = 2;
                     this.hideAllTab();
                     this.$('.content').append(tab2);
+
                 }
             },
 

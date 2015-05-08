@@ -113,9 +113,7 @@
 }
 
 .homepage-item-avatar-tofollow {
-    /*position: absolute;*/
-    /*right: 5px;*/
-    /*top: 5px;*/
-    float: right;
+    display: inline-block;
+    vertical-align: middle;
 }
 

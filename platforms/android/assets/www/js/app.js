@@ -5,11 +5,12 @@
 
 require(['./config'], function () {
 
-    require(['jquery', 'backbone', 'handlebars', 'chart'], function ($, Backbone, HandleBars, Chart) {
+    require(['jquery', 'backbone', 'handlebars', 'chart','fastclick'], function ($, Backbone, HandleBars, Chart,FastClick) {
         window.jQuery = $;
         window.Backbone = Backbone;
         window.HandleBars = HandleBars;
         window.Chart = Chart;
+        window.FastClick=FastClick;
 //        window.historyRecord = [];
 
         window.loadCSS = function (css) {

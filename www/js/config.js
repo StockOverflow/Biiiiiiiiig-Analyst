@@ -16,7 +16,8 @@ requirejs.config({
         backbone: 'backbone-min',
         handlebars: 'handlebars-v3.0.1',
         underscore: 'underscore-min',
-        chart: 'Chart.min'
+        chart: 'Chart.min',
+        fastclick:'fastclick'
     },
 
     shim: {

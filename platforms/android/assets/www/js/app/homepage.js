@@ -56,6 +56,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
         },
 
         initialize: function () {
+            FastClick.attach(this.$('body'));
             console.log('homepageView initialize');
             loadCSS(css);
             this.render();
