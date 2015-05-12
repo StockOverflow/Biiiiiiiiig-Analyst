@@ -4,36 +4,41 @@
 }
 
 td.col1 {
-    width: 250px;
+    width: 200px;
 }
 
 td.col2 {
-    width: 200px;
+    width: 210px;
     position: relative;
 }
 
 td.col3 {
-    width: 200px;
+    width: 210px;
 }
 
-td.col4 {
+/*td.col4 {
     width: 200px;
-}
+}*/
 
 td.col5 {
-    width: 75px;
+    width: 100px;
 }
 
 td.col6 {
-    width: 170px;
+    width: 200px;
 }
 
 td.col7 {
-    width: 450px;
+    width: 320px;
+}
+
+td.col7 > span {
+    width: 320px;
+    word-break: break-all;
 }
 
 td.col8 {
-    width: 100px;
+    width: 200px;
 }
 
 table > tbody > tr > td {
@@ -97,7 +102,7 @@ div.stock-ci-stock-item-avatar {
     background-size: 86px 86px;
     border-radius: 43px;
     vertical-align: top;
-    margin: 15px 20px 0 40px;
+    margin: 15px auto 0 auto;
     display: block;
     position: relative;
 }
@@ -126,9 +131,12 @@ div.line {
     margin: 5px 0;
 }
 
+span.stock-title {
+    width: 160px;
+}
+
 span.stock-title, span.stock-num {
     vertical-align: middle;
-    width: 160px;
     display: inline-block;
 }
 
