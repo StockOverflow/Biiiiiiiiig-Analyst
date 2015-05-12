@@ -14,6 +14,8 @@ define(function () {
             'stock/:s_id': 'stockRoute'
         },
 
+        direction: 'left',
+
         initialize: function () {
             console.log('router start');
         },
@@ -23,15 +25,10 @@ define(function () {
         },
 
         homepageRoute: function () {
-            console.log('homepageRouter');
             require(['app/homepage'], function (homepage) {
-                console.log('homepageRouter');
+                Slider.slide((new homepage()).el);
+                console.log(Router.direction);
 
-                console.log(homepage);
-                $('#main_entry').html((new homepage()).el);
-                require(['app/zoom'], function (zoom) {
-                    zoom();
-                });
             });
         },
 
@@ -42,21 +39,16 @@ define(function () {
         analystRoute: function () {
             console.log('analystRouter');
             require(['app/analyst'], function (analyst) {
-                $('#main_entry').html((new analyst()).el);
-                require(['app/zoom'], function (zoom) {
-                    zoom();
-                });
+                Slider.slide((new analyst()).el);
             });
         },
 
         stockRoute: function (s_id) {
             require(['app/stock'], function (stock) {
-                $('#main_entry').html((new stock({'s_id': s_id})).el);
-                require(['app/zoom'], function (zoom) {
-                    zoom();
-                });
+                Slider.slide((new stock()).el);
             });
         }
+
 
 //        pushHistory: function (hash, css) {
 //            loadCSS(css);
