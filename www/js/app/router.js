@@ -14,7 +14,7 @@ define(function () {
             'stock/:s_id': 'stockRoute'
         },
 
-        direction: 'left',
+//        direction: 'left',
 
         initialize: function () {
             console.log('router start');
@@ -26,9 +26,9 @@ define(function () {
 
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
-                Slider.slide((new homepage()).el);
-                console.log(Router.direction);
-
+//                Slider.slide((new homepage()).el);
+//                console.log(Router.direction);
+                $('#main_entry').html((new homepage()).el);
             });
         },
 
@@ -37,32 +37,27 @@ define(function () {
         },
 
         analystRoute: function () {
-            console.log('analystRouter');
+//            console.log('analystRouter');
             require(['app/analyst'], function (analyst) {
-                Slider.slide((new analyst()).el);
+//                Slider.slide((new analyst()).el);
+                $('#main_entry').html((new analyst()).el);
             });
         },
 
         stockRoute: function (s_id) {
             require(['app/stock'], function (stock) {
-                Slider.slide((new stock()).el);
+//                Slider.slide((new stock()).el);
+                $('#main_entry').html((new stock()).el);
+            });
+        },
+
+        drawerRoute: function () {
+            require(['app/drawer'], function (drawer) {
+                $('#main_entry').html((new drawer()).el);
             });
         }
 
 
-//        pushHistory: function (hash, css) {
-//            loadCSS(css);
-//            historyRecord.push([hash, css]);
-//        },
-//
-//        popHistory: function () {
-//            historyRecord.pop();
-//            var pair = historyRecord.pop();
-////            this.navigate(pair[0], {trigger: true});
-//            location.hash = pair[0];
-//            loadCSS(pair[1]);
-////            location.reload();
-//        }
 
 
     });
