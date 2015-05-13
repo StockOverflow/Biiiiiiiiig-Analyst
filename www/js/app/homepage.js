@@ -2,31 +2,10 @@
  * Created by lifengshuang on 5/4/15.
  */
 
-define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html', 'text!html/homepage/css_homepage.html'],
-    function (index, analyst, css) {
-//    console.log(index);
-//    console.log(analyst);
-
-        var AnalystModel = Backbone.Model.extend({
-            defaults: {
-                'name': '胡子欣',
-                'title': '东海证券分析员',
-                'rate': '平均收益率',
-                'rate_num': '+20%',
-                'bias': '平均偏移度',
-                'bias_num': '+30%',
-                'badge': ['招商证券']
-            }
-        });
-
-        var AnalystList = Backbone.Collection.extend({
-            model: AnalystModel
-        });
-
-        var Analysts = new AnalystList();
-        //TODO: load data to Analysts
-//        console.log((new Analyst()).attributes);
-        Analysts.add(new AnalystModel());
+define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html',
+        'text!html/homepage/css_homepage.html', 'app/model/AnalystRankingModel',
+        'app/model/AnalystRankingCollection'],
+    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection) {
 
         var AnalystView = Backbone.View.extend({
 
@@ -39,7 +18,6 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
             render: function () {
                 this.$el.html(this.template(this.model.toJSON()));
-//            console.log('render');
             }
         });
 
@@ -47,6 +25,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
             el: index,
 
+            analysts: new AnalystRankingCollection(),
 
             events: {
                 'click #homepage-search-cancel': 'searchCancel',
@@ -58,15 +37,14 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             initialize: function () {
                 /*TODO only uncomment this only compiling to mobile*/
                 //FastClick.attach(this.$('body'));
-                console.log('homepageView initialize');
+                this.analysts.add(new AnalystRankingModel());
+                setTimeout(this.getAnalystRankingData("accuracy"), 0);
                 loadCSS(css);
                 this.render();
             },
 
             render: function () {
-                console.log('homepageView render');
-                Analysts.each(this.show, this);
-//            console.log(this.el)
+                this.analysts.each(this.show, this);
             },
 
             show: function (model) {
@@ -75,7 +53,6 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             },
 
             searchCancel: function () {
-                console.log('cancel click');
                 this.$('#homepage-search').val('');
             },
 
@@ -89,6 +66,15 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
             search: function () {
                 Router.navigate('search', {trigger: true});
+            },
+
+            getAnalystRankingData: function (type) {
+                var base_url = "http://stock.whytouch.com/get_rankings.php?type=" + type;
+                //TODO TODO TODO TODO TODO TODO
+                var ctx = this;
+                $.get(base_url, function (data) {
+                    ctx.renderResearches(data.researches);
+                }, 'json');
             }
 
         });

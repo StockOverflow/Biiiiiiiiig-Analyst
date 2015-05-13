@@ -64,7 +64,7 @@ require(['./config'], function () {
 //
 //        };
 
-        require(['app/router'], function (r) {
+        require(['app/router'], function () {
 
         });
 

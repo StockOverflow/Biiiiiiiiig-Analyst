@@ -59,7 +59,7 @@
     background-size: 126px 126px;
     border-radius: 63px;
     vertical-align: top;
-    margin: 42px 26px auto 26px;
+    margin: 42px 25px auto 25px;
     display: inline-block;
     position: relative;
 }
@@ -90,22 +90,24 @@
 .homepage-item-detail {
     display: inline-block;
     vertical-align: top;
+    /*width: 535px;*/
 }
 
 .homepage-item-averarenum {
     font-size: 33px;
     color: rgb(200, 43, 43);
-    margin-right: 15px;
+    margin-right: 8px;
 }
 
 .homepage-item-avebias {
     font-size: 25px;
-    margin-right: 8px;
+    /*margin-right: 8px;*/
 }
 
 .homepage-item-avebiasnum {
     color: #259bed;
     font-size: 33px;
+    margin-right: 8px;
 }
 
 .homepage-item-follow {
