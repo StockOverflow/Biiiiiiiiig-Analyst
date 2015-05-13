@@ -11,7 +11,11 @@ define(function () {
             'homepage': 'homepageRoute',
             'usersign': 'usersignRoute',
             'analyst': 'analystRoute',
-            'stock/:s_id': 'stockRoute'
+            'stock/:s_id': 'stockRoute',
+            'drawer': 'drawerRoute',
+            'favour_stock': 'favourStockRoute',
+            'favour_analyst': 'favourAnalystRoute',
+            'search': 'searchRoute'
         },
 
 //        direction: 'left',
@@ -33,7 +37,9 @@ define(function () {
         },
 
         usersignRoute: function () {
-
+            require(['app/usersign'], function (usersign) {
+                $('#main_entry').html((new usersign()).el);
+            });
         },
 
         analystRoute: function () {
@@ -55,9 +61,25 @@ define(function () {
             require(['app/drawer'], function (drawer) {
                 $('#main_entry').html((new drawer()).el);
             });
+        },
+
+        favourStockRoute: function () {
+            require(['app/favour_stock'], function (favour_stock) {
+                $('#main_entry').html((new favour_stock()).el);
+            });
+        },
+
+        favourAnalystRoute: function () {
+            require(['app/favour_analyst'], function (favour_analyst) {
+                $('#main_entry').html((new favour_analyst()).el);
+            });
+        },
+
+        searchRoute: function () {
+            require(['app/search'], function (search) {
+                $('#main_entry').html((new search()).el);
+            });
         }
-
-
 
 
     });

@@ -13,13 +13,20 @@ require(['./config'], function () {
         window.FastClick = FastClick;
         window.JUI = JUI;
 
-        $(require(['app/zoom'], function (zoom) {
-            zoom();
-        }));
+        $(function () {
+            require(['app/zoom'], function (zoom) {
+                zoom();
+            })
+        });
 
         window.loadCSS = function (css) {
             $('link').remove();
             $('head').append(css);
+        };
+
+        window.User = {
+            hasSignin: false,
+            name: ''
         };
 
 //        window.Slider = {
@@ -57,7 +64,7 @@ require(['./config'], function () {
 //
 //        };
 
-        require(['app/router'], function () {
+        require(['app/router'], function (r) {
 
         });
 

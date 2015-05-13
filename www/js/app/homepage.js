@@ -41,8 +41,6 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 this.$el.html(this.template(this.model.toJSON()));
 //            console.log('render');
             }
-
-
         });
 
         var HomePageView = Backbone.View.extend({
@@ -52,7 +50,9 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
             events: {
                 'click #homepage-search-cancel': 'searchCancel',
-                'click .homepage-item': 'click'
+                'click .homepage-item': 'click',
+                'click .nav-bar .left': 'drawer',
+                'click .search-text': 'search'
             },
 
             initialize: function () {
@@ -84,7 +84,11 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             },
 
             drawer: function () {
-                Router.navigate();
+                Router.navigate('drawer', {trigger:true});
+            },
+
+            search: function () {
+                Router.navigate('search', {trigger: true});
             }
 
         });
