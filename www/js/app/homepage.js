@@ -38,7 +38,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 /*TODO only uncomment this only compiling to mobile*/
                 //FastClick.attach(this.$('body'));
                 this.analysts.add(new AnalystRankingModel());
-                setTimeout(this.getAnalystRankingData("accuracy"), 0);
+//                setTimeout(this.getAnalystRankingData("accuracy"), 0);
                 loadCSS(css);
                 this.render();
             },
