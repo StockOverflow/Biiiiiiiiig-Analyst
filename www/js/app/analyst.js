@@ -16,8 +16,6 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             a_id: '1',
             el: index,
 
-            tabNumber: 0,
-
             events: {
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
