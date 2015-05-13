@@ -1,6 +1,8 @@
 .analyst-title {
     font-size: 34px;
     color: #616161;
+    display: block;
+    margin-top: 10px;
 }
 
 td.col1 {
@@ -35,6 +37,8 @@ td.col7 {
 td.col8 {
     width: 100px;
 }
+
+
 
 table > tbody > tr > td {
     font-size: 33px;
@@ -73,7 +77,7 @@ div.analyst-di-stock-item {
 }
 
 div.analyst-ci-stock-item {
-    height: 154px;
+    /*height: 154px;*/
     border-bottom: 4px dotted #cccccc;
 }
 
@@ -110,4 +114,30 @@ div.analyst-di-time {
     text-align: center;
     width: 100%;
     color: rgb(181, 181, 181);
+}
+
+img.homepage-item-avatar-tofollow {
+    position: fixed;
+    right: 50px;
+    top: 150px;
+    z-index: 999;
+}
+
+div.homepage-item-avatar {
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+span.analyst-title-name {
+    font-size: 39px;
+    margin-top: 10px;
+}
+
+canvas#analystChart {
+    display: block;
+    margin: 50px auto;
+}
+
+.rt-div {
+    padding-top: 210px;
 }

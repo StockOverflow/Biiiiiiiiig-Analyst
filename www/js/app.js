@@ -13,9 +13,11 @@ require(['./config'], function () {
         window.FastClick = FastClick;
         window.JUI = JUI;
 
-        $(require(['app/zoom'], function (zoom) {
-            zoom();
-        }));
+        $(function(){
+            require(['app/zoom'], function (zoom) {
+                zoom();
+            })
+        });
 
         window.loadCSS = function (css) {
             $('link').remove();

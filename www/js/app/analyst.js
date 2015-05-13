@@ -4,12 +4,16 @@
 
 define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.html',
         'text!html/analyst/tab1_analyst.html', 'text!html/analyst/tab2_analyst.html',
-        'text!html/analyst/tab3_analyst.html', 'text!html/analyst/info_analyst.html'],
-    function (index, css, tab1, tab2, tab3, info) {
+        'text!html/analyst/tab3_analyst.html', 'text!html/analyst/info_analyst.html',
+        'app/chartwrapper',
+        'text!html/analyst/analyst_stock_item.html', 'text!html/analyst/analyst_research_item.html'
+        , 'text!html/analyst/analyst_to_stock.html'],
+    function (index, css, tab1, tab2, tab3, info, chartwrapper, analyst_item, research_item, analyst_to_stock_item) {
 
 
         var AnalystView = Backbone.View.extend({
 
+            a_id: '1',
             el: index,
 
             tabNumber: 0,
@@ -25,7 +29,10 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             initialize: function () {
                 this.$('.content').append(tab1).append(tab2).append(tab3);
                 loadCSS(css);
-                //this.render();
+                setTimeout(this.getAnalystData(this.a_id), 0);
+                setTimeout(this.getAnalystStockData(this.a_id), 1000);
+                setTimeout(this.getResearchData(this.a_id), 1000);
+
             },
 
             tabOne: function () {
@@ -74,27 +81,121 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             getAnalystData: function (a_id) {
-                var base_url = 'http://stock.whytouch.com//analyzerpages/get_analyzer_info.php?s_id=' + a_id;
+                var base_url = 'http://stock.whytouch.com/analyzerpages/get_analyzer_info.php?a_id=' + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
-                    ctx.renderStockChart(data.price);
-                    ctx.renderTitle(s_id, data.basic_info);
+                    ctx.renderAnalystChart(data.attribute)
                 }, 'json');
             },
 
-            renderAnaltsyInfo: function (data) {
+            renderAnalystInfo: function (data) {
                 var basic_info = JSON.parse(data);
                 var template = HandleBars.compile(info);
                 var injected = template({
-                        'yesterday_price': basic_info.yesterday_price,
-                        'up': basic_info.up,
-                        'expected_price': basic_info.expected_price,
-                        'num_of_researches': basic_info.num_of_researches
+                        'a_institution': basic_info.a_institution,
+                        'a_position': basic_info.a_position
                     }
                 );
                 $('.homepage-item').append(injected);
+                $(".nav-bar>.title").html(basic_info.a_name);
             },
+
+            renderAnalystChart: function (data) {
+                var attribute = JSON.parse(data);
+                var wrapped = analystRadarChart(attribute);
+
+                var ctx = $("#analystChart").get(0).getContext("2d");
+                new Chart(ctx).Radar(wrapped[0], wrapped[1]);
+            },
+
+            getAnalystStockData: function (a_id) {
+                var base_url = 'http://stock.whytouch.com/analyzerpages/get_analyzer_stock.php?a_id=' + a_id;
+                var ctx = this;
+                $.get(base_url, function (data) {
+                    ctx.renderAnalystStock(data.analyzer_stock);
+                }, 'json');
+            },
+
+            renderAnalystStock: function (data) {
+                var analyzer_stock = JSON.parse(data);
+                var template = HandleBars.compile(analyst_item);
+                var ctx = this;
+                _.each(analyzer_stock, function (item) {
+                    var injected = template({
+                            'date': item.date,
+                            's_name': item.s_name,
+                            'target_price': item.target_price,
+                            'yield_rate': percentageToString(item.yield_rate),
+                            'drift_rate': percentageToString(item.drift_rate),
+                            'accuracy': item.accuracy,
+                            'speed': item.speed,
+                            'stability': item.stability,
+                            's_id': 'sid' + item.s_id
+                        }
+                    );
+                    $('.di-div').append(injected);
+                    ctx.getAnalystToStockData(item.s_id, ctx.a_id);
+                    $('.sid' + item.s_id).parent().click(function () {
+                        var obj = $('.sid' + item.s_id);
+                        var dis = obj.css('display');
+                        if (dis == 'none') {
+                            obj.css('display', 'block');
+                        } else {
+                            obj.css('display', 'none');
+                        }
+                    });
+                });
+
+            },
+
+            getAnalystToStockData: function (s_id, a_id) {
+                var base_url = 'http://stock.whytouch.com/stockpages/get_researches_by_analyzer.php?s_id=' + s_id + "&a_id=" + a_id;
+                var ctx = this;
+                $.get(base_url, function (data) {
+                    ctx.renderAnalystToStock(s_id, data.researches_by_analyzer);
+                }, 'json');
+            },
+
+            renderAnalystToStock: function (s_id, data) {
+                var researches = JSON.parse(data);
+                _.each(researches, function (item) {
+                    var title = item.title, date = item.date;
+
+                    var template = HandleBars.compile(analyst_to_stock_item);
+                    var injected = template({
+                            'content': title + "-" + date
+                        }
+                    );
+                    $('.sid' + s_id).append(injected);
+                });
+            },
+
+            getResearchData: function (a_id) {
+                var base_url = 'http://stock.whytouch.com/analyzerpages/get_researches.php?a_id=' + a_id;
+                var ctx = this;
+                $.get(base_url, function (data) {
+                    ctx.renderResearches(data.researches);
+                }, 'json');
+            },
+
+            renderResearches: function (data) {
+                var researches = JSON.parse(data);
+                _.each(researches, function (item) {
+                    var title = item.title, date = item.date, s_name = item.s_name;
+
+                    var template = HandleBars.compile(research_item);
+                    var injected = template({
+                            'title': title,
+                            'date': date,
+                            's_name': s_name
+                        }
+                    );
+                    $('.ci-div').append(injected);
+                });
+            }
+
+
         });
 
         return AnalystView;
