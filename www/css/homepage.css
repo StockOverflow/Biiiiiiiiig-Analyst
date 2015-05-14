@@ -16,14 +16,14 @@
 }
 
 #homepage-search-rank {
-    margin-left: 28px;
+    margin-left: 24px;
 }
 
 #homepage-search-rank-icon {
-    vertical-align: text-bottom;
+    vertical-align: middle;
     width: 27px;
     height: 27px;
-    margin: auto 4px auto 6px;
+    /*margin: auto 4px auto 6px;*/
 }
 
 .title-bar {
@@ -59,7 +59,7 @@
     background-size: 126px 126px;
     border-radius: 63px;
     vertical-align: top;
-    margin: 42px 0 auto 15px;
+    margin: 42px 10px auto 25px;
     display: inline-block;
     position: relative;
 }
@@ -119,3 +119,28 @@
     vertical-align: middle;
 }
 
+/*modal*/
+.rank-modal {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    background: rgba(0,0,0,0.3);
+    width: 720px;
+    z-index: 999;
+}
+
+.rank-item {
+    background: #ffffff;
+    width: 680px;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 80px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    border-radius: 8px;
+    color: #259bed;
+    font-size: 35px;
+}
