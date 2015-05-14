@@ -9,75 +9,78 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
         var AnalystView = Backbone.View.extend({
 
+            model: new AnalystRankingModel(),
             template: HandleBars.compile(analyst),
+
+            events: {'click .homepage-item':'enter_analyst'},
 
             initialize: function () {
                 this.listenTo(this.model, 'change', this.render);
                 this.render();
             },
-
             render: function () {
                 this.$el.html(this.template(this.model.toJSON()));
+                //this.listenTo(this.$el, 'click', this.enter_analyst);
+            },
+
+            enter_analyst: function () {
+                var a_id = this.model.get("a_id");
+                //alert(a_id);
+                Router.navigate('analyst/' + a_id, {trigger: true});
             }
         });
 
         var HomePageView = Backbone.View.extend({
 
-            el: index,
+                el: index,
 
-            analysts: new AnalystRankingCollection(),
+                analysts: new AnalystRankingCollection(),
 
-            events: {
-                'click #homepage-search-cancel': 'searchCancel',
-                'click .homepage-item': 'click',
-                'click .nav-bar .left': 'drawer',
-                'click .search-text': 'search'
-            },
+                events: {
+                    'click #homepage-search-cancel': 'searchCancel',
+                    'click .homepage-item': 'click',
+                    'click .nav-bar .left': 'drawer',
+                    'click .search-text': 'search'
+                },
 
-            initialize: function () {
-                /*TODO only uncomment this only compiling to mobile*/
-                //FastClick.attach(this.$('body'));
-                this.analysts.add(new AnalystRankingModel());
-//                setTimeout(this.getAnalystRankingData("accuracy"), 0);
-                loadCSS(css);
-                this.render();
-            },
+                initialize: function () {
+                    this.analysts = new AnalystRankingCollection();
+                    this.render();
+                    loadCSS(css);
+                },
 
-            render: function () {
-                this.analysts.each(this.show, this);
-            },
+                render: function () {
+                    //getAnalystRankingData
+                    var base_url = "http://stock.whytouch.com/get_rankings.php?type=" + "accuracy";
+                    var ctx = this;
+                    $.get(base_url, function (data) {
+                        var ans = JSON.parse(data.analyzer_rankings);
+                        _.each(ans, function (item) {
+                            ctx.analysts.add(item);
+                        });
+                        ctx.analysts.each(ctx.show, ctx);
+                    }, 'json');
+                },
 
-            show: function (model) {
-                var view = new AnalystView({model: model});
-                this.$('.content').append(view.el.innerHTML);
-            },
+                show: function (model) {
+                    var view = new AnalystView({model: model});
+                    this.$('.content').append(view.el);
+                },
 
-            searchCancel: function () {
-                this.$('#homepage-search').val('');
-            },
+                searchCancel: function () {
+                    this.$('#homepage-search').val('');
+                },
 
-            click: function () {
-                Router.navigate('analyst', {trigger: true});
-            },
+                drawer: function () {
+                    Router.navigate('drawer', {trigger: true});
+                },
 
-            drawer: function () {
-                Router.navigate('drawer', {trigger:true});
-            },
-
-            search: function () {
-                Router.navigate('search', {trigger: true});
-            },
-
-            getAnalystRankingData: function (type) {
-                var base_url = "http://stock.whytouch.com/get_rankings.php?type=" + type;
-                //TODO TODO TODO TODO TODO TODO
-                var ctx = this;
-                $.get(base_url, function (data) {
-                    ctx.renderResearches(data.researches);
-                }, 'json');
-            }
-
-        });
+                search: function () {
+                    Router.navigate('search', {trigger: true});
+                }
+            })
+            ;
 
         return HomePageView;
-    });
+    })
+;
