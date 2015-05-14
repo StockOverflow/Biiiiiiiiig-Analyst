@@ -1,6 +1,6 @@
 /*over all style goer here*/
 * {
-    font-family: "微软雅黑", monospace;
+    /*font-family: "微软雅黑", monospace;*/
     font-size: 25px;
     color: #616161;
 }
@@ -83,13 +83,14 @@ body {
 }
 
 .search-box {
-    width: 570px;
+    width: 550px;
     height: 58px;
     border: 1px solid #cccccc;
     background: #FFFFFF;
     display: inline-block;
     border-radius: 10px;
     margin-top: 15px;
+    margin-left: 5px;
     position: relative;
 }
 
@@ -102,7 +103,7 @@ body {
     margin: 10px 0 10px 20px;
     outline: none;
     border: none;
-    width: 480px;
+    width: 465px;
     font-size: 27px;
 }
 
