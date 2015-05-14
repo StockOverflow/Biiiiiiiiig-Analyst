@@ -30,15 +30,38 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
         signin: function () {
             var phone = $('.usersign-mobile').val();
             var password = $('.usersign-password').val();
-            User.hasSignin = true;
-            User.name = '胡子欣';
-            this.backDiv('欢迎回来');
+            var url = 'http://stock.whytouch.com/users/login.php?phone=' + phone + '&password=' + password;
+            var ctx = this;
+            $.get(url, function (data) {
+                console.log(data);
+                if (data.code == 200){
+                    User.hasSignin = true;
+                    User.name = '胡子欣';
+                    ctx.backDiv('欢迎回来');
+                }
+                else {
+                    alert(data.state);
+                }
+            }, 'json');
         },
 
         signup: function () {
-            User.hasSignin = true;
-            User.name = '胡子欣';
-            this.backDiv('注册成功');
+            var username = $('.usersign-username').val();
+            var phone = $('.usersign-mobile').val();
+            var password = $('.usersign-password').val();
+            var url = 'http://stock.whytouch.com/users/register.php?username=' + username + '&phone=' + phone + '&password=' + password;
+            var ctx = this;
+            $.get(url, function (data) {
+                console.log(data);
+                if (data.code == 200){
+                    User.hasSignin = true;
+                    User.name = username;
+                    ctx.backDiv('注册成功');
+                }
+                else {
+                    alert(data.state);
+                }
+            }, 'json');
         },
 
         signupDiv: function () {

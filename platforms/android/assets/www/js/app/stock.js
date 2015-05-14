@@ -71,7 +71,6 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             back: function () {
-                Slider.direction = 'left';
                 history.back();
             },
 

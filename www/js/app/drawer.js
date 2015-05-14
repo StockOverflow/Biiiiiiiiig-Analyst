@@ -60,7 +60,6 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
 //        }
 
     });
-    console.log(index);
     return DrawerView;
 
 });
