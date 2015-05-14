@@ -10,7 +10,7 @@ define(function () {
             '': 'homepageRoute',
             'homepage': 'homepageRoute',
             'usersign': 'usersignRoute',
-            'analyst': 'analystRoute',
+            'analyst/:a_id': 'analystRoute',
             'stock/:s_id': 'stockRoute',
             'drawer': 'drawerRoute',
             'favour_stock': 'favourStockRoute',
@@ -30,7 +30,6 @@ define(function () {
 
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
-//                Slider.slide((new homepage()).el);
 //                console.log(Router.direction);
                 $('#main_entry').html((new homepage()).el);
             });
@@ -42,18 +41,17 @@ define(function () {
             });
         },
 
-        analystRoute: function () {
-//            console.log('analystRouter');
+        analystRoute: function (a_id) {
             require(['app/analyst'], function (analyst) {
 //                Slider.slide((new analyst()).el);
-                $('#main_entry').html((new analyst()).el);
+                $('#main_entry').html((new analyst(a_id)).el);
             });
         },
 
         stockRoute: function (s_id) {
             require(['app/stock'], function (stock) {
 //                Slider.slide((new stock()).el);
-                $('#main_entry').html((new stock()).el);
+                $('#main_entry').html((new stock(s_id)).el);
             });
         },
 

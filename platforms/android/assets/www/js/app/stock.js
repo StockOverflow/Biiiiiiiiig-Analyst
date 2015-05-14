@@ -22,9 +22,9 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .left': 'back'
             },
 
-            initialize: function () {
+            initialize: function (s_id) {
+                this.s_id = s_id;
                 this.$('.content').append(tab1).append(tab2).append(tab3);
-
                 loadCSS(css);
 
                 setTimeout(this.getStockData(this.s_id, 30, true), 0);

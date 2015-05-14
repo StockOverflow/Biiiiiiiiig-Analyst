@@ -10,7 +10,7 @@ define(function () {
             '': 'homepageRoute',
             'homepage': 'homepageRoute',
             'usersign': 'usersignRoute',
-            'analyst': 'analystRoute',
+            'analyst/:a_id': 'analystRoute',
             'stock/:s_id': 'stockRoute',
             'drawer': 'drawerRoute',
             'favour_stock': 'favourStockRoute',
@@ -18,7 +18,7 @@ define(function () {
             'search': 'searchRoute'
         },
 
-//        direction: 'left',
+        direction: 'left',
 
         initialize: function () {
             console.log('router start');
@@ -30,56 +30,43 @@ define(function () {
 
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
-//                Slider.slide((new homepage()).el);
-//                console.log(Router.direction);
-                $('#main_entry').html((new homepage()).el);
+                Slider.slide((new homepage()).el);
+                console.log(Router.direction);
+
             });
         },
 
         usersignRoute: function () {
-            require(['app/usersign'], function (usersign) {
-                $('#main_entry').html((new usersign()).el);
-            });
+
         },
 
         analystRoute: function () {
-//            console.log('analystRouter');
+            console.log('analystRouter');
             require(['app/analyst'], function (analyst) {
-//                Slider.slide((new analyst()).el);
-                $('#main_entry').html((new analyst()).el);
+                Slider.slide((new analyst()).el);
             });
         },
 
         stockRoute: function (s_id) {
             require(['app/stock'], function (stock) {
-//                Slider.slide((new stock()).el);
-                $('#main_entry').html((new stock()).el);
-            });
-        },
-
-        drawerRoute: function () {
-            require(['app/drawer'], function (drawer) {
-                $('#main_entry').html((new drawer()).el);
-            });
-        },
-
-        favourStockRoute: function () {
-            require(['app/favour_stock'], function (favour_stock) {
-                $('#main_entry').html((new favour_stock()).el);
-            });
-        },
-
-        favourAnalystRoute: function () {
-            require(['app/favour_analyst'], function (favour_analyst) {
-                $('#main_entry').html((new favour_analyst()).el);
-            });
-        },
-
-        searchRoute: function () {
-            require(['app/search'], function (search) {
-                $('#main_entry').html((new search()).el);
+                Slider.slide((new stock()).el);
             });
         }
+
+
+//        pushHistory: function (hash, css) {
+//            loadCSS(css);
+//            historyRecord.push([hash, css]);
+//        },
+//
+//        popHistory: function () {
+//            historyRecord.pop();
+//            var pair = historyRecord.pop();
+////            this.navigate(pair[0], {trigger: true});
+//            location.hash = pair[0];
+//            loadCSS(pair[1]);
+////            location.reload();
+//        }
 
 
     });
