@@ -50,10 +50,6 @@ table > tbody > tr > td {
     border-bottom: 2px solid #cccccc;
 }
 
-.stock-di-item > table > tbody > tr > td {
-    height: 124px;
-    vertical-align: middle;
-}
 
 .follow-bar {
     top: 310px;
@@ -82,12 +78,12 @@ div.stock-di-stock-item {
 }
 
 div.stock-ci-stock-item {
-    height: 154px;
+    /*height: 154px;*/
     border-bottom: 4px dotted #cccccc;
 }
 
 div.stock-di-item > table > tbody > tr > td {
-    height: 154px;
+    height: 100px;
     vertical-align: middle;
 }
 

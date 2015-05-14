@@ -24,7 +24,8 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'click .analyst-di-stock': 'enter_stock'
             },
 
-            initialize: function () {
+            initialize: function (a_id) {
+                this.a_id = a_id;
                 this.$('.content').append(tab1).append(tab2).append(tab3);
                 loadCSS(css);
                 setTimeout(this.getAnalystData(this.a_id), 0);
@@ -75,7 +76,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
 
             enter_stock: function () {
-                Router.navigate('stock/1', {trigger: true});
+                Router.navigate('stock/' + this.a_id, {trigger: true});
             },
 
             getAnalystData: function (a_id) {

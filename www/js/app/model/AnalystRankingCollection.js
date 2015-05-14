@@ -4,7 +4,10 @@
 
 define(['app/model/AnalystRankingModel'], function (AnalystRankingModel) {
     var AnalystRankingCollection = Backbone.Collection.extend({
-        model: AnalystRankingModel
+        model: AnalystRankingModel,
+        models: []
+
+
     });
 
     return AnalystRankingCollection;

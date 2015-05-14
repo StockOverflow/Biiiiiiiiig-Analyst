@@ -12,7 +12,8 @@ define(function () {
             'average_drift_rate': '+20%',
             'speed': '+30%',
             'stability': '+30%',
-            'accuracy': '+30%'
+            'accuracy': '+30%',
+            'portrait': '0'
         }
     });
 
