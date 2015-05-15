@@ -20,12 +20,10 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             },
             render: function () {
                 this.$el.html(this.template(this.model.toJSON()));
-                //this.listenTo(this.$el, 'click', this.enter_analyst);
             },
 
             enter_analyst: function () {
                 var a_id = this.model.get("a_id");
-                //alert(a_id);
                 Router.navigate('analyst/' + a_id, {trigger: true});
             }
         });
@@ -95,11 +93,11 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             },
 
             showModal: function () {
-                this.$('.rank-modal').css('display', 'block');
-            },
+                //$('.rank-modal').css('display', 'block');
+                this.$('.rank-modal').fadeTo(100, 1).removeClass('slide-down')
+                    .css('bottom', '-500px')
+                    .addClass('slide-up', 500, 'easeOutQuart');
 
-            removeModal: function () {
-                this.$('.rank-modal').css('display', 'none');
             },
 
             rankBy: function (type) {
@@ -122,7 +120,17 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                         break;
                 }
                 this.removeModal();
+            },
+
+            removeModal: function () {
+                this.$('.rank-modal').removeClass('slide-up')
+                    .css('bottom', '0')
+                    .addClass('slide-down', 300, 'easeOutQuint');
+                this.$('.rank-modal').fadeTo(100, 0, function () {
+                    $('.rank-modal').css('display', 'none');
+                });
             }
+
 
         });
 
@@ -130,4 +138,5 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
         return HomePageView;
 
     }
-);
+)
+;

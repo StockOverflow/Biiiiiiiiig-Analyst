@@ -20,8 +20,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
-                'click .left': 'back',
-                'click .analyst-di-stock': 'enter_stock'
+                'click .nav-bar>.left': 'back',
+                'click .analyst-di-stock': 'enter_stock',
+                'click .nav-bar>.right': 'search'
             },
 
             initialize: function (a_id) {
@@ -31,7 +32,6 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
-
             },
 
             tabOne: function () {
@@ -192,6 +192,10 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     );
                     $('.ci-div').append(injected);
                 });
+            },
+
+            search: function () {
+                Router.navigate('search', {trigger: true});
             }
 
 

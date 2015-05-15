@@ -10,7 +10,7 @@
 
             <div class="search-box middle">
                 <img id="homepage-search-icon" class="icon left" src="img/search.png">
-                <input id="homepage-search" placeholder="搜索分析师..." class="search-text "/>
+                <input id="homepage-search" placeholder="搜索分析师..." class="search-text " disabled/>
                 <img id="homepage-clear-icon" class="icon right" src="img/clear.png">
             </div>
         </div>
@@ -24,24 +24,31 @@
         </div>
     </div>
     <div class="rank-modal" style="display: none">
-        <div class="rank-item rank-by-stability" style="bottom: 380px">
-            稳定性
+        <div class="rank-items">
+            <div class="rank-item rank-by-stability" style="bottom: 380px">
+                稳定性
+            </div>
+            <hr style="bottom: 375px">
+            <div class="rank-item rank-by-speed" style="bottom: 315px">
+                速度
+            </div>
+            <hr style="bottom: 310px">
+            <div class="rank-item rank-by-accuracy" style="bottom: 250px">
+                准确性
+            </div>
+            <hr style="bottom: 245px">
+            <div class="rank-item rank-by-average-yield-rate" style="bottom: 185px">
+                平均收益率
+            </div>
+            <hr style="bottom: 180px">
+            <div class="rank-item rank-by-average-drift-rate" style="bottom: 120px">
+                平均偏移度
+            </div>
+            <div class="rank-item rank-cancel">
+                取消
+            </div>
         </div>
-        <div class="rank-item rank-by-speed" style="bottom: 315px">
-            速度
-        </div>
-        <div class="rank-item rank-by-accuracy" style="bottom: 250px">
-            准确性
-        </div>
-        <div class="rank-item rank-by-average-yield-rate" style="bottom: 185px">
-            平均收益率
-        </div>
-        <div class="rank-item rank-by-average-drift-rate" style="bottom: 120px">
-            平均偏移度
-        </div>
-        <div class="rank-item rank-cancel">
-            取消
-        </div>
+
     </div>
 </div>
 <!--<script src="js/zoom.js"></script>-->

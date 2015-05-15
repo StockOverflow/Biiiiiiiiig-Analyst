@@ -19,7 +19,8 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
-                'click .left': 'back'
+                'click .nav-bar>.left': 'back',
+                'click .nav-bar>.right': 'search'
             },
 
             initialize: function (s_id) {
@@ -192,6 +193,11 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                     );
                     $('.aid' + a_id).append(injected);
                 });
+            },
+
+
+            search: function () {
+                Router.navigate('search', {trigger: true});
             }
         });
 
