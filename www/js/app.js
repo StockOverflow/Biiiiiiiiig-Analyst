@@ -26,7 +26,8 @@ require(['./config'], function () {
 
         window.User = {
             hasSignin: false,
-            name: ''
+            name: '',
+            phone:''
         };
 
 //        window.Slider = {

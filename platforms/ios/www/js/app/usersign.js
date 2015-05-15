@@ -36,8 +36,7 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
                 console.log(data);
                 if (data.code == 200){
                     User.hasSignin = true;
-                    User.name = data.username;
-                    User.phone = phone;
+                    User.name = '胡子欣';
                     ctx.backDiv('欢迎回来');
                 }
                 else {
@@ -57,7 +56,6 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
                 if (data.code == 200){
                     User.hasSignin = true;
                     User.name = username;
-                    User.phone = phone;
                     ctx.backDiv('注册成功');
                 }
                 else {
