@@ -13,14 +13,19 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
             'click .drawer-stock': 'stock',
             'click .drawer-analyst': 'analyst',
             'click .drawer-reminder': 'reminder',
-            'click .logout': 'logout'
-//            'mouseover .drawer-stock': 'overStock'
+            'click .logout': 'logout',
+            'click .setting': 'setting'
         },
 
         initialize: function () {
             loadCSS(css);
             if (User.hasSignin){
                 this.$('.drawer-username').html(User.name);
+            }
+            else {
+                this.$('.setting').html('立即注册');
+                this.$('.logout').html('登录');
+                this.$('.logout').before('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
             }
         },
 
@@ -56,10 +61,24 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
         },
 
         logout: function () {
-            User.hasSignin = false;
-            User.name = '未登录';
-            User.phone = '';
-            this.back();
+            if (User.hasSignin) {
+                User.hasSignin = false;
+                User.name = '未登录';
+                User.phone = '';
+                this.back();
+            }
+            else {
+                Router.navigate('usersign', {trigger: true});
+            }
+        },
+
+        setting: function () {
+            if (User.hasSignin){
+
+            }
+            else {
+                Router.navigate('usersign/signup', {trigger: true});
+            }
         }
 
 //        overStock: function() {

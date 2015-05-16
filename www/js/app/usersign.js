@@ -22,9 +22,14 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
             'click .toSignup': 'signupDiv'
         },
 
-        initialize: function () {
+        initialize: function (option) {
             loadCSS(css);
-            this.signinDiv();
+            if (option == 'signup'){
+                this.signupDiv();
+            }
+            else {
+                this.signinDiv();
+            }
         },
 
         signin: function () {
