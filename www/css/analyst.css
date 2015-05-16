@@ -1,40 +1,40 @@
-.analyst-title {
+.analyst-page .home-page .analyst-title {
     font-size: 34px;
     color: #616161;
     display: block;
     margin-top: 10px;
 }
 
-td.col1 {
+.analyst-page .home-page td.col1 {
      width: 250px;
  }
 
-td.col2 {
+.analyst-page .home-page td.col2 {
     width: 200px;
     position: relative;
 }
 
-td.col3 {
+.analyst-page .home-page td.col3 {
     width: 200px;
 }
 
-td.col4 {
+.analyst-page .home-page td.col4 {
     width: 200px;
 }
 
-td.col5 {
+.analyst-page .home-page td.col5 {
     width: 75px;
 }
 
-td.col6 {
+.analyst-page .home-page td.col6 {
     width: 170px;
 }
 
-td.col7 {
+.analyst-page .home-page td.col7 {
     width: 450px;
 }
 
-td.col8 {
+.analyst-page .home-page td.col8 {
     width: 100px;
 }
 
@@ -45,7 +45,7 @@ table > tbody > tr > td {
     text-align: center;
 }
 
-.analyst-di-item {
+.analyst-page .home-page .analyst-di-item {
     border-bottom: 2px solid #cccccc;
 }
 
@@ -54,29 +54,29 @@ table > tbody > tr > td {
     vertical-align: middle;
 }
 
-.follow-bar {
+.analyst-page .home-page .follow-bar {
     top: 310px;
 }
 
-.di-div {
+.analyst-page .home-page .di-div {
     padding-top: 278px;
 }
 
-.analyst-di-green {
+.analyst-page .home-page .analyst-di-green {
     font-size: 33px;
     color: rgb(45, 125, 20);
 }
 
-.analyst-di-red {
+.analyst-page .home-page .analyst-di-red {
     font-size: 33px;
     color: rgb(199, 42, 42);
 }
 
-div.analyst-di-stock-item {
+.analyst-page .home-page div.analyst-di-stock-item {
     margin: 20px 60px 20px 60px;
 }
 
-div.analyst-ci-stock-item {
+.analyst-page .home-page div.analyst-ci-stock-item {
     /*height: 154px;*/
     border-bottom: 4px dotted #cccccc;
 }
@@ -86,11 +86,11 @@ div.analyst-di-item > table > tbody > tr > td {
     vertical-align: middle;
 }
 
-.ci-div {
+.analyst-page .home-page .ci-div {
     padding-top: 278px;
 }
 
-div.analyst-ci-stock-item-avatar {
+.analyst-page .home-page div.analyst-ci-stock-item-avatar {
     background: url("../img/130-130man.png") no-repeat;
     width: 86px;
     height: 86px;
@@ -102,13 +102,13 @@ div.analyst-ci-stock-item-avatar {
     position: relative;
 }
 
-div.homepage-item {
+.analyst-page .home-page div.homepage-item {
     position: fixed;
     top: 96px;
     z-index: 999;
 }
 
-div.analyst-di-time {
+.analyst-page .home-page div.analyst-di-time {
     position: absolute;
     bottom: 20px;
     text-align: center;
@@ -116,28 +116,28 @@ div.analyst-di-time {
     color: rgb(181, 181, 181);
 }
 
-img.homepage-item-avatar-tofollow {
+.analyst-page .home-page img.homepage-item-avatar-tofollow {
     position: fixed;
     right: 50px;
     top: 150px;
     z-index: 999;
 }
 
-div.homepage-item-avatar {
+.analyst-page .home-page div.homepage-item-avatar {
     margin-left: 40px;
     margin-right: 20px;
 }
 
-span.analyst-title-name {
+.analyst-page .home-page span.analyst-title-name {
     font-size: 39px;
     margin-top: 10px;
 }
 
-canvas#analystChart {
+.analyst-page .home-page canvas#analystChart {
     display: block;
     margin: 50px auto;
 }
 
-.rt-div {
+.analyst-page .home-page .rt-div {
     padding-top: 210px;
 }

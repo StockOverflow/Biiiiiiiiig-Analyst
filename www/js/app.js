@@ -16,7 +16,9 @@ require(['./config'], function () {
         $(function () {
             require(['app/zoom'], function (zoom) {
                 zoom();
-            })
+            });
+
+            FastClick.attach(document.body);
         });
 
         window.loadCSS = function (css) {
@@ -27,7 +29,7 @@ require(['./config'], function () {
         window.User = {
             hasSignin: false,
             name: '',
-            phone:''
+            phone: ''
         };
 
 //        window.Slider = {

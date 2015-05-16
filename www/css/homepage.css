@@ -1,32 +1,32 @@
-#homepage-search-icon {
+.home-page #homepage-search-icon {
     position: relative;
     top: 17px;
     left: 11px;
 }
 
-#homepage-clear-icon {
+.home-page #homepage-clear-icon {
     position: relative;
     top: 17px;
     right: 14px;
 }
 
-#homepage-search-cancel {
+.home-page #homepage-search-cancel {
     margin-left: 8px;
     display: inline-block;
 }
 
-#homepage-search-rank {
+.home-page #homepage-search-rank {
     margin-left: 24px;
 }
 
-#homepage-search-rank-icon {
+.home-page #homepage-search-rank-icon {
     vertical-align: middle;
     width: 27px;
     height: 27px;
     /*margin: auto 4px auto 6px;*/
 }
 
-.title-bar {
+.home-page .title-bar {
     height: 76px;
     text-align: center;
     vertical-align: middle;
@@ -34,25 +34,25 @@
     border-bottom: 4px dotted #cccccc;
 }
 
-.title-bar > .title {
+.home-page .title-bar > .title {
     font-size: 41px;
 }
 
-.homepage-item {
+.home-page .homepage-item {
     height: 210px;
     width: 720px;
     border-bottom: 4px dotted #cccccc;
 }
 
-.selected {
+.home-page .selected {
     background: #ededed;
 }
 
-.unselected {
+.home-page .unselected {
     background: #FFFFFF;
 }
 
-.homepage-item-avatar {
+.home-page .homepage-item-avatar {
     width: 126px;
     height: 126px;
     background: #CCEAFE url("../img/130-130man.png") no-repeat;
@@ -64,63 +64,63 @@
     position: relative;
 }
 
-.homepage-item-avatar-follow {
+.home-page .homepage-item-avatar-follow {
     position: absolute;
     right: 5px;
     bottom: 5px;
 }
 
-.homepage-item-name {
+.home-page .homepage-item-name {
     color: rgb(37, 155, 237);
     font-size: 41px;
     font-weight: bold;
     margin-right: 22px;
 }
 
-.homepage-item-title {
+.home-page .homepage-item-title {
     color: #259bed;
     font-size: 29px;
 }
 
-.homepage-item-averare {
+.home-page .homepage-item-averare {
     font-size: 25px;
     margin-right: 15px;
 }
 
-.homepage-item-detail {
+.home-page .homepage-item-detail {
     display: inline-block;
     vertical-align: top;
     /*width: 535px;*/
 }
 
-.homepage-item-averarenum {
+.home-page .homepage-item-averarenum {
     font-size: 33px;
     color: rgb(200, 43, 43);
     margin-right: 8px;
 }
 
-.homepage-item-avebias {
+.home-page .homepage-item-avebias {
     font-size: 25px;
     /*margin-right: 8px;*/
 }
 
-.homepage-item-avebiasnum {
+.home-page .homepage-item-avebiasnum {
     color: #259bed;
     font-size: 33px;
     margin-right: 8px;
 }
 
-.homepage-item-follow {
+.home-page .homepage-item-follow {
     font-size: 25px;
 }
 
-.homepage-item-avatar-tofollow {
+.home-page .homepage-item-avatar-tofollow {
     display: inline-block;
     vertical-align: middle;
 }
 
 /*modal*/
-.rank-modal {
+.home-page .rank-modal {
     position: fixed;
     top: 0;
     background: rgba(0, 0, 0, 0.3);
@@ -128,7 +128,7 @@
     z-index: 999;
 }
 
-.rank-item {
+.home-page .rank-item {
     background: #ffffff;
     width: 680px;
     height: 80px;
@@ -146,18 +146,18 @@
     overflow: hidden;
 }
 
-.rank-items {
+.home-page .rank-items {
 }
 
-.slide-up {
+.home-page .slide-up {
     bottom: 0 !important;
 }
 
-.slide-down {
+.home-page .slide-down {
     bottom: -500px !important;
 }
 
-hr {
+.home-page hr {
     width: 680px;
     right: 20px;
     left: 20px;

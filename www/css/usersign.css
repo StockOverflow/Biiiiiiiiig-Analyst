@@ -1,12 +1,12 @@
-.content {
+.user-page .content {
     background: rgb(242, 242, 242);
 }
 
-.inner-wrapper {
+.user-page.inner-wrapper {
     background: rgb(242, 242, 242);
 }
 
-.avatar {
+.user-page .avatar {
     width: 208px;
     height: 208px;
     background: url("../img/130-130man.png") no-repeat;
@@ -14,7 +14,7 @@
     margin: 154px auto 26px;
 }
 
-.signup-inputs {
+.user-page .signup-inputs {
     width: 440px;
     height: 315px;
     background: #FFFFFF;
@@ -22,7 +22,7 @@
     margin: auto;
 }
 
-.signin-inputs {
+.user-page .signin-inputs {
     width: 440px;
     height: 210px;
     background: #FFFFFF;
@@ -30,7 +30,7 @@
     margin: auto;
 }
 
-.signup-inputs > input, .signin-inputs > input {
+.user-page .signup-inputs > input, .signin-inputs > input {
     width: 400px;
     height: 105px;
     padding: 0 10px;
@@ -41,11 +41,11 @@
     outline: none;
 }
 
-input.divider {
+.user-page input.divider {
     border-bottom: 2px solid rgb(188, 188, 188);
 }
 
-.usersign-button {
+.user-page .usersign-button {
     color: #fff;
     font-size: 29px;
     border-radius: 5px;
@@ -59,12 +59,12 @@ input.divider {
     margin: 0 10px;
 }
 
-.buttons {
+.user-page .buttons {
     margin: 50px auto;
     text-align: center;
 }
 
-.back-text {
+.user-page .back-text {
     margin: 44px auto;
     font-size: 41px;
     color: #259bed;

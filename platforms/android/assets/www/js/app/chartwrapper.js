@@ -124,7 +124,7 @@ analystRadarChart = function (rawdata) {
         pointLabelFontStyle: "normal",
 
         //Number - Point label font size in pixels
-        pointLabelFontSize: 10,
+        pointLabelFontSize: 20,
 
         //String - Point label font colour
         pointLabelFontColor: "#666",
