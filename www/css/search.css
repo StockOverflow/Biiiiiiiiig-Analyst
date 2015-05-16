@@ -8,28 +8,28 @@ body {
     margin: 0;
 }
 
-.analyst-page .home-page .search#search-cancel {
+.search#search-cancel {
     margin-left: 8px;
     display: inline-block;
 }
 
-.analyst-page .home-page .search#clear-icon {
+.search#clear-icon {
     position: relative;
     top: 17px;
     right: 14px;
 }
 
-.analyst-page .home-page .search#search-icon {
+.search#search-icon {
     position: relative;
     top: 17px;
     left: 11px;
 }
 
-.analyst-page .home-page .search.search-button {
+.search.search-button {
 
 }
 
-.analyst-page .home-page .search.search-bar {
+.search.search-bar {
     width: 720px;
     height: 88px;
     background: rgb(237, 237, 237);
@@ -38,26 +38,26 @@ body {
     z-index: 999;
 }
 
-.analyst-page .home-page .search.inner-wrapper {
+.search.inner-wrapper {
     width: 720px;
     position: absolute;
     top: 0;
     bottom: 0;
 }
 
-.analyst-page .home-page .search.left {
+.search.left {
     float: left;
 }
 
-.analyst-page .home-page .search.right {
+.search.right {
     float: right;
 }
 
-.analyst-page .home-page .search.middle {
+.search.middle {
     margin: auto;
 }
 
-.analyst-page .home-page .search.search-bar {
+.search.search-bar {
     width: 720px;
     height: 88px;
     background: rgb(237, 237, 237);
@@ -66,7 +66,7 @@ body {
     z-index: 999;
 }
 
-.analyst-page .home-page .search.search-button {
+.search.search-button {
     line-height: 88px;
     height: 88px;
     color: rgb(37, 155, 237);
@@ -75,7 +75,7 @@ body {
     vertical-align: middle;
 }
 
-.analyst-page .home-page .search.search-box {
+.search.search-box {
     width: 610px;
     height: 58px;
     border: 1px solid #cccccc;
@@ -87,12 +87,12 @@ body {
     position: relative;
 }
 
-.analyst-page .home-page .search.search-box > .icon {
+.search.search-box > .icon {
     width: 27px;
     height: 27px;
 }
 
-.analyst-page .home-page .search.search-text {
+.search.search-text {
     margin: 10px 0 10px 20px;
     outline: none;
     border: none;
@@ -100,14 +100,14 @@ body {
     font-size: 27px;
 }
 
-.analyst-page .home-page .search.not-found {
+.search.not-found {
     text-align: center;
     font-size: 1.3em;
     padding-top: 50px;
     color: lightgray;
 }
 
-.analyst-page .home-page .search.content {
+.search.content {
     position: relative;
     top: 88px;
     /*overflow: hidden;*/
@@ -117,19 +117,19 @@ body {
 
 /*analysts*/
 
-.analyst-page .home-page .analyst-item .search.col1 {
+.analyst-item .search.col1 {
     width: 150px;
 }
 
-.analyst-page .home-page .analyst-item .search.col2 {
+.analyst-item .search.col2 {
     width: 200px;
 }
 
-.analyst-page .home-page .analyst-item .search.col3 {
+.analyst-item .search.col3 {
     width: 300px;
 }
 
-.analyst-page .home-page .analyst-item .search.col4 {
+.analyst-item .search.col4 {
     width: 100px;
 }
 
@@ -138,17 +138,17 @@ body {
     text-align: center;
 }
 
-.analyst-page .home-page .search.analyst-item > table {
+.search.analyst-item > table {
     height: 156px;
 }
 
-.analyst-page .home-page .search.analyst-item {
+.search.analyst-item {
     height: 156px;
     width: 720px;
     border-bottom: 4px dotted #cccccc;
 }
 
-.analyst-page .home-page .analyst-item .search.avatar {
+.analyst-item .search.avatar {
     width: 86px;
     height: 86px;
     background: #CCEAFE url("../img/130-130man.png") no-repeat;
@@ -163,19 +163,19 @@ body {
 
 
 /*stocks*/
-.analyst-page .home-page .stock-item .search.col1 {
+.stock-item .search.col1 {
     width: 200px;
 }
 
-.analyst-page .home-page .stock-item .search.col2 {
+.stock-item .search.col2 {
     width: 200px;
 }
 
-.analyst-page .home-page .stock-item .search.col3 {
+.stock-item .search.col3 {
     width: 180px;
 }
 
-.analyst-page .home-page .stock-item .search.col4 {
+.stock-item .search.col4 {
     width: 100px;
 }
 
@@ -184,17 +184,17 @@ body {
     text-align: center;
 }
 
-.analyst-page .home-page .search.stock-item > table {
+.search.stock-item > table {
     height: 100px;
 }
 
-.analyst-page .home-page .search.stock-item {
+.search.stock-item {
     height: 100px;
     width: 720px;
     border-bottom: 4px dotted #cccccc;
 }
 
-.analyst-page .home-page .stock-item .search.avatar {
+.stock-item .search.avatar {
     width: 86px;
     height: 86px;
     background: #CCEAFE url("../img/130-130man.png") no-repeat;
