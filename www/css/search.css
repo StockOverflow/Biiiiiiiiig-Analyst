@@ -103,13 +103,106 @@ body {
 .search.not-found {
     text-align: center;
     font-size: 1.3em;
-    margin: 50px auto;
+    padding-top: 50px;
     color: lightgray;
 }
 
 .search.content {
     position: relative;
-    /*top: 88px;*/
-    overflow: hidden;
+    top: 88px;
+    /*overflow: hidden;*/
+}
+
+
+
+/*analysts*/
+
+.analyst-item .search.col1 {
+    width: 150px;
+}
+
+.analyst-item .search.col2 {
+    width: 200px;
+}
+
+.analyst-item .search.col3 {
+    width: 300px;
+}
+
+.analyst-item .search.col4 {
+    width: 100px;
+}
+
+.analyst-item .search table > tbody > tr > td {
+    font-size: 33px;
+    text-align: center;
+}
+
+.search.analyst-item > table {
+    height: 156px;
+}
+
+.search.analyst-item {
+    height: 156px;
+    width: 720px;
+    border-bottom: 4px dotted #cccccc;
+}
+
+.analyst-item .search.avatar {
+    width: 86px;
+    height: 86px;
+    background: #CCEAFE url("../img/130-130man.png") no-repeat;
+    background-size: 86px 86px;
+    border-radius: 43px;
+    vertical-align: top;
+    margin: 15px auto 0;
+    display: block;
+    position: relative;
+}
+
+
+
+/*stocks*/
+.stock-item .search.col1 {
+    width: 200px;
+}
+
+.stock-item .search.col2 {
+    width: 200px;
+}
+
+.stock-item .search.col3 {
+    width: 180px;
+}
+
+.stock-item .search.col4 {
+    width: 100px;
+}
+
+.stock-item.search table > tbody > tr > td {
+    font-size: 33px;
+    text-align: center;
+}
+
+.search.stock-item > table {
+    height: 100px;
+}
+
+.search.stock-item {
+    height: 100px;
+    width: 720px;
+    border-bottom: 4px dotted #cccccc;
+}
+
+.stock-item .search.avatar {
+    width: 86px;
+    height: 86px;
+    background: #CCEAFE url("../img/130-130man.png") no-repeat;
+    background-size: 86px 86px;
+    border-radius: 43px;
+    vertical-align: top;
+    margin: 15px auto 0;
+    display: block;
+    position: relative;
 }
 

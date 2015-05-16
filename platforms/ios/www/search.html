@@ -3,8 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/homepage.css">
-    <link rel="stylesheet" href="css/analyst.css">
+    <!--<link rel="stylesheet" href="css/homepage.css">-->
+    <!--<link rel="stylesheet" href="css/analyst.css">-->
+    <!--<link type="text/css" rel="stylesheet" href="css/followed_analysts.css">-->
     <title></title>
 </head>
 <body>
@@ -18,49 +19,84 @@
 
     <div id="search-cancel" class="search search-button">取消</div>
     <div class="search content">
-        <div class="homepage-item unselected" style="position: initial;">
-            <div class="homepage-item-avatar">
-                <img class="homepage-item-avatar-follow icon" src="img/follow.png">
-            </div>
-            <div class="homepage-item-detail">
-                <div class="line" style="margin: 24px 0 15px 0">
-                    <span class="homepage-item-name">胡子欣</span>
-                    <span class="homepage-item-title">东海证券分析员</span>
-                </div>
-                <div class="line" style="margin-bottom: 15px">
-                    <span class="homepage-item-averare">平均收益率</span>
-                    <span class="homepage-item-averarenum">+20%</span>
-                    <span class="homepage-item-avebias">平均偏移度</span>
-                    <span class="homepage-item-avebiasnum">+30%</span>
-                </div>
-                <div class="line">
-                    <span class="homepage-item-follow">他正在关注：</span>
-                    <span class="badge">招商证券</span>
-                </div>
-            </div>
-        </div>
-        <div class="analyst-di-item">
+        <div class="search analyst-item unselected">
             <table>
                 <tr>
-                    <td class="col1">
-                        <span class="analyst-di-stock">东方财富</span>
+                    <td class="search col1">
+                        <div class="search avatar"></div>
                     </td>
-                    <td class="col2">
-                        <span class="analyst-di-red">+15%</span>
-                        <div class="analyst-di-time">2014-4-24</div>
+                    <td class="search col2">
+                        <span class="search name">{{a_name}}</span>
                     </td>
-                    <td class="col3">
-                        <span class="analyst-di-red">+80%</span>
+                    <td class="search col3">
+                        <span class="search title">{{a_institution}} {{a_position}}</span>
                     </td>
-                    <td class="col4">
-                        <span class="analyst-di-green">-30%</span>
-                    </td>
-                    <td class="col5">
-                        <img class="analyst-di-fold" src="img/fold.png">
+                    <td class="search col4">
+                        <img class="search follow icon" src="img/tofollow.png">
                     </td>
                 </tr>
             </table>
         </div>
+
+        <div class="search stock-item unselected">
+            <table>
+                <tr>
+                    <td class="search col1">
+                        <span class="search name">{{name}}</span>
+                    </td>
+                    <td class="search col2">
+                        <span class="search price">{{yesterday_price}}</span>
+                    </td>
+                    <td class="search col3">
+                        <span class="search up">{{up}}</span>
+                    </td>
+                    <td class="search col4">
+                        <img class="search follow icon" src="img/tofollow.png">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="search stock-item unselected">
+            <table>
+                <tr>
+                    <td class="search col1">
+                        <span class="search name">hehe</span>
+                    </td>
+                    <td class="search col2">
+                        <span class="search price">12.32</span>
+                    </td>
+                    <td class="search col3">
+                        <span class="search up">2.4%</span>
+                    </td>
+                    <td class="search col4">
+                        <img class="search follow icon" src="img/tofollow.png">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--<div class="analyst-di-item">-->
+            <!--<table>-->
+                <!--<tr>-->
+                    <!--<td class="col1">-->
+                        <!--<span class="analyst-di-stock">东方财富</span>-->
+                    <!--</td>-->
+                    <!--<td class="col2">-->
+                        <!--<span class="analyst-di-red">+15%</span>-->
+                        <!--<div class="analyst-di-time">2014-4-24</div>-->
+                    <!--</td>-->
+                    <!--<td class="col3">-->
+                        <!--<span class="analyst-di-red">+80%</span>-->
+                    <!--</td>-->
+                    <!--<td class="col4">-->
+                        <!--<span class="analyst-di-green">-30%</span>-->
+                    <!--</td>-->
+                    <!--<td class="col5">-->
+                        <!--<img class="analyst-di-fold" src="img/fold.png">-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</div>-->
+
     </div>
 </div>
 </body>
