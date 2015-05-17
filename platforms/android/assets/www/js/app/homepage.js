@@ -55,12 +55,26 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                     this.rankBy('average_drift_rate');
                 },
                 'click .rank-cancel': 'removeModal',
-                'click .rank-modal': 'removeModal'
+                'click .rank-modal': 'removeModal',
+                'touchstart .page_center': 'touchhh'
+            },
+
+            touchhh: function (event) {
+                console.log(event);
             },
 
             initialize: function () {
                 this.render('accuracy');
                 loadCSS(css);
+//                $('.title').ontouchmove = function(e){
+//                    if(e.touches.length == 1){ // Only deal with one finger
+//                        var touch = e.touches[0]; // Get the information for finger #1
+//                        var node = touch.target; // Find the node the drag started from
+//                        node.style.position = "absolute";
+//                        node.style.left = touch.pageX + "px";
+//                        node.style.top = touch.pageY + "px";
+//                    }
+//                }
             },
 
             render: function (type) {

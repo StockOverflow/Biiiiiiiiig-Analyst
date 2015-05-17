@@ -72,7 +72,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             back: function () {
-                history.back();
+                Router.back();
             },
 
             getStockData: function (s_id, days, need_basic_info) {

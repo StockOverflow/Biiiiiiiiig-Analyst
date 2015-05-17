@@ -7,21 +7,12 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
         'text!html/search/not_found_search.html'],
     function (index, css, analyst, stock, not_found) {
 
-//        var AnalystModel = Backbone.Model.extend({
-//            defaults: {
-//                'a_id': '1',
-//                'a_name': '胡子欣',
-//                'a_institution': '东海证券',
-//                'a_position': '分析员'
-//            }
-//        });
-
         var AnalystView = Backbone.View.extend({
 
             template: HandleBars.compile(analyst),
 
             events: {
-                'click .col1': 'analyst-item'
+                'click .analyst-item': 'click'
             },
 
             initialize: function () {
@@ -33,17 +24,6 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
             }
 
         });
-
-//        var StockModel = Backbone.Model.extend({
-//            defaults: {
-//                'a_id': '1',
-//                'name': '',
-//                'expected_price': '',
-//                'yesterday_price': '',
-//                'up': true,
-//                'num_of_researches': '0'
-//            }
-//        });
 
         var StockView = Backbone.View.extend({
 
@@ -72,9 +52,9 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
 
             receiveCount: 0,
 
-            analyst_template: HandleBars.compile(analyst),
+//            analyst_template: HandleBars.compile(analyst),
 
-            stock_template: HandleBars.compile(stock),
+//            stock_template: HandleBars.compile(stock),
 
             events: {
                 'click #search-cancel': 'back',
@@ -87,7 +67,6 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
 
             initialize: function () {
                 loadCSS(css);
-                $('.search-text').focus();
                 if (User.hasSignin){
                     this.$('.drawer-username').html(User.name);
                 }
@@ -156,7 +135,7 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
             },
 
             back: function () {
-                history.back();
+                Router.back();
             }
 
 

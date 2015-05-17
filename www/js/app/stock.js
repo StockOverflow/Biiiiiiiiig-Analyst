@@ -20,7 +20,18 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
-                'click .nav-bar>.right': 'search'
+                'click .nav-bar>.right': 'search',
+                'touchstart div': 'touchStart',
+                'touchend div': 'touchEnd'
+            },
+
+
+            touchStart: function (event) {
+                Swipe.touchStart(event);
+            },
+
+            touchEnd: function (event) {
+                Swipe.touchEnd(event);
             },
 
             initialize: function (s_id) {
@@ -72,7 +83,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             back: function () {
-                history.back();
+                Router.back();
             },
 
             getStockData: function (s_id, days, need_basic_info) {

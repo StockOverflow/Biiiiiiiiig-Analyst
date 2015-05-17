@@ -1,0 +1,93 @@
+<html>
+<head>
+    <title>Page Slider</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="js/lib/jquery-2.1.3.min.js"></script>
+    <style type="text/css">
+
+        body {
+            /*overflow: hidden;*/
+        }
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .page.page_left {
+            -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        .page.page_center {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .page.page_right {
+            -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+        }
+
+        .page.transition {
+            -webkit-transition-duration: .25s;
+            transition-duration: .25s;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div class="page page_right"></div>
+<div class="page page_left"></div>
+<div class="page page_center"></div>
+
+<script>
+
+    window.Slider = {
+
+        slide: function (el, direction) {
+            this.body = $('body');
+            this.left = $('.page_left');
+            this.center = $('.page_center');
+            this.right = $('.page_right');
+            if (direction == 'left') {
+//                this.body.append('<div class="page page_left" style="background-color: #8ca83d"></div>');
+//                var left = $('.page_left')[0];
+//                left.innerHTML = el;
+//                console.log(left);
+//                left.className = 'page transition page_center';
+//                center.className = 'page transition page_right';
+                this.right.remove();
+                this.left.html(el);
+                this.left[0].className = 'page transition page_center';
+                this.center[0].className = 'page transition page_right';
+                this.body.append('<div class="page page_left"></div>');
+            }
+            else{
+                //direction: right
+                this.left.remove();
+                this.right.html(el);
+                this.right[0].className = 'page transition page_center';
+                this.center[0].className = 'page transition page_left';
+                this.body.append('<div class="page page_right"></div>');
+                this.center.html('');
+            }
+        }
+
+    };
+
+    setInterval(function () {
+        Slider.slide(Math.random(), 'right');
+        setTimeout(function () {
+            Slider.slide(Math.random(), 'left');
+        },500);
+    }, 1000);
+
+</script>
+
+</body>
+</html>

@@ -18,8 +18,8 @@ requirejs.config({
         underscore: 'underscore-min',
         chart: 'Chart.min',
         fastclick:'fastclick',
-        jui:'jquery-ui.min'
-
+        jui:'jquery-ui.min',
+        jquery_mobile: 'jquery.mobile-1.4.5.min'
     },
 
     shim: {

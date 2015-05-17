@@ -22,7 +22,18 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
                 'click .analyst-di-stock': 'enter_stock',
-                'click .nav-bar>.right': 'search'
+                'click .nav-bar>.right': 'search',
+                'touchstart div': 'touchStart',
+                'touchend div': 'touchEnd'
+            },
+
+
+            touchStart: function (event) {
+                Swipe.touchStart(event);
+            },
+
+            touchEnd: function (event) {
+                Swipe.touchEnd(event);
             },
 
             initialize: function (a_id) {
@@ -70,7 +81,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             back: function () {
-                history.back();
+                Router.back();
 //                Router.popHistory();
             },
 

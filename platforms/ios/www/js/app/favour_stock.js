@@ -30,7 +30,7 @@ define(['text!html/favour-stock/index_favour-stock.html', 'text!html/favour-stoc
         },
 
         back: function () {
-            history.back();
+            Router.back();
         }
 
     });

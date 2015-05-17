@@ -166,3 +166,56 @@
     border-color: rgba(0, 0, 0, 0.05);
     border-width: 1px 0 0;
 }
+
+/*search bar goes here*/
+.home-page .search-bar {
+    width: 720px;
+    height: 88px;
+    background: rgb(237, 237, 237);
+    vertical-align: middle;
+    position: fixed;
+    top: 96px;
+    z-index: 999;
+}
+
+.home-page .search-button {
+    line-height: 88px;
+    height: 88px;
+    color: rgb(37, 155, 237);
+    font-size: 27px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.home-page .search-box {
+    width: 550px;
+    height: 58px;
+    border: 1px solid #cccccc;
+    background: #FFFFFF;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-left: 5px;
+    position: relative;
+}
+
+.home-page .search-box > .icon {
+    width: 27px;
+    height: 27px;
+}
+
+.home-page .search-text {
+    padding: 10px 0 10px 20px;
+    outline: none;
+    border: none;
+    width: 455px;
+    font-size: 27px;
+    background-color: #fff;
+}
+
+.home-page .badge {
+    background: rgb(231, 231, 231);
+    border-radius: 8px;
+    padding: 5px 10px;
+    margin: auto 5px;
+}

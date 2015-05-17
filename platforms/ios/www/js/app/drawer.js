@@ -25,12 +25,12 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
             else {
                 this.$('.setting').html('立即注册');
                 this.$('.logout').html('登录');
-                this.$('.logout').before('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+                this.$('.logout').before('&nbsp;&nbsp;&nbsp;');
             }
         },
 
         back: function () {
-            history.back();
+            Router.back();
         },
 
         stock: function () {

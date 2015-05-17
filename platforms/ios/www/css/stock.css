@@ -41,10 +41,10 @@
     width: 200px;
 }
 
-table > tbody > tr > td {
-    font-size: 33px;
-    text-align: center;
-}
+/*table > tbody > tr > td {*/
+    /*font-size: 33px;*/
+    /*text-align: center;*/
+/*}*/
 
 .stock-page .home-page .stock-di-item {
     border-bottom: 2px solid #cccccc;

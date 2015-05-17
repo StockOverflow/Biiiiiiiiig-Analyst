@@ -1,35 +1,35 @@
-.col1 {
+.follow-analyst-page .col1 {
     width: 150px;
 }
 
-.col2 {
+.follow-analyst-page .col2 {
     width: 350px;
 }
 
-.col3 {
+.follow-analyst-page .col3 {
     width: 150px;
 }
 
-.col4 {
+.follow-analyst-page .col4 {
     width: 100px;
 }
 
-table > tbody > tr > td {
+.follow-analyst-page td {
     font-size: 33px;
     text-align: center;
 }
 
-.followed-item > table {
+.follow-analyst-page .followed-item > table {
     height: 156px;
 }
 
-.followed-item {
+.follow-analyst-page .followed-item {
     height: 156px;
     width: 720px;
     border-bottom: 4px dotted #cccccc;
 }
 
-.followed-item-avatar {
+.follow-analyst-page .followed-item-avatar {
     width: 86px;
     height: 86px;
     background: #CCEAFE url("../img/130-130man.png") no-repeat;
@@ -41,10 +41,13 @@ table > tbody > tr > td {
     position: relative;
 }
 
-.followed-item-title {
+.follow-analyst-page .followed-item-title {
     font-size: 33px;
 }
 
-.badge {
+.follow-analyst-page .badge {
+    background: rgb(231, 231, 231);
+    border-radius: 8px;
+    padding: 5px 10px;
     margin: 10px auto;
 }

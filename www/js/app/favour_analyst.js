@@ -82,7 +82,7 @@ define(['text!html/favour-analyst/index_favour-analyst.html', 'text!html/favour-
 
 
         back: function () {
-            history.back();
+            Router.back();
         }
 
     });

@@ -19,7 +19,18 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
             'click .signin': 'signin',
             'click .signup': 'signup',
             'click .toSignin': 'signinDiv',
-            'click .toSignup': 'signupDiv'
+            'click .toSignup': 'signupDiv',
+            'touchstart div': 'touchStart',
+            'touchend div': 'touchEnd'
+        },
+
+
+        touchStart: function (event) {
+            Swipe.touchStart(event);
+        },
+
+        touchEnd: function (event) {
+            Swipe.touchEnd(event);
         },
 
         initialize: function (option) {

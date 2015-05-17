@@ -70,7 +70,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             back: function () {
-                history.back();
+                Router.back();
 //                Router.popHistory();
             },
 
