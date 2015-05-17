@@ -125,9 +125,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                                 'target_price': item.target_price,
                                 'yield_rate': percentageToString(item.yield_rate),
                                 'drift_rate': percentageToString(item.drift_rate),
-                                'accuracy': item.accuracy,
-                                'speed': item.speed,
-                                'stability': item.stability,
+                                'accuracy': percentageToString(item.accuracy),
+                                'speed': percentageToString(item.speed),
+                                'stability': percentageToString(item.stability),
                                 's_id': 'sid' + item.s_id
                             }
                         );
