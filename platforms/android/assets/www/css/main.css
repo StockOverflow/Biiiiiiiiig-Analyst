@@ -1,13 +1,19 @@
 /*over all style goer here*/
 * {
     /*font-family: "微软雅黑", monospace;*/
-    font-size: 25px;
+    /*font-size: 25px;*/
     color: #616161;
 }
 
 body {
     margin: 0;
 }
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 .inner-wrapper {
     width: 720px;
@@ -100,7 +106,7 @@ body {
 }
 
 .search-text {
-    margin: 10px 0 10px 20px;
+    padding: 10px 0 10px 20px;
     outline: none;
     border: none;
     width: 455px;

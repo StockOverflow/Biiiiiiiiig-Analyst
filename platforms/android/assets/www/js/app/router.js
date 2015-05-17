@@ -10,6 +10,7 @@ define(function () {
             '': 'homepageRoute',
             'homepage': 'homepageRoute',
             'usersign': 'usersignRoute',
+            'usersign/:option': 'usersignRoute',
             'analyst/:a_id': 'analystRoute',
             'stock/:s_id': 'stockRoute',
             'drawer': 'drawerRoute',
@@ -35,9 +36,9 @@ define(function () {
             });
         },
 
-        usersignRoute: function () {
+        usersignRoute: function (option) {
             require(['app/usersign'], function (usersign) {
-                $('#main_entry').html((new usersign()).el);
+                $('#main_entry').html((new usersign(option)).el);
             });
         },
 

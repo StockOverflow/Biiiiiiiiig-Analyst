@@ -1,8 +1,8 @@
-div.inner-wrapper {
+.the-drawer-page.inner-wrapper {
     background: #000;
 }
 
-div.drawer {
+.the-drawer-page div.drawer {
     width: 486px;
     background: #ffffff;
     position: absolute;
@@ -13,7 +13,7 @@ div.drawer {
     box-shadow: rgba(0, 0, 0, 0.6) 8px 0 40px;
 }
 
-div.non-drawer {
+.the-drawer-page div.non-drawer {
     width: 234px;
     background: #ffffff;
     position: absolute;
@@ -24,7 +24,7 @@ div.non-drawer {
     display: inline-block;
 }
 
-div.drawer-avatar {
+.the-drawer-page div.drawer-avatar {
     background: url("../img/208man.png") no-repeat;
     width: 200px;
     height: 200px;
@@ -33,18 +33,18 @@ div.drawer-avatar {
     margin: 160px auto 40px;
 }
 
-div.drawer-username {
+.the-drawer-page div.drawer-username {
     color: #259bed;
     font-size: 36px;
     margin: 0 auto 38px;
     text-align: center;
 }
 
-div.drawer-pages {
+.the-drawer-page div.drawer-pages {
     width: 486px;
 }
 
-div.drawer-page {
+.the-drawer-page div.drawer-page {
     height: 80px;
     width: 486px;
     line-height: 80px;
@@ -52,27 +52,27 @@ div.drawer-page {
     text-align: center;
 }
 
-img.drawer-page-icon {
+.the-drawer-page img.drawer-page-icon {
     height: 40px;
     width: 40px;
     display: inline-block;
     vertical-align: middle;
 }
 
-span.drawer-page-title {
+.the-drawer-page span.drawer-page-title {
     color: #259bed;
     font-size: 36px;
     vertical-align: middle;
 }
 
-div.drawer-bottom-pages {
+.the-drawer-page div.drawer-bottom-pages {
     position: absolute;
     bottom: 66px;
     left: 74px;
     right: 74px;
 }
 
-span.drawer-bottom-page {
+.the-drawer-page span.drawer-bottom-page {
     color: rgb(130, 200, 250);
     font-size: 24px;
     margin: 32px;
