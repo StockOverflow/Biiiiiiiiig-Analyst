@@ -24,17 +24,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     'click .nav-bar>.right': 'search',
                     'touchstart .scroll': 'scrollStart',
                     'touchend .scroll': 'scrollEnd'
-//                    'touchstart .tableitem': 'touchStart',
-//                    'touchend .tableitem': 'touchEnd'
                 },
-
-//                touchStart: function (event) {
-//                    Swipe.touchStart(event);
-//                },
-//
-//                touchEnd: function (event) {
-//                    Swipe.touchEnd(event);
-//                },
 
                 initialize: function (a_id) {
                     this.a_id = a_id;
@@ -81,7 +71,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 },
 
                 back: function () {
-                    history.back();
+                    Router.back();
 //                Router.popHistory();
                 },
 

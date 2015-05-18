@@ -23,16 +23,18 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .nav-bar>.right': 'search',
                 'touchstart div': 'touchStart',
                 'touchend div': 'touchEnd'
+//                'touchstart .scroll': 'scrollStart',
+//                'touchend .scroll': 'scrollEnd'
             },
 
-
-            touchStart: function (event) {
-                Swipe.touchStart(event);
-            },
-
-            touchEnd: function (event) {
-                Swipe.touchEnd(event);
-            },
+//
+//            touchStart: function (event) {
+//                Swipe.touchStart(event);
+//            },
+//
+//            touchEnd: function (event) {
+//                Swipe.touchEnd(event);
+//            },
 
             initialize: function (s_id) {
                 this.s_id = s_id;
@@ -135,27 +137,33 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var analysts = JSON.parse(data);
                 var ctx = this;
                 _.each(analysts, function (item) {
-                    var target_price = item.target_price, a_name = item.a_name, a_id = item.a_id;
-                    var yield_rate = (item.yield_rate > 0) ? ("+" + (item.yield_rate * 100) + "%") : ((item.yield_rate * 100) + "%");
-
                     var template = HandleBars.compile(analyst_item);
                     var injected = template({
-                            'target_price': target_price,
-                            'yield_rate': yield_rate,
-                            'a_name': a_name,
-                            'a_id': 'aid' + a_id
+                            'date': item.date,
+                            'a_name': item.a_name,
+                            'target_price': item.target_price,
+                            'yield_rate': percentageToString(item.yield_rate),
+                            'drift_rate': percentageToString(item.drift_rate),
+                            'accuracy': percentageToString(item.accuracy),
+                            'speed': percentageToString(item.speed),
+                            'stability': percentageToString(item.stability),
+                            'a_id': 'aid' + item.a_id
                         }
                     );
                     $('.di-div').append(injected);
-                    ctx.getAnalystToStockData(ctx.s_id, a_id);
-                    $('.aid' + a_id).parent().click(function () {
-                        var obj = $('.aid' + a_id);
+                    ctx.getAnalystToStockData(ctx.s_id, item.a_id);
+                    $('.aid' + item.a_id).siblings().children('.col5').click(function () {
+                        var obj = $('.aid' + item.a_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
                             obj.css('display', 'block');
                         } else {
                             obj.css('display', 'none');
                         }
+                    });
+
+                    $('.aid' + item.a_id).siblings().children('.col1').click(function () {
+                        Router.navigate('analyst/' + item.a_id, {trigger: true});
                     });
                 });
             },
@@ -209,6 +217,21 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             search: function () {
                 Router.navigate('search', {trigger: true});
+            },
+
+            scrollStart: function (ev) {
+                setInterval(function () {
+                    var ctx = this;
+                    var value = ctx.$(ev.currentTarget).scrollLeft();
+                    var objs = ctx.$('.scroll');
+                    _.each(objs, function (obj) {
+                        $(obj).scrollLeft(value);
+                    });
+                }, 5);
+            },
+
+            scrollEnd: function () {
+                window.clearInterval(0);
             }
         });
 

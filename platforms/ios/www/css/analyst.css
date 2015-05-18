@@ -48,7 +48,7 @@
 
 .analyst-page .home-page .table .col {
     display: inline-block;
-    height: 68px;
+    /*height: 68px;*/
 
 }
 
@@ -192,13 +192,13 @@
 
 .analyst-page .home-page .stock-di-stock-item {
     font-size: 33px;
-    padding: 5px 45px 5px 50px
+    padding: 5px 25px 5px 45px
 }
 
 .analyst-page .home-page .stock-di-stock-item > img {
-    height: 33px;
-    width: 33px;
-    vertical-align: middle;
+    height: 35px;
+    width: 35px;
+    vertical-align: top;
     padding-right: 10px;
 }
 
@@ -209,4 +209,26 @@
 
 .analyst-page .home-page span.analyst-ci-stock-item-time {
     font-size: 25px;
+}
+
+
+
+
+.analyst-page .home-page span.analyst-ci-stock-item-content {
+    font-size: 25px;
+    word-break: break-all;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.analyst-page .home-page span.analyst-ci-stock-item-time {
+    font-size: 25px;
+}
+
+.analyst-page .home-page .analyst-ci-stock-item div.col6, .analyst-page .home-page .analyst-ci-stock-item div.col8 {
+    vertical-align: top;
+}
+
+.analyst-page .home-page .analyst-ci-stock-item div.col7{
+    margin: 10px 0;
 }

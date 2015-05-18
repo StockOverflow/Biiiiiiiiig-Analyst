@@ -22,7 +22,7 @@ require(['./config'], function () {
 
 
         $(function () {
-            require(['app/zoom'], function (zoom) {
+            require(['app/zoom', 'app/swipe'], function (zoom) {
                 zoom();
             });
 
@@ -82,53 +82,6 @@ require(['./config'], function () {
                 }, 250)
             }
         };
-
-        window.Swipe = {
-
-            startX: 0,
-
-            startY: 0,
-
-            endX: 0,
-
-            endY: 0,
-
-            swipeControl: true,
-
-            touchStart: function (event) {
-                var touch = event.originalEvent.changedTouches[0];
-                this.startX = touch.pageX;
-                this.startY = touch.pageY;
-            },
-
-            touchEnd: function (event) {
-                if (this.swipeControl){
-                    this.swipeControl = false;
-                    var ctx = this;
-                    setTimeout(function () {
-                        ctx.swipeControl = true;
-                    }, 250);
-
-                    var touch = event.originalEvent.changedTouches[0];
-                    this.endX = touch.pageX;
-                    this.endY = touch.pageY;
-
-                    this.isSwipeRight();
-                }
-            },
-
-            isSwipeRight: function () {
-//                console.log('judge');
-//                console.log(this.startX);
-//                console.log(this.startY);
-//                console.log(this.endX);
-//                console.log(this.endY);
-                if (this.endX - this.startX > 100 && Math.abs(this.startY - this.endY) < 100){
-                    console.log('swipe');
-                    Router.back();
-                }
-            }
-        }
 
     });
 

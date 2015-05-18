@@ -1,3 +1,12 @@
+.drawer-closure{
+    z-index: 1000;
+    width: 486px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /*opacity: 0;*/
+}
+
 .the-drawer-page.inner-wrapper {
     background: #000;
 }
@@ -10,7 +19,7 @@
     bottom: 0;
     opacity: 1;
     display: inline-block;
-    box-shadow: rgba(0, 0, 0, 0.6) 8px 0 40px;
+    box-shadow: rgba(0, 0, 0, 0.6) 234px 0;
 }
 
 .the-drawer-page div.non-drawer {

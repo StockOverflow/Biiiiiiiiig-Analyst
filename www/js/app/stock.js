@@ -22,19 +22,19 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .nav-bar>.left': 'back',
                 'click .nav-bar>.right': 'search',
                 'touchstart div': 'touchStart',
-                'touchend div': 'touchEnd',
-                'touchstart .scroll': 'scrollStart',
-                'touchend .scroll': 'scrollEnd'
+                'touchend div': 'touchEnd'
+//                'touchstart .scroll': 'scrollStart',
+//                'touchend .scroll': 'scrollEnd'
             },
 
-
-            touchStart: function (event) {
-                Swipe.touchStart(event);
-            },
-
-            touchEnd: function (event) {
-                Swipe.touchEnd(event);
-            },
+//
+//            touchStart: function (event) {
+//                Swipe.touchStart(event);
+//            },
+//
+//            touchEnd: function (event) {
+//                Swipe.touchEnd(event);
+//            },
 
             initialize: function (s_id) {
                 this.s_id = s_id;

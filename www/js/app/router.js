@@ -68,8 +68,8 @@ define(function () {
 
         drawerRoute: function () {
             require(['app/drawer'], function (drawer) {
-                Slider.slide((new drawer()).el);
-//                $('#main_entry').html((new drawer()).el);
+//                Slider.slide((new drawer()).el);
+                $('.page_center').append((new drawer()).el);
             });
         },
 
