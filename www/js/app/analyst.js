@@ -24,6 +24,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     'click .nav-bar>.right': 'search',
                     'touchstart .scroll': 'scrollStart',
                     'touchend .scroll': 'scrollEnd'
+                    //'touchmove .scroll': 'scroll'
 //                    'touchstart .tableitem': 'touchStart',
 //                    'touchend .tableitem': 'touchEnd'
                 },
@@ -228,6 +229,15 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 scrollEnd: function () {
                     window.clearInterval(0);
                 }
+
+                //scroll: function (ev) {
+                //    var ctx = this;
+                //    var value = ctx.$(ev.currentTarget).scrollLeft();
+                //    var objs = ctx.$('.scroll');
+                //    _.each(objs, function (obj) {
+                //        $(obj).scrollLeft(value);
+                //    });
+                //}
 
             })
             ;

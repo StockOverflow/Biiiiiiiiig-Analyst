@@ -42,6 +42,7 @@
     height: 210px;
     width: 720px;
     border-bottom: 4px dotted #cccccc;
+    font-size: 0;
 }
 
 .home-page .selected {
@@ -59,7 +60,7 @@
     background-size: 126px 126px;
     border-radius: 63px;
     vertical-align: top;
-    margin: 42px 10px auto 25px;
+    margin: 42px 20px auto 30px;
     display: inline-block;
     position: relative;
 }
@@ -90,7 +91,7 @@
 .home-page .homepage-item-detail {
     display: inline-block;
     vertical-align: top;
-    /*width: 535px;*/
+    width: 544px;
 }
 
 .home-page .homepage-item-averarenum {
