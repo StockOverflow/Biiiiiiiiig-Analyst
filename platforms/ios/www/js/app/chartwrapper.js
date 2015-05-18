@@ -2,6 +2,8 @@
  * Created by Tong on 05.07.
  */
 
+platform_is_android = /Android/i.test(navigator.userAgent);
+
 stocklinechart = function (rawdata) {
     var data_labels = [];
     var data_data = [];
@@ -24,8 +26,9 @@ stocklinechart = function (rawdata) {
             }
         ]
     };
-
     var options = {
+        // Boolean - Whether to animate the chart
+        animation: true,
 
         scaleBeginAtZero: true,
 
@@ -76,6 +79,11 @@ stocklinechart = function (rawdata) {
 
     };
 
+    // Remove animation from Android platform to avoid influence.
+    if (platform_is_android) {
+        options.animation = false;
+    }
+
     return [data, options];
 };
 
@@ -99,6 +107,9 @@ analystRadarChart = function (rawdata) {
     };
 
     var options = {
+        // Boolean - Whether to animate the chart
+        animation: true,
+
         //Boolean - Whether to show lines for each scale point
         scaleShowLine: true,
 
@@ -154,10 +165,15 @@ analystRadarChart = function (rawdata) {
         legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
     };
+
+    // Remove animation from Android platform to avoid influence.
+    if (platform_is_android) {
+        options.animation = false;
+    }
     return [data, options];
 };
 
 percentageToString = function (num) {
-    num=Math.round(num*100);
+    num = Math.round(num * 100);
     return (num > 0) ? ("+" + num + "%") : (num + "%");
 };

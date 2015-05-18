@@ -1,6 +1,6 @@
 .drawer-closure{
     z-index: 1000;
-    width: 486px;
+    width: 720px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -24,7 +24,7 @@
 
 .the-drawer-page div.non-drawer {
     width: 234px;
-    background: #ffffff;
+    background: #000;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -85,4 +85,8 @@
     color: rgb(130, 200, 250);
     font-size: 24px;
     margin: 32px;
+}
+
+.the-drawer-page .drawer-hidden {
+    left: -100%
 }

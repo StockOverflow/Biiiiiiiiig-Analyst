@@ -206,38 +206,33 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             scrollStart: function (ev) {
-//                    ev.stopPropagation();
-//                    setInterval(function () {
-//                        var ctx = this;
-//                        var value = ctx.$(ev.currentTarget).scrollLeft();
-//                        var objs = ctx.$('.scroll');
-//                        _.each(objs, function (obj) {
-//                            $(obj).scrollLeft(value);
-//                        });
-//                    }, 5);
                 ev.stopPropagation();
                 ev.preventDefault();
                 this.startX = ev.originalEvent.touches[0].screenX;
+                this.startY = ev.originalEvent.touches[0].screenY;
                 this.leftX = $('.scroll').scrollLeft();
+                this.topY = $('.inner-wrapper').scrollTop();
             },
 
             startX: 0,
+            startY: 0,
 
             leftX: 0,
+            topY: 0,
 
             scrollEnd: function (ev) {
-//                    window.clearInterval(0);
                 ev.stopPropagation();
             },
 
             scroll: function (ev) {
-                var value = this.startX - ev.originalEvent.touches[0].screenX;
+                var x_change = this.startX - ev.originalEvent.touches[0].screenX;
+                var y_change = this.startY - ev.originalEvent.touches[0].screenY;
                 var ctx = this;
                 var objs = ctx.$('.scroll');
                 _.each(objs, function (obj) {
-                    $(obj).scrollLeft(value / screenRatio + ctx.leftX);
+                    $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
                 });
-
+                $('.inner-wrapper').scrollTop(y_change / screenRatio + ctx.topY);
             }
 
 
