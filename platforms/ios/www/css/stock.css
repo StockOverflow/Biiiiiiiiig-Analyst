@@ -260,3 +260,9 @@ div.stock-di-item > table > tbody > tr > td {
 .stock-page .home-page .stock-ci-stock-item div.col7{
     margin: 10px 0;
 }
+
+
+.stock-page .home-page .info-div {
+    display: inline-block;
+    margin: 15px 0 0 40px;
+}

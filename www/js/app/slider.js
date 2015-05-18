@@ -26,7 +26,7 @@ define(function () {
                 this.body.append('<div class="page page_left"></div>');
                 $('.page_right')[0].style.width = '0';
             }
-            else{
+            else if (this.direction == 'right'){
                 //direction: right
                 this.right[0].style.width = '720px';
                 this.left.remove();
@@ -35,6 +35,9 @@ define(function () {
                 this.center[0].className = 'page transition page_left';
                 this.body.append('<div class="page page_right"></div>');
                 $('.page_right')[0].style.width = '0';
+            }
+            else {
+                this.center.html(el);
             }
             this.direction = 'right';
             setTimeout(function () {

@@ -26,18 +26,13 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
                 this.$('.logout').html('登录');
                 this.$('.logout').before('&nbsp;&nbsp;&nbsp;');
             }
-//            document.body.addEventListener('click', function (event) {
-//                if (location.hash == '#drawer') {
-//                    console.log(event);
-//                    if (event.pageX / innerWidth > 486 / 720) {
-//                        $('.drawer-closure').remove();
-//                    }
-//                }
-//            }, false);
+            $('.drawer-closure').removeClass('drawer-hidden');
         },
 
         back: function () {
-            Router.back();
+            Slider.direction = 'none';
+            history.back();
+//            $('.drawer-closure').remove();
         },
 
         stock: function () {

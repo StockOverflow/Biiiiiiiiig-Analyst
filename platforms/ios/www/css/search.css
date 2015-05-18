@@ -123,7 +123,7 @@
     width: 100px;
 }
 
-.analyst-item .search table > tbody > tr > td {
+.analyst-item td {
     font-size: 33px;
     text-align: center;
 }

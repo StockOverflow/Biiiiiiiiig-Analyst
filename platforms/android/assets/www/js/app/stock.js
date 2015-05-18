@@ -21,20 +21,22 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
                 'click .nav-bar>.right': 'search',
-                //'touchstart div': 'touchStart',
-                //'touchend div': 'touchEnd',
+//                'touchstart div': 'touchStart',
+//                'touchend div': 'touchEnd'
+
                 'touchstart .scroll': 'scrollStart',
-                'touchend .scroll': 'scrollEnd'
+                'touchend .scroll': 'scrollEnd',
+                'touchmove .scroll': 'scroll'
             },
 
-
-            touchStart: function (event) {
-                Swipe.touchStart(event);
-            },
-
-            touchEnd: function (event) {
-                Swipe.touchEnd(event);
-            },
+//
+//            touchStart: function (event) {
+//                Swipe.touchStart(event);
+//            },
+//
+//            touchEnd: function (event) {
+//                Swipe.touchEnd(event);
+//            },
 
             initialize: function (s_id) {
                 this.s_id = s_id;
@@ -220,18 +222,38 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             scrollStart: function (ev) {
-                setInterval(function () {
-                    var ctx = this;
-                    var value = ctx.$(ev.currentTarget).scrollLeft();
-                    var objs = ctx.$('.scroll');
-                    _.each(objs, function (obj) {
-                        $(obj).scrollLeft(value);
-                    });
-                }, 5);
+//                    ev.stopPropagation();
+//                    setInterval(function () {
+//                        var ctx = this;
+//                        var value = ctx.$(ev.currentTarget).scrollLeft();
+//                        var objs = ctx.$('.scroll');
+//                        _.each(objs, function (obj) {
+//                            $(obj).scrollLeft(value);
+//                        });
+//                    }, 5);
+                ev.stopPropagation();
+                ev.preventDefault();
+                this.startX = ev.originalEvent.touches[0].screenX;
+                this.leftX = $('.scroll').scrollLeft();
             },
 
-            scrollEnd: function () {
-                window.clearInterval(0);
+            startX: 0,
+
+            leftX: 0,
+
+            scrollEnd: function (ev) {
+//                    window.clearInterval(0);
+                ev.stopPropagation();
+            },
+
+            scroll: function (ev) {
+                var value = this.startX - ev.originalEvent.touches[0].screenX;
+                var ctx = this;
+                var objs = ctx.$('.scroll');
+                _.each(objs, function (obj) {
+                    $(obj).scrollLeft(value / screenRatio + ctx.leftX);
+                });
+
             }
         });
 

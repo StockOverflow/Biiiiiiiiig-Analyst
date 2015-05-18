@@ -35,12 +35,12 @@ define(function () {
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
 //                console.log(Router.direction);
-                if (history.length == 1){
-                    $('.page_center').html((new homepage()).el);
-                }
-                else {
+//                if (history.length == 1){
+//                    $('.page_center').html((new homepage()).el);
+//                }
+//                else {
                     Slider.slide((new homepage()).el);
-                }
+//                }
 //                $('#main_entry').html((new homepage()).el);
             });
         },
@@ -68,8 +68,8 @@ define(function () {
 
         drawerRoute: function () {
             require(['app/drawer'], function (drawer) {
-                Slider.slide((new drawer()).el);
-//                $('#main_entry').html((new drawer()).el);
+//                Slider.slide((new drawer()).el);
+                $('.page_center').append((new drawer()).el);
             });
         },
 

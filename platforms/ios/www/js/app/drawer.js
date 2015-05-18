@@ -18,7 +18,6 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
         },
 
         initialize: function () {
-            loadCSS(css);
             if (User.hasSignin){
                 this.$('.drawer-username').html(User.name);
             }
@@ -27,10 +26,13 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
                 this.$('.logout').html('登录');
                 this.$('.logout').before('&nbsp;&nbsp;&nbsp;');
             }
+            $('.drawer-closure').removeClass('drawer-hidden');
         },
 
         back: function () {
-            Router.back();
+            Slider.direction = 'none';
+            history.back();
+//            $('.drawer-closure').remove();
         },
 
         stock: function () {

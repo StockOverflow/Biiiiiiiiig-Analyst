@@ -113,7 +113,6 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 this.$('.rank-modal').fadeTo(100, 1).removeClass('slide-down')
                     .css('bottom', '-500px')
                     .addClass('slide-up', 500, 'easeOutQuart');
-
             },
 
             rankBy: function (type) {

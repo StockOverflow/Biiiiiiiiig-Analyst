@@ -26,13 +26,15 @@ define(function () {
         },
 
         touchStart: function (event) {
-            var touch = event.changedTouches[0];
-            this.startX = touch.pageX;
-            this.startY = touch.pageY;
+            if (event.hasOwnProperty('changedTouches')) {
+                var touch = event.changedTouches[0];
+                this.startX = touch.pageX;
+                this.startY = touch.pageY;
+            }
         },
 
         touchEnd: function (event) {
-            if (this.swipeControl){
+            if (this.swipeControl && event.hasOwnProperty('changedTouches')){
                 this.swipeControl = false;
                 var ctx = this;
                 setTimeout(function () {
@@ -49,14 +51,14 @@ define(function () {
 
         isSwipeRight: function () {
             if (pageNeedSwipe(location.hash)) {
-                if (this.endX - this.startX > 100 && Math.abs(this.startY - this.endY) < 100) {
+                if (this.endX - this.startX > 60 / screenRatio && Math.abs(this.startY - this.endY) < 60 / screenRatio) {
                     console.log('swipe');
                     Router.back();
                 }
             }
 
             function pageNeedSwipe(hash) {
-                return !(hash == 'homepage' || hash == 'drawer');
+                return !(hash == '#homepage' || hash == '#drawer');
             }
         }
     };
