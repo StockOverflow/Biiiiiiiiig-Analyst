@@ -21,8 +21,8 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
                 'click .nav-bar>.right': 'search',
-                //'touchstart div': 'touchStart',
-                //'touchend div': 'touchEnd',
+                'touchstart div': 'touchStart',
+                'touchend div': 'touchEnd',
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd'
             },
@@ -220,6 +220,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             scrollStart: function (ev) {
+                ev.stopPropagation();
                 setInterval(function () {
                     var ctx = this;
                     var value = ctx.$(ev.currentTarget).scrollLeft();
