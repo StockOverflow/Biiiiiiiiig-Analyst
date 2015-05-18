@@ -8,14 +8,13 @@ define(function () {
             'a_name': '胡子欣',
             'a_institution': '东海证券',
             'a_position': '分析员',
-            'average_yield_rate': '+20%',
-            'average_drift_rate': '+20%',
-            'speed': '+30%',
-            'stability': '+30%',
-            'accuracy': '+30%',
+            'average_yield_rate': '20%',
+            'average_drift_rate': '20%',
+            'speed': '20%',
+            'stability': '20%',
+            'accuracy': '20%',
             'portrait': '0'
         }
     });
-
     return AnalystRankingModel;
 });

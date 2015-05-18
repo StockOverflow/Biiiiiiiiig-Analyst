@@ -205,6 +205,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 ,
 
                 scrollStart: function (ev) {
+                    ev.stopPropagation();
                     setInterval(function () {
                         var ctx = this;
                         var value = ctx.$(ev.currentTarget).scrollLeft();
@@ -218,6 +219,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 scrollEnd: function () {
                     window.clearInterval(0);
                 }
+
 
             })
             ;

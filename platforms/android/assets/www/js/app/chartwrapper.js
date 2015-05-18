@@ -158,5 +158,6 @@ analystRadarChart = function (rawdata) {
 };
 
 percentageToString = function (num) {
-    return (num > 0) ? ("+" + (num * 100) + "%") : ((num * 100) + "%");
+    num=Math.round(num*100);
+    return (num > 0) ? ("+" + num + "%") : (num + "%");
 };

@@ -165,9 +165,9 @@
 }
 
 .analyst-page .home-page img.homepage-item-avatar-tofollow {
-    position: fixed;
+    position: absolute;
     right: 50px;
-    top: 150px;
+    top: 50px;
     z-index: 999;
 }
 
@@ -211,9 +211,6 @@
     font-size: 25px;
 }
 
-
-
-
 .analyst-page .home-page span.analyst-ci-stock-item-content {
     font-size: 25px;
     word-break: break-all;
@@ -229,6 +226,10 @@
     vertical-align: top;
 }
 
-.analyst-page .home-page .analyst-ci-stock-item div.col7{
+.analyst-page .home-page .analyst-ci-stock-item div.col7 {
     margin: 10px 0;
+}
+
+.analyst-page .home-page .info-div {
+    display: inline-block;
 }

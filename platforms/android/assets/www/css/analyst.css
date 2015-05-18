@@ -5,43 +5,91 @@
     margin-top: 10px;
 }
 
-.analyst-page .home-page td.col1 {
-     width: 250px;
- }
+.analyst-page .home-page .col1 {
+    width: 180px;
+}
 
-.analyst-page .home-page td.col2 {
-    width: 200px;
+.analyst-page .home-page .col2 {
+    width: 120px;
     position: relative;
 }
 
-.analyst-page .home-page td.col3 {
-    width: 200px;
+.analyst-page .home-page .col2 > .analyst-di-time {
+    font-size: 25px;
 }
 
-.analyst-page .home-page td.col4 {
-    width: 200px;
+.analyst-page .home-page .col3 {
+    width: 120px;
 }
 
-.analyst-page .home-page td.col5 {
-    width: 75px;
+.analyst-page .home-page .col4 {
+    width: 120px;
 }
 
-.analyst-page .home-page td.col6 {
-    width: 170px;
+.analyst-page .home-page .col5 {
+    width: 45px;
 }
 
-.analyst-page .home-page td.col7 {
-    width: 450px;
+.analyst-page .home-page .col5 > img {
+    margin-top: 44px;
 }
 
-.analyst-page .home-page td.col8 {
-    width: 100px;
+.analyst-page .home-page .col6 {
+    width: 180px;
 }
 
+.analyst-page .home-page .col7 {
+    width: 390px;
+}
 
+.analyst-page .home-page .col8 {
+    width: 150px;
+}
 
-table > tbody > tr > td {
+.analyst-page .home-page .table .col {
+    display: inline-block;
+    /*height: 68px;*/
+
+}
+
+.analyst-page .home-page .table {
+    font-size: 0;
+}
+
+.analyst-page .home-page .table span {
+    line-height: 68px;
     font-size: 33px;
+}
+
+.analyst-page .home-page .table.tableitem span {
+    line-height: 124px;
+}
+
+.analyst-page .home-page .scroll {
+    width: 480px;
+    height: 68px;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.analyst-page .home-page .table.tableitem .scroll {
+    height: 124px;
+}
+
+.analyst-page .home-page .inner-scroll {
+    width: 720px;
+    height: 68px;
+    font-size: 0;
+}
+
+.analyst-page .home-page .table.tableitem .inner-scroll {
+    height: 124px;
+}
+
+.analyst-page .home-page div.col {
     text-align: center;
 }
 
@@ -49,7 +97,12 @@ table > tbody > tr > td {
     border-bottom: 2px solid #cccccc;
 }
 
-.analyst-di-item > table > tbody > tr > td {
+.analyst-di-item .col {
+    height: 68px;
+    vertical-align: middle;
+}
+
+.analyst-di-item .table.tableitem .col {
     height: 124px;
     vertical-align: middle;
 }
@@ -81,11 +134,6 @@ table > tbody > tr > td {
     border-bottom: 4px dotted #cccccc;
 }
 
-div.analyst-di-item > table > tbody > tr > td {
-    height: 154px;
-    vertical-align: middle;
-}
-
 .analyst-page .home-page .ci-div {
     padding-top: 278px;
 }
@@ -110,16 +158,16 @@ div.analyst-di-item > table > tbody > tr > td {
 
 .analyst-page .home-page div.analyst-di-time {
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     text-align: center;
     width: 100%;
     color: rgb(181, 181, 181);
 }
 
 .analyst-page .home-page img.homepage-item-avatar-tofollow {
-    position: fixed;
+    position: absolute;
     right: 50px;
-    top: 150px;
+    top: 50px;
     z-index: 999;
 }
 
@@ -140,4 +188,48 @@ div.analyst-di-item > table > tbody > tr > td {
 
 .analyst-page .home-page .rt-div {
     padding-top: 210px;
+}
+
+.analyst-page .home-page .stock-di-stock-item {
+    font-size: 33px;
+    padding: 5px 25px 5px 45px
+}
+
+.analyst-page .home-page .stock-di-stock-item > img {
+    height: 35px;
+    width: 35px;
+    vertical-align: top;
+    padding-right: 10px;
+}
+
+.analyst-page .home-page span.analyst-ci-stock-item-content {
+    font-size: 25px;
+    word-break: break-all;
+}
+
+.analyst-page .home-page span.analyst-ci-stock-item-time {
+    font-size: 25px;
+}
+
+.analyst-page .home-page span.analyst-ci-stock-item-content {
+    font-size: 25px;
+    word-break: break-all;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.analyst-page .home-page span.analyst-ci-stock-item-time {
+    font-size: 25px;
+}
+
+.analyst-page .home-page .analyst-ci-stock-item div.col6, .analyst-page .home-page .analyst-ci-stock-item div.col8 {
+    vertical-align: top;
+}
+
+.analyst-page .home-page .analyst-ci-stock-item div.col7 {
+    margin: 10px 0;
+}
+
+.analyst-page .home-page .info-div {
+    display: inline-block;
 }

@@ -1,7 +1,7 @@
 /*over all style goer here*/
 * {
     /*font-family: "微软雅黑", monospace;*/
-    font-size: 25px;
+    /*font-size: 25px;*/
     color: #616161;
 }
 
@@ -9,6 +9,12 @@ body {
     margin: 0;
     overflow-x: hidden;
 }
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 .inner-wrapper {
     width: 720px;

@@ -1,13 +1,3 @@
-* {
-    font-family: "微软雅黑", monospace;
-    font-size: 25px;
-    color: #616161;
-}
-
-body {
-    margin: 0;
-}
-
 .search#search-cancel {
     margin-left: 8px;
     display: inline-block;

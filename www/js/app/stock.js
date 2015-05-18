@@ -220,6 +220,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             scrollStart: function (ev) {
+                ev.stopPropagation();
                 setInterval(function () {
                     var ctx = this;
                     var value = ctx.$(ev.currentTarget).scrollLeft();

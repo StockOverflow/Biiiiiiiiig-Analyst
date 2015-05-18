@@ -4,8 +4,8 @@
 
 define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html',
         'text!html/homepage/css_homepage.html', 'app/model/AnalystRankingModel',
-        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html'],
-    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal) {
+        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html','app/chartwrapper'],
+    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal,chartwrapper) {
 
         var AnalystView = Backbone.View.extend({
 
@@ -82,8 +82,14 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 $.get(base_url, function (data) {
                     var ans = JSON.parse(data.analyzer_rankings);
                     _.each(ans, function (item) {
+                        item.average_yield_rate = percentageToString(item.average_yield_rate);
+                        item.average_drift_rate = percentageToString(item.average_drift_rate);
+                        item.speed = percentageToString(item.speed);
+                        item.stability = percentageToString(item.stability);
+                        item.accuracy = percentageToString(item.accuracy);
                         ctx.analysts.add(item);
                     });
+
                     ctx.analysts.each(ctx.show, ctx);
                 }, 'json');
             },
