@@ -79,7 +79,7 @@ stocklinechart = function (rawdata) {
 
     };
 
-    // Remove animation from Android platform to avoid influence.
+    // Remove animation from Android platform to avoid nonfluency.
     if (platform_is_android) {
         options.animation = false;
     }
@@ -166,7 +166,7 @@ analystRadarChart = function (rawdata) {
 
     };
 
-    // Remove animation from Android platform to avoid influence.
+    // Remove animation from Android platform to avoid nonfluency.
     if (platform_is_android) {
         options.animation = false;
     }
