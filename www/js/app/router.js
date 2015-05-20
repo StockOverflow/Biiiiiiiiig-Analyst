@@ -21,10 +21,10 @@ define(function () {
 
         initialize: function () {
             console.log('router start');
-        },
-
-        blank: function () {
-
+            document.addEventListener("backbutton", function () {
+                Router.back();
+                console.log('back');
+            }, false);
         },
 
         back: function () {
@@ -34,14 +34,7 @@ define(function () {
 
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
-//                console.log(Router.direction);
-//                if (history.length == 1){
-//                    $('.page_center').html((new homepage()).el);
-//                }
-//                else {
-                    Slider.slide((new homepage()).el);
-//                }
-//                $('#main_entry').html((new homepage()).el);
+                Slider.slide((new homepage()).el);
             });
         },
 
@@ -67,10 +60,7 @@ define(function () {
         },
 
         drawerRoute: function () {
-            require(['app/drawer'], function (drawer) {
-//                Slider.slide((new drawer()).el);
-                $('.page_center').append((new drawer()).el);
-            });
+
         },
 
         favourStockRoute: function () {

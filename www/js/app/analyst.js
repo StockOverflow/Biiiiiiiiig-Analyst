@@ -25,11 +25,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
                 'touchmove .scroll': 'scroll',
-                'click div': 'ggg'
-            },
-
-            ggg: function (eve) {
-                console.log(eve);
+                'click .homepage-item-avatar-tofollow': 'toFollow'
             },
 
             initialize: function (a_id) {
@@ -79,6 +75,10 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             back: function () {
                 Router.back();
 //                Router.popHistory();
+            },
+
+            toFollow: function () {
+
             },
 
 
@@ -188,14 +188,12 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             renderResearches: function (data) {
                 var researches = JSON.parse(data);
                 _.each(researches, function (item) {
-                    var title = item.title, date = item.date, s_name = item.s_name;
-
                     var template = HandleBars.compile(research_item);
                     var injected = template({
-                            'title': title,
-                            'date': date,
-                            's_name': s_name,
-                            's_id': 'sid' + s_id
+                            'title': item.title,
+                            'date': item.date,
+                            's_name': item.s_name,
+                            's_id': 'sid' + item.s_id
                         }
                     );
                     $('.ci-div').append(injected);

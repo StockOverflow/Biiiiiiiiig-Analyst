@@ -30,9 +30,9 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
         },
 
         back: function () {
-            Slider.direction = 'none';
-            history.back();
-//            $('.drawer-closure').remove();
+//            Slider.direction = 'none';
+//            history.back();
+            $('.drawer-closure').remove();
         },
 
         stock: function () {

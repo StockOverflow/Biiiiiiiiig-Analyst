@@ -143,7 +143,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                     );
                     $('.di-div').append(injected);
                     ctx.getAnalystToStockData(ctx.s_id, item.a_id);
-                    $('.aid' + item.a_id).siblings().children('.col5').click(function () {
+                    $('.di-div .aid' + item.a_id).siblings().children('.col5').click(function () {
                         var obj = $('.aid' + item.a_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
@@ -153,7 +153,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                         }
                     });
 
-                    $('.aid' + item.a_id).siblings().children('.col1').click(function () {
+                    $('.di-div .aid' + item.a_id).siblings().children('.col1').click(function () {
                         Router.navigate('analyst/' + item.a_id, {trigger: true});
                     });
                 });
@@ -170,16 +170,18 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             renderResearches: function (data) {
                 var researches = JSON.parse(data);
                 _.each(researches, function (item) {
-                    var title = item.title, date = item.date, a_name = item.a_name;
-
                     var template = HandleBars.compile(research_item);
                     var injected = template({
-                            'title': title,
-                            'date': date,
-                            'a_name': a_name
+                            'title': item.title,
+                            'date': item.date,
+                            'a_name': item.a_name,
+                            'a_id': "aid" + item.a_id
                         }
                     );
                     $('.ci-div').append(injected);
+                    $('.ci-div .aid' + item.a_id).children('.col6').click(function () {
+                        Router.navigate('analyst/' + item.a_id, {trigger: true});
+                    });
                 });
             },
 
@@ -201,7 +203,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                             'content': title + "-" + date
                         }
                     );
-                    $('.aid' + a_id).append(injected);
+                    $('.di-div .aid' + a_id).append(injected);
                 });
             },
 

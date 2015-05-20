@@ -138,7 +138,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     );
                     $('.di-div').append(injected);
                     ctx.getAnalystToStockData(item.s_id, ctx.a_id);
-                    $('.sid' + item.s_id).siblings().children('.col5').click(function () {
+                    $('.di-div .sid' + item.s_id).siblings().children('.col5').click(function () {
                         var obj = $('.sid' + item.s_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
@@ -148,7 +148,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         }
                     });
 
-                    $('.sid' + item.s_id).siblings().children('.col1').click(function () {
+                    $('.di-div .sid' + item.s_id).siblings().children('.col1').click(function () {
                         Router.navigate('stock/' + item.s_id, {trigger: true});
                     });
                 });
@@ -173,7 +173,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                             'content': title + "-" + date
                         }
                     );
-                    $('.sid' + s_id).append(injected);
+                    $('.di-div .sid' + s_id).append(injected);
                 });
             },
 
@@ -194,10 +194,14 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     var injected = template({
                             'title': title,
                             'date': date,
-                            's_name': s_name
+                            's_name': s_name,
+                            's_id': 'sid' + s_id
                         }
                     );
                     $('.ci-div').append(injected);
+                    $('.ci-div .sid' + item.s_id).children('.col6').click(function () {
+                        Router.navigate('stock/' + item.s_id, {trigger: true});
+                    });
                 });
             },
 

@@ -101,7 +101,11 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
 
             drawer: function () {
-                Router.navigate('drawer', {trigger: true});
+//                Router.navigate('drawer', {trigger: true});
+                require(['app/drawer'], function (drawer) {
+//                Slider.slide((new drawer()).el);
+                    $('.page_center').append((new drawer()).el);
+                });
             },
 
             search: function () {

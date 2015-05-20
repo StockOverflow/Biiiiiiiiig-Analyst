@@ -26,11 +26,13 @@ define(function () {
         },
 
         touchStart: function (event) {
+            event.stopPropagation();
             if (event.hasOwnProperty('changedTouches')) {
                 var touch = event.changedTouches[0];
                 this.startX = touch.pageX;
                 this.startY = touch.pageY;
             }
+//            console.log(event);
         },
 
         touchEnd: function (event) {
@@ -47,18 +49,19 @@ define(function () {
 
                 this.isSwipeRight();
             }
+//            console.log(event);
         },
 
         isSwipeRight: function () {
             if (pageNeedSwipe(location.hash)) {
-                if (this.endX - this.startX > 60 / screenRatio && Math.abs(this.startY - this.endY) < 60 / screenRatio) {
+                if (this.endX - this.startX > 200 * screenRatio && Math.abs(this.startY - this.endY) < 150 * screenRatio) {
                     console.log('swipe');
                     Router.back();
                 }
             }
 
             function pageNeedSwipe(hash) {
-                return !(hash == '#homepage' || hash == '#drawer');
+                return !(hash == '#homepage');
             }
         }
     };

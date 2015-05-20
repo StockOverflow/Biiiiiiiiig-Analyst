@@ -35,7 +35,7 @@ require(['./config'], function () {
         window.User = {
             hasSignin: false,
             name: '',
-            phone: ''
+            phone: 1
         };
 
 

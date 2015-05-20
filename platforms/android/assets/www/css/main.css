@@ -119,6 +119,7 @@ body {
     position: relative;
     top: 96px;
     overflow: hidden;
+    /*-webkit-overflow-scrolling: touch;*/
 }
 
 .content.with-search-bar {
@@ -171,7 +172,6 @@ body {
     /*-webkit-transform: translate3d(100%, 0, 0);*/
     /*transform: translate3d(100%, 0, 0);*/
     left: 100%;
-    width: 0;
 }
 
 .page.transition {

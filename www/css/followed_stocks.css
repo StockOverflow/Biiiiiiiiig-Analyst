@@ -1,35 +1,37 @@
-.follow-analyst-page .col1 {
+.followed-stock .col1 {
     width: 150px;
+    font-size: 30px;
+    font-weight: 800;
 }
 
-.follow-analyst-page .col2 {
-    width: 350px;
+.followed-stock .col2 {
+    width: 200px;
 }
 
-.follow-analyst-page .col3 {
-    width: 150px;
+.followed-stock .col3 {
+    width: 200px;
 }
 
-.follow-analyst-page .col4 {
-    width: 100px;
+.followed-stock .col4 {
+    width: 200px;
 }
 
-.follow-analyst-page td {
+.followed-stock td {
     font-size: 28px;
     text-align: center;
 }
 
-.follow-analyst-page .followed-item > table {
-    height: 156px;
+table {
+    height: 100px;
 }
 
-.follow-analyst-page .followed-item {
-    height: 156px;
+.followed-stock.followed-item {
+    height: 100px;
     width: 720px;
     border-bottom: 4px dotted #cccccc;
 }
 
-.follow-analyst-page .followed-item-avatar {
+.followed-stock .followed-item-avatar {
     width: 86px;
     height: 86px;
     background: #CCEAFE url("../img/130-130man.png") no-repeat;
@@ -41,11 +43,11 @@
     position: relative;
 }
 
-.follow-analyst-page .followed-item-title {
+.followed-stock .followed-item-title {
     font-size: 33px;
 }
 
-.follow-analyst-page .badge {
+.followed-stock .badge {
     background: rgb(231, 231, 231);
     border-radius: 8px;
     padding: 5px 10px;

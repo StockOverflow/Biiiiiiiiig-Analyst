@@ -98,7 +98,8 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
         },
 
         back: function () {
-            Router.navigate('homepage', {trigger: true});
+//            Router.navigate('homepage', {trigger: true});
+            Router.back();
         }
 
     });

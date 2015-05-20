@@ -21,6 +21,10 @@ define(function () {
 
         initialize: function () {
             console.log('router start');
+            document.addEventListener("backbutton", function () {
+                Router.back();
+                console.log('back');
+            }, false);
         },
 
         blank: function () {
@@ -67,10 +71,7 @@ define(function () {
         },
 
         drawerRoute: function () {
-            require(['app/drawer'], function (drawer) {
-//                Slider.slide((new drawer()).el);
-                $('.page_center').append((new drawer()).el);
-            });
+
         },
 
         favourStockRoute: function () {
