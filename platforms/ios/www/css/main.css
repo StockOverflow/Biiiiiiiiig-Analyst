@@ -119,7 +119,7 @@ body {
     position: relative;
     top: 96px;
     overflow: hidden;
-    -webkit-overflow-scrolling: touch;
+    /*-webkit-overflow-scrolling: touch;*/
 }
 
 .content.with-search-bar {

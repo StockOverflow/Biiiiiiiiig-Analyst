@@ -25,20 +25,22 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
                 'touchmove .scroll': 'scroll',
-                'click div': 'ggg'
-            },
-
-            ggg: function (eve) {
-                console.log(eve);
+                'click .analyst-tofollow': 'toFollow'
             },
 
             initialize: function (a_id) {
                 this.a_id = a_id;
                 this.$('.content').append(tab1).append(tab2).append(tab3);
-                loadCSS(css);
+
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
+//                setInterval(function () {
+//                    console.log($('.analyst-tofollow')[0]);
+//                }, 10);
+//                setTimeout(function () {
+//                    window.clearInterval(0);
+//                }, 2000);
             },
 
             tabOne: function () {
@@ -78,7 +80,19 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
             back: function () {
                 Router.back();
-//                Router.popHistory();
+            },
+
+            toFollow: function () {
+                if(User.hasSignin) {
+                    if (User.hasFollowAnalyst(this.a_id)) {
+                        User.unfollowAnalyst(this.a_id);
+                        $('.analyst-tofollow')[0].src = 'img/tounfollow.png';
+                    }
+                    else {
+                        User.followAnalyst(this.a_id);
+                        $('.analyst-tofollow')[0].src = 'img/tofollow.png';
+                    }
+                }
             },
 
 
@@ -87,7 +101,8 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
-                    ctx.renderAnalystChart(data.attribute)
+                    ctx.renderAnalystChart(data.attribute);
+
                 }, 'json');
             },
 
@@ -101,6 +116,12 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 );
                 $('.homepage-item').append(injected);
                 $(".nav-bar>.title").html(basic_info.a_name);
+                var ctx = this;
+                setTimeout(function () {
+                    if (User.hasFollowAnalyst(ctx.a_id)){
+                        $('.analyst-tofollow')[0].src = 'img/tofollow.png';
+                    }
+                }, 250);
             },
 
             renderAnalystChart: function (data) {
@@ -188,14 +209,12 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             renderResearches: function (data) {
                 var researches = JSON.parse(data);
                 _.each(researches, function (item) {
-                    var title = item.title, date = item.date, s_name = item.s_name;
-
                     var template = HandleBars.compile(research_item);
                     var injected = template({
-                            'title': title,
-                            'date': date,
-                            's_name': s_name,
-                            's_id': 'sid' + s_id
+                            'title': item.title,
+                            'date': item.date,
+                            's_name': item.s_name,
+                            's_id': 'sid' + item.s_id
                         }
                     );
                     $('.ci-div').append(injected);

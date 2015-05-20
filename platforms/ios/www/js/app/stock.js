@@ -21,6 +21,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
                 'click .nav-bar>.right': 'search',
+                'click .stock-tounfollow': 'toFollow',
 
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
@@ -79,6 +80,19 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 Router.back();
             },
 
+            toFollow: function () {
+                if(User.hasSignin) {
+                    if (User.hasFollowStock(this.s_id)) {
+                        User.unfollowStock(this.s_id);
+                        $('.stock-tounfollow')[0].src = 'img/tounfollow.png';
+                    }
+                    else {
+                        User.followStock(this.s_id);
+                        $('.stock-tounfollow')[0].src = 'img/tofollow.png';
+                    }
+                }
+            },
+
             getStockData: function (s_id, days, need_basic_info) {
                 var base_url = 'http://stock.whytouch.com/stockpages/get_stock_price.php?s_id=' + s_id
                     + '&days=' + days + '&need_basic_info=' + need_basic_info;
@@ -101,6 +115,12 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                     }
                 );
                 $('.homepage-item').append(injected);
+                var ctx = this;
+                setTimeout(function () {
+                    if (User.hasFollowStock(ctx.s_id)){
+                        $('.stock-tounfollow')[0].src = 'img/tofollow.png';
+                    }
+                }, 250);
             },
 
             renderStockChart: function (data) {

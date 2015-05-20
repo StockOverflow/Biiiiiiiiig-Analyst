@@ -59,11 +59,9 @@ define(['text!html/favour-analyst/index_favour-analyst.html', 'text!html/favour-
 
         initialize: function () {
             loadCSS(css);
-
-            console.log(this.el);
             this.analysts = new FavourAnalystCollection();
             var ctx = this;
-            $.get('http://stock.whytouch.com/users/get_following_analyzers.php?u_id=1', function (data) {
+            $.get('http://stock.whytouch.com/users/get_following_analyzers.php?u_id=' + User.phone, function (data) {
                 var list = JSON.parse(data.following_analyzers);
                 _.each(list, function (item) {
                     ctx.analysts.add(item);
@@ -76,7 +74,6 @@ define(['text!html/favour-analyst/index_favour-analyst.html', 'text!html/favour-
 
         show: function (model) {
             var view = new SingleAnalystView({model: model});
-            console.log(view.el);
             this.$('.content').append(view.el);
         },
 

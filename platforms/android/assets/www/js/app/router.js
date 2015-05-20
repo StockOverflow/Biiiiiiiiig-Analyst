@@ -27,10 +27,6 @@ define(function () {
             }, false);
         },
 
-        blank: function () {
-
-        },
-
         back: function () {
             Slider.direction = 'left';
             history.back();
@@ -38,14 +34,7 @@ define(function () {
 
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
-//                console.log(Router.direction);
-//                if (history.length == 1){
-//                    $('.page_center').html((new homepage()).el);
-//                }
-//                else {
-                    Slider.slide((new homepage()).el);
-//                }
-//                $('#main_entry').html((new homepage()).el);
+                Slider.slide((new homepage()).el);
             });
         },
 

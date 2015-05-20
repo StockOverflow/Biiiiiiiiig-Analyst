@@ -49,7 +49,6 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
             var url = 'http://stock.whytouch.com/users/login.php?phone=' + phone + '&password=' + password;
             var ctx = this;
             $.get(url, function (data) {
-                console.log(data);
                 if (data.code == 200){
                     User.hasSignin = true;
                     User.name = data.username;
@@ -95,10 +94,10 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
         backDiv: function (text) {
             this.$('.content').html(back);
             this.$('.back-text').html(text);
+            User.updateFollowedInfo();
         },
 
         back: function () {
-//            Router.navigate('homepage', {trigger: true});
             Router.back();
         }
 
