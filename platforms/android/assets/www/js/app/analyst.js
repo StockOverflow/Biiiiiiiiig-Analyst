@@ -35,12 +35,6 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
-//                setInterval(function () {
-//                    console.log($('.analyst-tofollow')[0]);
-//                }, 10);
-//                setTimeout(function () {
-//                    window.clearInterval(0);
-//                }, 2000);
             },
 
             tabOne: function () {
@@ -95,14 +89,12 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 }
             },
 
-
             getAnalystData: function (a_id) {
                 var base_url = 'http://stock.whytouch.com/analyzerpages/get_analyzer_info.php?a_id=' + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
-                    ctx.renderAnalystChart(data.attribute);
-
+                    ctx.renderAnalystChart(data.attribute)
                 }, 'json');
             },
 

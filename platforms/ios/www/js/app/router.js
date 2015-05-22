@@ -4,7 +4,8 @@
 
 define(function () {
 
-    var AppRouter = Backbone.Router.extend({
+    var AppRouter;
+    AppRouter = Backbone.Router.extend({
 
         routes: {
             '': 'homepageRoute',
@@ -21,10 +22,10 @@ define(function () {
 
         initialize: function () {
             console.log('router start');
-            document.addEventListener("backbutton", function () {
-                Router.back();
-                console.log('back');
-            }, false);
+        },
+
+        blank: function () {
+
         },
 
         back: function () {
@@ -34,7 +35,14 @@ define(function () {
 
         homepageRoute: function () {
             require(['app/homepage'], function (homepage) {
+//                console.log(Router.direction);
+//                if (history.length == 1){
+//                    $('.page_center').html((new homepage()).el);
+//                }
+//                else {
                 Slider.slide((new homepage()).el);
+//                }
+//                $('#main_entry').html((new homepage()).el);
             });
         },
 
@@ -60,7 +68,10 @@ define(function () {
         },
 
         drawerRoute: function () {
-
+            require(['app/drawer'], function (drawer) {
+//                Slider.slide((new drawer()).el);
+                $('.page_center').append((new drawer()).el);
+            });
         },
 
         favourStockRoute: function () {

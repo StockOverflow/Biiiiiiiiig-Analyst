@@ -25,22 +25,20 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
                 'touchmove .scroll': 'scroll',
-                'click .analyst-tofollow': 'toFollow'
+                'click div': 'ggg'
+            },
+
+            ggg: function (eve) {
+                console.log(eve);
             },
 
             initialize: function (a_id) {
                 this.a_id = a_id;
                 this.$('.content').append(tab1).append(tab2).append(tab3);
-
+                loadCSS(css);
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
-//                setInterval(function () {
-//                    console.log($('.analyst-tofollow')[0]);
-//                }, 10);
-//                setTimeout(function () {
-//                    window.clearInterval(0);
-//                }, 2000);
             },
 
             tabOne: function () {
@@ -80,19 +78,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
             back: function () {
                 Router.back();
-            },
-
-            toFollow: function () {
-                if(User.hasSignin) {
-                    if (User.hasFollowAnalyst(this.a_id)) {
-                        User.unfollowAnalyst(this.a_id);
-                        $('.analyst-tofollow')[0].src = 'img/tounfollow.png';
-                    }
-                    else {
-                        User.followAnalyst(this.a_id);
-                        $('.analyst-tofollow')[0].src = 'img/tofollow.png';
-                    }
-                }
+//                Router.popHistory();
             },
 
 
@@ -101,8 +87,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
-                    ctx.renderAnalystChart(data.attribute);
-
+                    ctx.renderAnalystChart(data.attribute)
                 }, 'json');
             },
 
@@ -116,12 +101,6 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 );
                 $('.homepage-item').append(injected);
                 $(".nav-bar>.title").html(basic_info.a_name);
-                var ctx = this;
-                setTimeout(function () {
-                    if (User.hasFollowAnalyst(ctx.a_id)){
-                        $('.analyst-tofollow')[0].src = 'img/tofollow.png';
-                    }
-                }, 250);
             },
 
             renderAnalystChart: function (data) {
@@ -159,7 +138,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     );
                     $('.di-div').append(injected);
                     ctx.getAnalystToStockData(item.s_id, ctx.a_id);
-                    $('.di-div .sid' + item.s_id).siblings().children('.col5').click(function () {
+                    $('.sid' + item.s_id).siblings().children('.col5').click(function () {
                         var obj = $('.sid' + item.s_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
@@ -169,7 +148,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         }
                     });
 
-                    $('.di-div .sid' + item.s_id).siblings().children('.col1').click(function () {
+                    $('.sid' + item.s_id).siblings().children('.col1').click(function () {
                         Router.navigate('stock/' + item.s_id, {trigger: true});
                     });
                 });
@@ -194,7 +173,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                             'content': title + "-" + date
                         }
                     );
-                    $('.di-div .sid' + s_id).append(injected);
+                    $('.sid' + s_id).append(injected);
                 });
             },
 
@@ -209,18 +188,16 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             renderResearches: function (data) {
                 var researches = JSON.parse(data);
                 _.each(researches, function (item) {
+                    var title = item.title, date = item.date, s_name = item.s_name;
+
                     var template = HandleBars.compile(research_item);
                     var injected = template({
-                            'title': item.title,
-                            'date': item.date,
-                            's_name': item.s_name,
-                            's_id': 'sid' + item.s_id
+                            'title': title,
+                            'date': date,
+                            's_name': s_name
                         }
                     );
                     $('.ci-div').append(injected);
-                    $('.ci-div .sid' + item.s_id).children('.col6').click(function () {
-                        Router.navigate('stock/' + item.s_id, {trigger: true});
-                    });
                 });
             },
 
