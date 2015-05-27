@@ -81,7 +81,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             toFollow: function () {
-                if(User.hasSignin) {
+                if (User.hasSignin) {
                     if (User.hasFollowStock(this.s_id)) {
                         User.unfollowStock(this.s_id);
                         $('.stock-tounfollow')[0].src = 'img/tounfollow.png';
@@ -168,12 +168,15 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                     );
                     $('.di-div').append(injected);
                     ctx.getAnalystToStockData(ctx.s_id, item.a_id);
-                    $('.di-div .aid' + item.a_id).siblings().children('.col5').click(function () {
+                    var target = $('.di-div .aid' + item.a_id).siblings();
+                    target.children('.col5').click(function () {
                         var obj = $('.aid' + item.a_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
+                            target.children('.col5').children('.stock-di-fold').attr('src', 'img/unfold.png');
                             obj.css('display', 'block');
                         } else {
+                            target.children('.col5').children('.stock-di-fold').attr('src', 'img/fold.png');
                             obj.css('display', 'none');
                         }
                     });

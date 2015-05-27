@@ -83,7 +83,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             toFollow: function () {
-                if(User.hasSignin) {
+                if (User.hasSignin) {
                     if (User.hasFollowAnalyst(this.a_id)) {
                         User.unfollowAnalyst(this.a_id);
                         $('.analyst-tofollow')[0].src = 'img/tounfollow.png';
@@ -164,12 +164,15 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     );
                     $('.di-div').append(injected);
                     ctx.getAnalystToStockData(item.s_id, ctx.a_id);
-                    $('.di-div .sid' + item.s_id).siblings().children('.col5').click(function () {
+                    var target = $('.di-div .sid' + item.s_id).siblings();
+                    target.children('.col5').click(function () {
                         var obj = $('.sid' + item.s_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
+                            target.children('.col5').children('.analyst-di-fold').attr('src', 'img/unfold.png');
                             obj.css('display', 'block');
                         } else {
+                            target.children('.col5').children('.analyst-di-fold').attr('src', 'img/fold.png');
                             obj.css('display', 'none');
                         }
                     });
