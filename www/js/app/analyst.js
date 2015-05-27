@@ -118,8 +118,13 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 $(".nav-bar>.title").html(basic_info.a_name);
                 var ctx = this;
                 setTimeout(function () {
-                    if (User.hasFollowAnalyst(ctx.a_id)){
-                        $('.analyst-tofollow')[0].src = 'img/tofollow.png';
+                    if (User.hasSignin) {
+                        if (User.hasFollowAnalyst(ctx.a_id)) {
+                            $('.analyst-tofollow')[0].src = 'img/tofollow.png';
+                        }
+                        else {
+                            $('.analyst-tofollow')[0].src = 'img/tounfollow.png';
+                        }
                     }
                 }, 250);
             },

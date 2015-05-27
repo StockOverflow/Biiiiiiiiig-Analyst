@@ -117,8 +117,13 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 $('.homepage-item').append(injected);
                 var ctx = this;
                 setTimeout(function () {
-                    if (User.hasFollowStock(ctx.s_id)){
-                        $('.stock-tounfollow')[0].src = 'img/tofollow.png';
+                    if (User.hasSignin) {
+                        if (User.hasFollowStock(ctx.s_id)) {
+                            $('.stock-tounfollow')[0].src = 'img/tofollow.png';
+                        }
+                        else {
+                            $('.stock-tounfollow')[0].src = 'img/tounfollow.png';
+                        }
                     }
                 }, 250);
             },

@@ -54,7 +54,8 @@ define(['text!html/favour-analyst/index_favour-analyst.html', 'text!html/favour-
         analysts: new FavourAnalystCollection(),
 
         events: {
-            'click .nav-icon.left': 'back'
+            'click .nav-icon.left': 'back',
+            'click .nav-icon.right': 'search'
         },
 
         initialize: function () {
@@ -80,8 +81,10 @@ define(['text!html/favour-analyst/index_favour-analyst.html', 'text!html/favour-
 
         back: function () {
             Router.back();
+        },
+        search: function () {
+            Router.navigate('search', {trigger: true});
         }
-
     });
 
 

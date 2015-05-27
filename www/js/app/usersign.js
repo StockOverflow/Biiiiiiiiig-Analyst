@@ -95,6 +95,11 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
             this.$('.content').html(back);
             this.$('.back-text').html(text);
             User.updateFollowedInfo();
+            setTimeout(function () {
+                if (location.hash == '#usersign'){
+                    Router.back();
+                }
+            }, 1000);
         },
 
         back: function () {
