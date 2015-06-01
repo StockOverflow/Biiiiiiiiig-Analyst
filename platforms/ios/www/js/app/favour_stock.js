@@ -53,7 +53,8 @@ define(['text!html/favour-stock/index_favour-stock.html', 'text!html/favour-stoc
         stocks: new FavourStockCollection(),
 
         events: {
-            'click .nav-icon.left': 'back'
+            'click .nav-icon.left': 'back',
+            'click .nav-icon.right': 'search'
         },
 
         initialize: function () {
@@ -77,6 +78,10 @@ define(['text!html/favour-stock/index_favour-stock.html', 'text!html/favour-stoc
 
         back: function () {
             Router.back();
+        },
+
+        search: function () {
+            Router.navigate('search', {trigger: true});
         }
 
     });

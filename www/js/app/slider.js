@@ -47,8 +47,8 @@ define(function () {
 //        }
 
         slide: function (el) {
-            $('.page_center').html(el);
-            return
+            //$('.page_center').html(el);
+            //return
             //Todo: Fix CSS problem of (position: fixed);
 
             this.body = $('body');

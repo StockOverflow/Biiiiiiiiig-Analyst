@@ -24,7 +24,7 @@
     height: 88px;
     background: rgb(237, 237, 237);
     vertical-align: middle;
-    position: fixed;
+    position: absolute;
     z-index: 999;
 }
 
@@ -45,15 +45,6 @@
 
 .search.middle {
     margin: auto;
-}
-
-.search.search-bar {
-    width: 720px;
-    height: 88px;
-    background: rgb(237, 237, 237);
-    vertical-align: middle;
-    position: fixed;
-    z-index: 999;
 }
 
 .search.search-button {
@@ -103,8 +94,6 @@
     /*overflow: hidden;*/
 }
 
-
-
 /*analysts*/
 
 .analyst-item .search.col1 {
@@ -149,8 +138,6 @@
     display: block;
     position: relative;
 }
-
-
 
 /*stocks*/
 .stock-item .search.col1 {

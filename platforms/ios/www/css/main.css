@@ -10,18 +10,16 @@ body {
     overflow-x: hidden;
 }
 
-
 ::-webkit-scrollbar {
     display: none;
 }
-
 
 .inner-wrapper {
     width: 720px;
     position: absolute;
     top: 0;
     bottom: 0;
-    overflow-y: scroll;
+    /*overflow-y: hidden;*/
 }
 
 /*nav bar related goes here*/
@@ -33,7 +31,7 @@ body {
     text-align: center;
     vertical-align: 100%;
 
-    position: fixed;
+    position: absolute;
     z-index: 999;
 }
 
@@ -70,8 +68,6 @@ body {
     margin: auto;
 }
 
-
-
 /*foot bar related goes here*/
 .foot-bar {
     background: rgb(248, 248, 248);
@@ -79,7 +75,7 @@ body {
     height: 96px;
     text-align: center;
     vertical-align: middle;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     z-index: 999;
 }
@@ -109,16 +105,19 @@ body {
     line-height: 68px;
     background: rgb(237, 237, 237);
     vertical-align: middle;
-    position: fixed;
-    top: 96px;
+    position: absolute;
+    /*top: 96px;*/
     z-index: 999;
 }
 
 /*content goes here*/
 .content {
-    position: relative;
+    position: absolute;
     top: 96px;
-    overflow: hidden;
+    bottom: 0;
+    /*overflow-y: hidden;*/
+    overflow-x: hidden;
+    width: 720px;
     /*-webkit-overflow-scrolling: touch;*/
 }
 
@@ -133,9 +132,6 @@ body {
 .content.with-foot-bar {
     margin-bottom: 96px;
 }
-
-
-
 
 .selected {
     background: #ededed;
@@ -177,4 +173,12 @@ body {
 .page.transition {
     -webkit-transition-duration: .25s;
     transition-duration: .25s;
+}
+
+.QAQ {
+    width: 720px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 68px;
+    bottom: 0;
 }

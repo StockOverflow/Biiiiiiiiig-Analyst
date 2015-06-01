@@ -15,7 +15,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
             a_id: '1',
             el: index,
-
+            graph: false,
             events: {
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
@@ -35,6 +35,12 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
+//                setInterval(function () {
+//                    console.log($('.analyst-tofollow')[0]);
+//                }, 10);
+//                setTimeout(function () {
+//                    window.clearInterval(0);
+//                }, 2000);
             },
 
             tabOne: function () {
@@ -77,7 +83,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             toFollow: function () {
-                if(User.hasSignin) {
+                if (User.hasSignin) {
                     if (User.hasFollowAnalyst(this.a_id)) {
                         User.unfollowAnalyst(this.a_id);
                         $('.analyst-tofollow')[0].src = 'img/tounfollow.png';
@@ -89,12 +95,14 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 }
             },
 
+
             getAnalystData: function (a_id) {
                 var base_url = 'http://stock.whytouch.com/analyzerpages/get_analyzer_info.php?a_id=' + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
-                    ctx.renderAnalystChart(data.attribute)
+                    ctx.renderAnalystChart(data.attribute);
+
                 }, 'json');
             },
 
@@ -110,8 +118,13 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 $(".nav-bar>.title").html(basic_info.a_name);
                 var ctx = this;
                 setTimeout(function () {
-                    if (User.hasFollowAnalyst(ctx.a_id)){
-                        $('.analyst-tofollow')[0].src = 'img/tofollow.png';
+                    if (User.hasSignin) {
+                        if (User.hasFollowAnalyst(ctx.a_id)) {
+                            $('.analyst-tofollow')[0].src = 'img/tofollow.png';
+                        }
+                        else {
+                            $('.analyst-tofollow')[0].src = 'img/tounfollow.png';
+                        }
                     }
                 }, 250);
             },
@@ -149,14 +162,17 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                             's_id': 'sid' + item.s_id
                         }
                     );
-                    $('.di-div').append(injected);
+                    $('.di-div .QAQ').append(injected);
                     ctx.getAnalystToStockData(item.s_id, ctx.a_id);
-                    $('.di-div .sid' + item.s_id).siblings().children('.col5').click(function () {
+                    var target = $('.di-div .sid' + item.s_id).siblings();
+                    target.children('.col5').click(function () {
                         var obj = $('.sid' + item.s_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
+                            target.children('.col5').children('.analyst-di-fold').attr('src', 'img/unfold.png');
                             obj.css('display', 'block');
                         } else {
+                            target.children('.col5').children('.analyst-di-fold').attr('src', 'img/fold.png');
                             obj.css('display', 'none');
                         }
                     });
@@ -194,7 +210,10 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 var base_url = 'http://stock.whytouch.com/analyzerpages/get_researches.php?a_id=' + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                    ctx.renderResearches(data.researches);
+                    if (!ctx.graph) {
+                        ctx.renderResearches(data.researches);
+                        ctx.graph = true;
+                    }
                 }, 'json');
             },
 
@@ -209,7 +228,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                             's_id': 'sid' + item.s_id
                         }
                     );
-                    $('.ci-div').append(injected);
+                    $('.ci-div .QAQ').append(injected);
                     $('.ci-div .sid' + item.s_id).children('.col6').click(function () {
                         Router.navigate('stock/' + item.s_id, {trigger: true});
                     });
@@ -226,7 +245,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 this.startX = ev.originalEvent.touches[0].screenX;
                 this.startY = ev.originalEvent.touches[0].screenY;
                 this.leftX = $('.scroll').scrollLeft();
-                this.topY = $('.inner-wrapper').scrollTop();
+                this.topY = $('.QAQ').scrollTop();
             },
 
             startX: 0,
@@ -247,7 +266,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 _.each(objs, function (obj) {
                     $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
                 });
-                $('.inner-wrapper').scrollTop(y_change / screenRatio + ctx.topY);
+                $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
             }
 
 

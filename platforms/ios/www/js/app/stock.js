@@ -14,7 +14,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             s_id: '1',
             el: index,
-
+            graph: false,
             events: {
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
@@ -81,7 +81,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             toFollow: function () {
-                if(User.hasSignin) {
+                if (User.hasSignin) {
                     if (User.hasFollowStock(this.s_id)) {
                         User.unfollowStock(this.s_id);
                         $('.stock-tounfollow')[0].src = 'img/tounfollow.png';
@@ -117,8 +117,13 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 $('.homepage-item').append(injected);
                 var ctx = this;
                 setTimeout(function () {
-                    if (User.hasFollowStock(ctx.s_id)){
-                        $('.stock-tounfollow')[0].src = 'img/tofollow.png';
+                    if (User.hasSignin) {
+                        if (User.hasFollowStock(ctx.s_id)) {
+                            $('.stock-tounfollow')[0].src = 'img/tofollow.png';
+                        }
+                        else {
+                            $('.stock-tounfollow')[0].src = 'img/tounfollow.png';
+                        }
                     }
                 }, 250);
             },
@@ -161,14 +166,17 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                             'a_id': 'aid' + item.a_id
                         }
                     );
-                    $('.di-div').append(injected);
+                    $('.di-div .QAQ').append(injected);
                     ctx.getAnalystToStockData(ctx.s_id, item.a_id);
-                    $('.di-div .aid' + item.a_id).siblings().children('.col5').click(function () {
+                    var target = $('.di-div .aid' + item.a_id).siblings();
+                    target.children('.col5').click(function () {
                         var obj = $('.aid' + item.a_id);
                         var dis = obj.css('display');
                         if (dis == 'none') {
+                            target.children('.col5').children('.stock-di-fold').attr('src', 'img/unfold.png');
                             obj.css('display', 'block');
                         } else {
+                            target.children('.col5').children('.stock-di-fold').attr('src', 'img/fold.png');
                             obj.css('display', 'none');
                         }
                     });
@@ -198,7 +206,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                             'a_id': "aid" + item.a_id
                         }
                     );
-                    $('.ci-div').append(injected);
+                    $('.ci-div .QAQ').append(injected);
                     $('.ci-div .aid' + item.a_id).children('.col6').click(function () {
                         Router.navigate('analyst/' + item.a_id, {trigger: true});
                     });
@@ -209,7 +217,10 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var base_url = 'http://stock.whytouch.com/stockpages/get_researches_by_analyzer.php?s_id=' + s_id + "&a_id=" + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                    ctx.renderAnalystToStock(a_id, data.researches_by_analyzer);
+                    if (!ctx.graph) {
+                        ctx.renderAnalystToStock(a_id, data.researches_by_analyzer);
+                        ctx.graph = true;
+                    }
                 }, 'json');
             },
 
@@ -238,7 +249,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 this.startX = ev.originalEvent.touches[0].screenX;
                 this.startY = ev.originalEvent.touches[0].screenY;
                 this.leftX = $('.scroll').scrollLeft();
-                this.topY = $('.inner-wrapper').scrollTop();
+                this.topY = $('.QAQ').scrollTop();
             },
 
             startX: 0,
@@ -259,7 +270,8 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 _.each(objs, function (obj) {
                     $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
                 });
-                $('.inner-wrapper').scrollTop(y_change / screenRatio + ctx.topY);
+                console.log(y_change / screenRatio + ctx.topY);
+                $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
             }
 
         });

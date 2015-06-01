@@ -39,20 +39,23 @@ require(['./config'], function () {
             updateFollowedInfo: function () {
                 if (User.hasSignin) {
                     $.get('http://stock.whytouch.com/users/get_following_analyzers.php?u_id=' + User.phone, function (data) {
-                        window.FollowedAnalysts = [];
-                        var list = JSON.parse(data.following_analyzers);
-                        _.each(list, function (item) {
-                            FollowedAnalysts.push(item.a_id);
-                        });
+                        if (data.code == 200) {
+                            window.FollowedAnalysts = [];
+                            var list = JSON.parse(data.following_analyzers);
+                            _.each(list, function (item) {
+                                FollowedAnalysts.push(item.a_id);
+                            });
+                        }
 //                        console.log(FollowedAnalysts);
                     }, 'json');
                     $.get('http://stock.whytouch.com/users/get_following_stocks.php?u_id=' + User.phone, function (data) {
-                        window.FollowedStocks = [];
-                        var list = JSON.parse(data.following_stocks);
-                        _.each(list, function (item) {
-                            FollowedStocks.push(item.s_id);
-                        });
-//                        console.log(FollowedStocks);
+                        if (data.code == 200) {
+                            window.FollowedStocks = [];
+                            var list = JSON.parse(data.following_stocks);
+                            _.each(list, function (item) {
+                                FollowedStocks.push(item.s_id);
+                            });
+                        }
                     }, 'json');
                 }
             },

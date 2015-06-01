@@ -52,6 +52,10 @@
 
 .stock-page .home-page .table {
     font-size: 0;
+    /*position: absolute;*/
+    /*height: 68px;*/
+    /*top: 0;*/
+    /*width: 720px;*/
 }
 
 .stock-page .home-page .table span {
@@ -68,7 +72,7 @@
     height: 68px;
 
     overflow-x: scroll;
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     display: inline-block;
     vertical-align: top;
 }
@@ -106,15 +110,22 @@
 }
 
 .stock-page .home-page .follow-bar {
-    top: 310px;
+    /*top: 310px;*/
 }
 
 .stock-page .home-page .rt-div {
-    padding-top: 210px;
+    position: absolute;
+    top: 210px;
+    bottom: 0;
+    width: 720px;
+    overflow-y: scroll;
 }
 
 .stock-page .home-page .di-div {
-    padding-top: 278px;
+    position: absolute;
+    top: 210px;
+    bottom: 0;
+    /*overflow-y: hidden;*/
 }
 
 .stock-page .home-page .stock-di-green {
@@ -142,7 +153,10 @@ div.stock-di-item > table > tbody > tr > td {
 }
 
 .stock-page .home-page .ci-div {
-    padding-top: 278px;
+    position: absolute;
+    top: 210px;
+    bottom: 0;
+    /*overflow-y: scroll;*/
 }
 
 .stock-page .home-page div.stock-ci-stock-item-avatar {
@@ -157,10 +171,11 @@ div.stock-di-item > table > tbody > tr > td {
     position: relative;
 }
 
-.stock-page .home-page div.homepage-item {
-    position: fixed;
+.stock-page.home-page.homepage-item {
+    position: absolute;
     top: 96px;
     z-index: 999;
+
 }
 
 .stock-page .home-page div.stock-di-time {

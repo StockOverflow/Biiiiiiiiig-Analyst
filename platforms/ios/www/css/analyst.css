@@ -108,11 +108,14 @@
 }
 
 .analyst-page .home-page .follow-bar {
-    top: 310px;
+    /*top: 310px;*/
 }
 
 .analyst-page .home-page .di-div {
-    padding-top: 278px;
+    position: absolute;
+    top: 210px;
+    bottom: 0;
+    /*overflow-y: scroll;*/
 }
 
 .analyst-page .home-page .analyst-di-green {
@@ -135,7 +138,10 @@
 }
 
 .analyst-page .home-page .ci-div {
-    padding-top: 278px;
+    position: absolute;
+    top: 210px;
+    bottom: 0;
+    /*overflow-y: scroll;*/
 }
 
 .analyst-page .home-page div.analyst-ci-stock-item-avatar {
@@ -150,11 +156,12 @@
     position: relative;
 }
 
-.analyst-page .home-page div.homepage-item {
-    position: fixed;
-    top: 96px;
-    z-index: 999;
-}
+.analyst-page.home-page.homepage-item {
+     position: absolute;
+     top: 96px;
+     z-index: 999;
+
+ }
 
 .analyst-page .home-page div.analyst-di-time {
     position: absolute;
@@ -187,7 +194,11 @@
 }
 
 .analyst-page .home-page .rt-div {
-    padding-top: 210px;
+    position: absolute;
+    top: 210px;
+    bottom: 0;
+    width: 720px;
+    overflow-y: scroll;
 }
 
 .analyst-page .home-page .stock-di-stock-item {

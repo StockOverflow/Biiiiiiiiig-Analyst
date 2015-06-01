@@ -174,7 +174,7 @@
     height: 88px;
     background: rgb(237, 237, 237);
     vertical-align: middle;
-    position: fixed;
+    position: absolute;
     top: 96px;
     z-index: 999;
 }
@@ -222,4 +222,12 @@
     border-radius: 8px;
     padding: 5px 10px;
     margin: auto 5px;
+}
+
+.table .home-page{
+    font-size: 0;
+}
+
+.col{
+    font-size: 0;
 }
