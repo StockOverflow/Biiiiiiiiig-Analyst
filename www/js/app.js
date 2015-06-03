@@ -36,6 +36,28 @@ require(['./config'], function () {
             hasSignin: false,
             name: '',
             phone: 1,
+
+            saveUser: function () {
+                var ctx = this;
+                var info = {
+                    hasSignin: ctx.hasSignin,
+                    name: ctx.name,
+                    phone: ctx.phone
+                };
+                localStorage.user = JSON.stringify(info);
+            },
+
+            loadUser: function () {
+                if (localStorage.user){
+                    var info = JSON.parse(localStorage.user);
+                    if (info.hasSignin){
+                        User.hasSignin = true;
+                        User.name = info.name;
+                        User.phone = info.phone;
+                    }
+                }
+            },
+
             updateFollowedInfo: function () {
                 if (User.hasSignin) {
                     $.get('http://stock.whytouch.com/users/get_following_analyzers.php?u_id=' + User.phone, function (data) {
@@ -112,6 +134,7 @@ require(['./config'], function () {
                 return false;
             }
         };
+        User.loadUser();
 
 
 
