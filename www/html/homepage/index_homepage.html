@@ -12,19 +12,68 @@
             <input id="homepage-search" placeholder="搜索分析师/股票..." class="home-page search-text "/>
         </div>
     </div>
-    <div class="home-page content with-search-bar">
+    <div class="home-page content with-search-bar with-foot-bar">
 
-        <div class="home-page title-bar">
-            <span class="home-page title">今日排行</span>
-        </div>
+
         <!--a single item goes here-->
         <!--{{analysts}}-->
-        <div class="home-page homepage-items" style="    overflow-y: scroll;
-    position: absolute;
-    bottom: 0;
-    top: 79px;">
+        <div class="home-page rt-div" style="display: none">
+            <div class="home-page title-bar">
+                <span class="home-page title">今日排行</span>
+            </div>
+            <div class="home-page homepage-items" style="
+               overflow-y: scroll;
+               overflow-x: hidden;
+             position: absolute;
+                bottom: 0;
+                top: 79px;">
 
+            </div>
         </div>
+
+        <div class="home-page di-tab" style="display: none">
+            <div class="followed-stock followed-item unselected" style="background: rgb(237, 237, 237); height: 60px">
+                <table style="height: 60px">
+                    <tr>
+                        <td class="followed-stock col1">
+                            <span class="followed-stock name">股票名</span>
+                        </td>
+                        <td class="followed-stock col2">
+                            <span class="followed-stock price">股票价格</span>
+                        </td>
+                        <td class="followed-stock col3">
+                            <span class="followed-stock expected_price">期望价格</span>
+                        </td>
+                        <td class="followed-stock col4">
+                            <span class="followed-stock researchNumber">研报数量</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="followed-stock followed-item unselected">
+                <table>
+                    <tr>
+                        <td class="followed-stock col1">
+                            <span class="followed-stock name">{{s_name}}</span>
+                        </td>
+                        <td class="followed-stock col2">
+                            <span class="followed-stock price">{{price}}</span>
+                        </td>
+                        <td class="followed-stock col3">
+                            <span class="followed-stock expected_price">{{expected_price}}</span>
+                        </td>
+                        <td class="followed-stock col4">
+                            <span class="followed-stock researchNumber">{{researchNumber}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="home-page ci-tab">
+            <img src="img/moments.png" style="width:  720px;">
+        </div>
+
     </div>
     <div class="home-page rank-modal" style="display: none">
         <div class="home-page rank-items">
@@ -52,6 +101,20 @@
             </div>
         </div>
 
+    </div>
+    <div class="home-page foot-bar">
+        <div class="analyst-page home-page tab rt-tab">
+            <img src="img/integration%20click.png" class="analyst-page home-page foot-icon">
+            <span class="analyst-page home-page foot-title">分析师</span>
+        </div>
+        <div class="home-page tab di-tab">
+            <img src="img/Documents.png" class="analyst-page home-page foot-icon">
+            <span class="analyst-page home-page foot-title">股票</span>
+        </div>
+        <div class="home-page tab ci-tab">
+            <img src="img/Comments-normal.png" class="analyst-page home-page foot-icon">
+            <span class="analyst-page home-page foot-title">知名散户</span>
+        </div>
     </div>
 </div>
 <!--<script src="js/zoom.js"></script>-->

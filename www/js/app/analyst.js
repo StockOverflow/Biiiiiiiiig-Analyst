@@ -21,6 +21,8 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
+                'click .nav-bar>.left-second': 'home',
+                'click .nav-bar>.nav-search': 'search',
                 'click .nav-bar>.right': 'search',
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
@@ -35,12 +37,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
-//                setInterval(function () {
-//                    console.log($('.analyst-tofollow')[0]);
-//                }, 10);
-//                setTimeout(function () {
-//                    window.clearInterval(0);
-//                }, 2000);
+
             },
 
             tabOne: function () {
@@ -80,6 +77,11 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
             back: function () {
                 Router.back();
+            },
+
+            home: function () {
+                Slider.direction = 'left';
+                Router.navigate('homepage', {trigger: true});
             },
 
             toFollow: function () {
