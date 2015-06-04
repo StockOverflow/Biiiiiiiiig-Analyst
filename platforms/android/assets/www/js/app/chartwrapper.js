@@ -108,7 +108,7 @@ analystRadarChart = function (rawdata) {
 
     var options = {
         // Boolean - Whether to animate the chart
-        animation: true,
+        animation: false,
 
         //Boolean - Whether to show lines for each scale point
         scaleShowLine: true,
@@ -166,10 +166,6 @@ analystRadarChart = function (rawdata) {
 
     };
 
-    // Remove animation from Android platform to avoid nonfluency.
-    if (platform_is_android) {
-        options.animation = false;
-    }
     return [data, options];
 };
 

@@ -53,6 +53,7 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
                     User.hasSignin = true;
                     User.name = data.username;
                     User.phone = phone;
+                    User.saveUser();
                     ctx.backDiv('欢迎回来');
                 }
                 else {
@@ -73,6 +74,7 @@ define(['text!html/usersign/index_usersign.html', 'text!html/usersign/css_usersi
                     User.hasSignin = true;
                     User.name = username;
                     User.phone = phone;
+                    User.saveUser();
                     ctx.backDiv('注册成功');
                 }
                 else {

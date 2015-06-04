@@ -91,7 +91,8 @@ analystRadarChart = function (rawdata) {
     var data_data = [rawdata.stability * 100, rawdata.speed * 100, rawdata.accuracy * 100,
         rawdata.overestimation * 100, rawdata.underestimation * 100];
     var data = {
-        labels: ["稳定性", "速度", "准确度", "高估程度", "低估程度"],
+        //labels: ["稳定性", "速度", "准确度", "高估程度", "低估程度"],
+        labels: ["", "", "", "", ""],
         datasets: [
             {
                 label: "分析师数据",
@@ -108,7 +109,7 @@ analystRadarChart = function (rawdata) {
 
     var options = {
         // Boolean - Whether to animate the chart
-        animation: true,
+        animation: false,
 
         //Boolean - Whether to show lines for each scale point
         scaleShowLine: true,
@@ -166,10 +167,6 @@ analystRadarChart = function (rawdata) {
 
     };
 
-    // Remove animation from Android platform to avoid nonfluency.
-    if (platform_is_android) {
-        options.animation = false;
-    }
     return [data, options];
 };
 

@@ -132,7 +132,6 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             renderAnalystChart: function (data) {
                 var attribute = JSON.parse(data);
                 var wrapped = analystRadarChart(attribute);
-
                 var ctx = $("#analystChart").get(0).getContext("2d");
                 new Chart(ctx).Radar(wrapped[0], wrapped[1]);
             },

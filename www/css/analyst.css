@@ -1,8 +1,46 @@
-.analyst-page .home-page .analyst-title {
-    font-size: 34px;
-    color: #616161;
-    display: block;
-    margin-top: 10px;
+/*.analyst-page .home-page .analyst-title {*/
+    /*font-size: 34px;*/
+    /*color: #616161;*/
+    /*display: block;*/
+    /*margin-top: 10px;*/
+/*}*/
+
+.analyst-page .home-page .info-word{
+    position: relative;
+}
+
+.analyst-page .info-word .info{
+    position: absolute;
+    font-size: 27px;
+    width: 200px;
+}
+
+.analyst-page .info-word .name{
+    top: -20px;
+    font-size: 35px;
+}
+
+.analyst-page .info-word .institution{
+    top: 30px;
+}
+
+.analyst-page .info-word .position{
+    top: 80px;
+}
+
+.analyst-page .info-word .career-time{
+    left: 200px;
+    top: -20px;
+}
+
+.analyst-page .info-word .research-num{
+    left: 200px;
+    top: 30px;
+}
+
+.analyst-page .info-word .honor{
+    left: 200px;
+    top: 80px;
 }
 
 .analyst-page .home-page .col1 {
@@ -173,8 +211,8 @@
 
 .analyst-page .home-page img.homepage-item-avatar-tofollow {
     position: absolute;
-    right: 50px;
-    top: 50px;
+    right: 30px;
+    top: 70px;
     z-index: 999;
 }
 
@@ -183,10 +221,10 @@
     margin-right: 20px;
 }
 
-.analyst-page .home-page span.analyst-title-name {
-    font-size: 39px;
-    margin-top: 10px;
-}
+/*.analyst-page .home-page span.analyst-title-name {*/
+    /*font-size: 39px;*/
+    /*margin-top: 10px;*/
+/*}*/
 
 .analyst-page .home-page canvas#analystChart {
     display: block;
@@ -243,4 +281,48 @@
 
 .analyst-page .home-page .info-div {
     display: inline-block;
+}
+
+.analyst-page .home-page .followed-stocks {
+    position: absolute;
+    height: 68px;
+    width: 720px;
+    top: 0;
+    font-size: 33px;
+    line-height: 68px;
+    text-indent: 30px;
+    border-bottom: 4px dotted #cccccc;
+}
+
+.analyst-page .radar-item {
+    position: absolute;
+}
+
+.analyst-page .radar-item span{
+    font-size: 25px;
+}
+
+.analyst-page .stability {
+    top: 100px;
+    left: 320px;
+}
+
+.analyst-page .speed {
+    top: 300px;
+    right: 30px;
+}
+
+.analyst-page .accuracy {
+    top: 600px;
+    right: 100px;
+}
+
+.analyst-page .overestimation {
+    top: 600px;
+    left: 140px;
+}
+
+.analyst-page .underestimation {
+    top: 300px;
+    left: 20px;
 }

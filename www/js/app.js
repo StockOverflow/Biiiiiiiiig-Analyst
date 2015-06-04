@@ -60,9 +60,11 @@ require(['./config'], function () {
 
             updateFollowedInfo: function () {
                 if (User.hasSignin) {
+                    window.FollowedAnalysts = [];
+                    window.FollowedStocks = [];
                     $.get('http://stock.whytouch.com/users/get_following_analyzers.php?u_id=' + User.phone, function (data) {
                         if (data.code == 200) {
-                            window.FollowedAnalysts = [];
+
                             var list = JSON.parse(data.following_analyzers);
                             _.each(list, function (item) {
                                 FollowedAnalysts.push(item.a_id);
@@ -72,7 +74,7 @@ require(['./config'], function () {
                     }, 'json');
                     $.get('http://stock.whytouch.com/users/get_following_stocks.php?u_id=' + User.phone, function (data) {
                         if (data.code == 200) {
-                            window.FollowedStocks = [];
+
                             var list = JSON.parse(data.following_stocks);
                             _.each(list, function (item) {
                                 FollowedStocks.push(item.s_id);
@@ -126,7 +128,7 @@ require(['./config'], function () {
                 }
             },
             hasFollowAnalyst: function (a_id) {
-                if (User.hasSignin) {
+                if (User.hasSignin && FollowedAnalysts) {
                     if (_.indexOf(FollowedAnalysts, a_id.toString()) != -1) {
                         return true;
                     }
@@ -135,7 +137,7 @@ require(['./config'], function () {
             }
         };
         User.loadUser();
-
+        User.updateFollowedInfo();
 
 
     });

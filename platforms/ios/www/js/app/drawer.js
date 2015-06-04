@@ -67,6 +67,7 @@ define(['text!html/drawer/index_drawer.html', 'text!html/drawer/css_drawer.html'
                 User.hasSignin = false;
                 User.name = '未登录';
                 User.phone = '';
+                User.saveUser();
                 this.back();
             }
             else {
