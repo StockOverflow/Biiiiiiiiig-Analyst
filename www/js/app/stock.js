@@ -20,6 +20,8 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
+                'click .nav-bar>.left-second': 'home',
+                'click .nav-bar>.nav-search': 'search',
                 'click .nav-bar>.right': 'search',
                 'click .stock-tounfollow': 'toFollow',
 
@@ -78,6 +80,11 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             back: function () {
                 Router.back();
+            },
+
+            home: function () {
+                Slider.direction = 'left';
+                Router.navigate('homepage', {trigger: true});
             },
 
             toFollow: function () {

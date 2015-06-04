@@ -20,6 +20,8 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
+                'click .nav-bar>.left-second': 'home',
+                'click .nav-bar>.nav-search': 'search',
                 'click .nav-bar>.right': 'search',
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
@@ -74,6 +76,11 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
             back: function () {
                 Router.back();
+            },
+
+            home: function () {
+                Slider.direction = 'left';
+                Router.navigate('homepage', {trigger: true});
             },
 
             toFollow: function () {
