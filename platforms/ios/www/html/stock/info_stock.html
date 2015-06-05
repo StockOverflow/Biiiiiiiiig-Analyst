@@ -1,16 +1,44 @@
 <div class="stock-page home-page info-div">
-    <div class="stock-page home-page line">
-        <span class="stock-page home-page stock-title">昨日收益：</span>
-        <span class="stock-page home-page stock-num green">{{yesterday_price}}</span>
-        <img class="stock-page home-page homepage-item-avatar-tofollow icon" src="img/updown{{up}}.png">
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">股票名称：</span>
+        <span class="stock-page home-page stock-num blue">{{name}}</span>
     </div>
-    <div class="stock-page home-page line">
-        <span class="stock-page home-page stock-title">期望价格：</span>
-        <span class="stock-page home-page stock-num red">{{expected_price}}</span>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">当前价格：</span>
+        <span class="stock-page home-page stock-num blue">{{price_now}}</span>
     </div>
-    <div class="stock-page home-page line">
-        <span class="stock-page home-page stock-title">当前研报数：</span>
-        <span class="stock-page home-page stock-num blue">{{num_of_researches}}</span>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">今日开盘价：</span>
+        <span class="stock-page home-page stock-num blue">{{open_price}}</span>
+    </div>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">昨日收盘价：</span>
+        <span class="stock-page home-page stock-num blue">{{close_price}}</span>
+    </div>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">今日最高价：</span>
+        <span class="stock-page home-page stock-num blue">{{max_price}}</span>
+    </div>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">今日最低价：</span>
+        <span class="stock-page home-page stock-num blue">{{min_price}}</span>
+    </div>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">成交股票数：</span>
+        <span class="stock-page home-page stock-num blue">{{stock_amount}}</span>
+    </div>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">成交金额：</span>
+        <span class="stock-page home-page stock-num blue">{{money}}</span>
+    </div>
+
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">日期：</span>
+        <span class="stock-page home-page stock-num blue">{{date}}</span>
+    </div>
+    <div class="stock-page home-page line" style="display: inline-block">
+        <span class="stock-page home-page stock-title">时间：</span>
+        <span class="stock-page home-page stock-num blue">{{time}}</span>
     </div>
 </div>
 <div class="stock-page home-page stock-tofollow">

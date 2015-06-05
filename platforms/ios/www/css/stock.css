@@ -192,17 +192,19 @@ div.stock-di-item > table > tbody > tr > td {
 }
 
 .stock-page .home-page div.line {
-    font-size: 29px;
-    margin: 5px 0;
+    font-size: 27px;
+    /*margin: 5px 0;*/
 }
 
 .stock-page .home-page span.stock-title {
-    width: 180px;
+    width: 170px;
 }
 
 .stock-page .home-page span.stock-title, span.stock-num {
     vertical-align: middle;
     display: inline-block;
+    width: 170px;
+    font-size: 27px!important;
 }
 
 .stock-page .home-page .green {
@@ -279,5 +281,5 @@ div.stock-di-item > table > tbody > tr > td {
 
 .stock-page .home-page .info-div {
     display: inline-block;
-    margin: 15px 0 0 40px;
+    margin: 8px 0 0 10px;
 }
