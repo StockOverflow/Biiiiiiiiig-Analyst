@@ -38,6 +38,7 @@ body {
 .nav-bar > .title {
     color: #FFFFFF;
     font-size: 45px;
+    padding-right: 90px;
 }
 
 .nav-icon {

@@ -14,7 +14,6 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             s_id: '1',
             el: index,
-            graph: false,
             events: {
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
@@ -36,6 +35,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 loadCSS(css);
 
                 setTimeout(this.getStockData(this.s_id, 30, true), 0);
+                setTimeout(this.getSinaData("601006"), 0);
                 setTimeout(this.getAnalystData(this.s_id), 1000);
                 setTimeout(this.getResearchData(this.s_id), 1000);
             },
@@ -105,20 +105,44 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                     + '&days=' + days + '&need_basic_info=' + need_basic_info;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                    ctx.renderStockInfo(data.basic_info);
+                    //ctx.renderStockInfo(data.basic_info);
                     ctx.renderStockChart(data.price);
                     ctx.renderTitle(s_id, data.basic_info);
                 }, 'json');
             },
 
+            getSinaData: function (s_id) {
+                var base_url = 'http://hq.sinajs.cn/list=sh' + s_id;
+                var ctx = this;
+                $.get(base_url, function (data) {
+                    ctx.renderStockInfo(data);
+                }, 'html');
+            },
+
             renderStockInfo: function (data) {
-                var basic_info = JSON.parse(data);
+                data = data.substr(data.indexOf('"') + 1,
+                    data.indexOf('"', data.indexOf('"') + 1) - data.indexOf('"') - 1);
+                var array = [];
+                var ptr = -1;
+                while (data.indexOf(',', ptr + 1) != -1) {
+                    array.push(data.substr(ptr + 1, data.indexOf(',', ptr + 1) - ptr - 1));
+                    ptr = data.indexOf(',', ptr + 1);
+                }
+                array.push(data.substr(ptr + 1, data.length - ptr - 1));
+                //alert(array);
+
                 var template = HandleBars.compile(info);
                 var injected = template({
-                        'yesterday_price': basic_info.yesterday_price,
-                        'up': basic_info.up,
-                        'expected_price': basic_info.expected_price,
-                        'num_of_researches': basic_info.num_of_researches
+                        'name': array[0],
+                        'price_now': array[3],
+                        'open_price': array[1],
+                        'close_price': array[2],
+                        'max_price': array[4],
+                        'min_price': array[5],
+                        'stock_amount': array[8],
+                        'money': array[9],
+                        'date': array[30],
+                        'time': array[31]
                     }
                 );
                 $('.homepage-item').append(injected);
@@ -224,14 +248,12 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var base_url = 'http://stock.whytouch.com/stockpages/get_researches_by_analyzer.php?s_id=' + s_id + "&a_id=" + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                    if (!ctx.graph) {
                         ctx.renderAnalystToStock(a_id, data.researches_by_analyzer);
-                        ctx.graph = true;
-                    }
                 }, 'json');
             },
 
             renderAnalystToStock: function (a_id, data) {
+
                 var researches = JSON.parse(data);
                 _.each(researches, function (item) {
                     var title = item.title, date = item.date;

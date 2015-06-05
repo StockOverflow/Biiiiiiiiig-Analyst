@@ -20,6 +20,8 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .di-tab': 'tabTwo',
                 'click .ci-tab': 'tabThree',
                 'click .nav-bar>.left': 'back',
+                'click .nav-bar>.left-second': 'home',
+                'click .nav-bar>.nav-search': 'search',
                 'click .nav-bar>.right': 'search',
                 'click .stock-tounfollow': 'toFollow',
 
@@ -34,6 +36,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 loadCSS(css);
 
                 setTimeout(this.getStockData(this.s_id, 30, true), 0);
+                setTimeout(this.getSinaData("601006"), 0);
                 setTimeout(this.getAnalystData(this.s_id), 1000);
                 setTimeout(this.getResearchData(this.s_id), 1000);
             },
@@ -80,6 +83,11 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 Router.back();
             },
 
+            home: function () {
+                Slider.direction = 'left';
+                Router.navigate('homepage', {trigger: true});
+            },
+
             toFollow: function () {
                 if (User.hasSignin) {
                     if (User.hasFollowStock(this.s_id)) {
@@ -98,20 +106,44 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                     + '&days=' + days + '&need_basic_info=' + need_basic_info;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                    ctx.renderStockInfo(data.basic_info);
+                    //ctx.renderStockInfo(data.basic_info);
                     ctx.renderStockChart(data.price);
                     ctx.renderTitle(s_id, data.basic_info);
                 }, 'json');
             },
 
+            getSinaData: function (s_id) {
+                var base_url = 'http://hq.sinajs.cn/list=sh' + s_id;
+                var ctx = this;
+                $.get(base_url, function (data) {
+                    ctx.renderStockInfo(data);
+                }, 'html');
+            },
+
             renderStockInfo: function (data) {
-                var basic_info = JSON.parse(data);
+                data = data.substr(data.indexOf('"') + 1,
+                    data.indexOf('"', data.indexOf('"') + 1) - data.indexOf('"') - 1);
+                var array = [];
+                var ptr = -1;
+                while (data.indexOf(',', ptr + 1) != -1) {
+                    array.push(data.substr(ptr + 1, data.indexOf(',', ptr + 1) - ptr - 1));
+                    ptr = data.indexOf(',', ptr + 1);
+                }
+                array.push(data.substr(ptr + 1, data.length - ptr - 1));
+                //alert(array);
+
                 var template = HandleBars.compile(info);
                 var injected = template({
-                        'yesterday_price': basic_info.yesterday_price,
-                        'up': basic_info.up,
-                        'expected_price': basic_info.expected_price,
-                        'num_of_researches': basic_info.num_of_researches
+                        'name': array[0],
+                        'price_now': array[3],
+                        'open_price': array[1],
+                        'close_price': array[2],
+                        'max_price': array[4],
+                        'min_price': array[5],
+                        'stock_amount': array[8],
+                        'money': array[9],
+                        'date': array[30],
+                        'time': array[31]
                     }
                 );
                 $('.homepage-item').append(injected);

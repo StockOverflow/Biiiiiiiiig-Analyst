@@ -4,15 +4,17 @@
 
 define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html',
         'text!html/homepage/css_homepage.html', 'app/model/AnalystRankingModel',
-        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html','app/chartwrapper'],
-    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal,chartwrapper) {
+        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html', 'app/chartwrapper'],
+    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal, chartwrapper) {
 
         var AnalystView = Backbone.View.extend({
 
             model: new AnalystRankingModel(),
             template: HandleBars.compile(analyst),
 
-            events: {'click .homepage-item': 'enter_analyst'},
+            events: {
+                'click .homepage-item': 'enter_analyst'
+            },
 
             initialize: function () {
                 this.listenTo(this.model, 'change', this.render);
@@ -39,6 +41,9 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 'click .nav-bar .left': 'drawer',
                 'click .search-text': 'search',
                 'click #homepage-search-rank': 'showModal',
+                'click .rt-tab': 'tabOne',
+                'click .di-tab': 'tabTwo',
+                'click .ci-tab': 'tabThree',
                 'click .rank-by-stability': function () {
                     this.rankBy('stability');
                 },
@@ -62,15 +67,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             initialize: function () {
                 this.render('accuracy');
                 loadCSS(css);
-//                $('.title').ontouchmove = function(e){
-//                    if(e.touches.length == 1){ // Only deal with one finger
-//                        var touch = e.touches[0]; // Get the information for finger #1
-//                        var node = touch.target; // Find the node the drag started from
-//                        node.style.position = "absolute";
-//                        node.style.left = touch.pageX + "px";
-//                        node.style.top = touch.pageY + "px";
-//                    }
-//                }
+
             },
 
             render: function (type) {
@@ -148,6 +145,40 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 this.$('.rank-modal').fadeTo(100, 0, function () {
                     $('.rank-modal').css('display', 'none');
                 });
+            },
+
+            tabOne: function () {
+                this.hideAllTab(2, 3);
+                $('.rt-div').css('display', 'block');
+                $('.rt-tab').children('img').attr('src', "img/integration%20click.png");
+            },
+
+            tabTwo: function () {
+                this.hideAllTab(1, 3);
+                $('.di-div').css('display', 'block');
+                $('.di-tab').children('img').attr('src', "img/Documents%20%20click.png");
+            },
+
+            tabThree: function () {
+                this.hideAllTab(1, 2);
+                $('.ci-div').css('display', 'block');
+                $('.ci-tab').children('img').attr('src', "img/Comments.png");
+
+            },
+
+            hideAllTab: function (a, b) {
+                if (5 != a + b) {
+                    $('.rt-div').css('display', 'none');
+                    $('.rt-tab').children('img').attr('src', "img/integration.png");
+                }
+                if (4 != a + b) {
+                    $('.di-div').css('display', 'none');
+                    $('.di-tab').children('img').attr('src', "img/Documents.png");
+                }
+                if (3 != a + b) {
+                    $('.ci-div').css('display', 'none');
+                    $('.ci-tab').children('img').attr('src', "img/Comments-normal.png");
+                }
             }
 
 
