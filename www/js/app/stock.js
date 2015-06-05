@@ -34,7 +34,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 this.$('.content').append(tab1).append(tab2).append(tab3);
                 loadCSS(css);
 
-                setTimeout(this.getStockData(this.s_id, 30, true), 0);
+                setTimeout(this.getStockData(this.s_id, 20, true), 0);
                 setTimeout(this.getSinaData("601006"), 0);
                 setTimeout(this.getAnalystData(this.s_id), 1000);
                 setTimeout(this.getResearchData(this.s_id), 1000);
