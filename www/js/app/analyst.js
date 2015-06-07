@@ -191,6 +191,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
                 function toPercentage(num) {
                     var result = num.toString().substr(num.toString().indexOf('.') + 1, 2) + '%';
+                    if (result.charAt(0) == '0' && result.charAt(1) != '%') {
+                        result = result.substr(1);
+                    }
                     if (num < 0){
                         return '-' + result;
                     }
@@ -322,7 +325,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             scrollEnd: function (ev) {
                 ev.stopPropagation();
                 var touch = ev.originalEvent.changedTouches[0];
-                console.log(ev);
+                //console.log(ev);
                 //click not available, use scrollEnd
                 if (touch.screenX == this.startX && touch.screenY == this.startY) {
                     console.log(touch.screenY);
