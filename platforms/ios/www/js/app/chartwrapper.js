@@ -30,7 +30,7 @@ stocklinechart = function (rawdata) {
         // Boolean - Whether to animate the chart
         animation: true,
 
-        scaleBeginAtZero: true,
+        scaleBeginAtZero: false,
 
         ///Boolean - Whether grid lines are shown across the chart
         scaleShowGridLines: true,
@@ -76,6 +76,7 @@ stocklinechart = function (rawdata) {
 
         //String - A legend template
         legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+        //legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 
     };
 
@@ -91,7 +92,8 @@ analystRadarChart = function (rawdata) {
     var data_data = [rawdata.stability * 100, rawdata.speed * 100, rawdata.accuracy * 100,
         rawdata.overestimation * 100, rawdata.underestimation * 100];
     var data = {
-        labels: ["稳定性", "速度", "准确度", "高估程度", "低估程度"],
+        //labels: ["稳定性", "速度", "准确度", "高估程度", "低估程度"],
+        labels: ["", "", "", "", ""],
         datasets: [
             {
                 label: "分析师数据",

@@ -5,10 +5,9 @@
 define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.html',
         'text!html/analyst/tab1_analyst.html', 'text!html/analyst/tab2_analyst.html',
         'text!html/analyst/tab3_analyst.html', 'text!html/analyst/info_analyst.html',
-        'app/chartwrapper',
-        'text!html/analyst/analyst_stock_item.html', 'text!html/analyst/analyst_research_item.html'
-        , 'text!html/analyst/analyst_to_stock.html'],
-    function (index, css, tab1, tab2, tab3, info, chartwrapper, analyst_item, research_item, analyst_to_stock_item) {
+        'app/chartwrapper', 'text!html/analyst/analyst_stock_item.html', 'text!html/analyst/analyst_research_item.html',
+        'text!html/analyst/analyst_to_stock.html', 'text!html/analyst/radar_item_analyst.html'],
+    function (index, css, tab1, tab2, tab3, info, chartwrapper, analyst_item, research_item, analyst_to_stock_item, radar_item) {
 
 
         var AnalystView = Backbone.View.extend({
@@ -27,7 +26,8 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
                 'touchmove .scroll': 'scroll',
-                'click .analyst-tofollow': 'toFollow'
+                'click .analyst-tofollow': 'toFollow',
+                'click .followed-stocks': 'tabTwo'
             },
 
             initialize: function (a_id) {
@@ -37,7 +37,6 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 setTimeout(this.getAnalystData(this.a_id), 0);
                 setTimeout(this.getAnalystStockData(this.a_id), 1000);
                 setTimeout(this.getResearchData(this.a_id), 1000);
-
             },
 
             tabOne: function () {
@@ -104,8 +103,13 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
                     ctx.renderAnalystChart(data.attribute);
-
+                    ctx.renderFollowedStock();
                 }, 'json');
+            },
+
+            renderFollowedStock: function () {
+                //TODO: display real data
+                $('.followed-stocks').html("近期关注个股：平安银行，招商银行...");
             },
 
             renderAnalystInfo: function (data) {
@@ -132,10 +136,27 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
             },
 
             renderAnalystChart: function (data) {
+                //chart
                 var attribute = JSON.parse(data);
                 var wrapped = analystRadarChart(attribute);
                 var ctx = $("#analystChart").get(0).getContext("2d");
                 new Chart(ctx).Radar(wrapped[0], wrapped[1]);
+
+
+                //five attributes
+                var template = HandleBars.compile(radar_item);
+                var parent_div = $('.rt-div');
+                //TODO: display real data
+                var stability = template({class: 'stability', attribute: '稳定性', attribute_value: 100, rank_value: 233});
+                var speed = template({class: 'speed', attribute: '速度', attribute_value: 100, rank_value: 233});
+                var accuracy = template({class: 'accuracy', attribute: '准确性', attribute_value: 100, rank_value: 233});;
+                var overestimation = template({class: 'overestimation', attribute: '高估程度', attribute_value: 100, rank_value: 233});;
+                var underestimation = template({class: 'underestimation', attribute: '低估程度', attribute_value: 100, rank_value: 233});;
+                parent_div.append(stability);
+                parent_div.append(speed);
+                parent_div.append(accuracy);
+                parent_div.append(overestimation);
+                parent_div.append(underestimation);
             },
 
             getAnalystStockData: function (a_id) {
