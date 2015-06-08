@@ -35,7 +35,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 loadCSS(css);
 
                 setTimeout(this.getStockData(this.s_id, 20, true), 0);
-                setTimeout(this.getSinaData("601006"), 0);
+                setTimeout(this.getSinaData(this.s_id), 0);
                 setTimeout(this.getAnalystData(this.s_id), 1000);
                 setTimeout(this.getResearchData(this.s_id), 1000);
             },
@@ -106,13 +106,15 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var ctx = this;
                 $.get(base_url, function (data) {
                     //ctx.renderStockInfo(data.basic_info);
-                    ctx.renderStockChart(data.price);
+                    //ctx.renderStockChart(data.price);
                     ctx.renderTitle(s_id, data.basic_info);
+                    ctx.renderStockChart();
                 }, 'json');
+
             },
 
             getSinaData: function (s_id) {
-                var base_url = 'http://hq.sinajs.cn/list=sh' + s_id;
+                var base_url = (s_id.indexOf("6") == 0) ? 'http://hq.sinajs.cn/list=sh' + s_id : 'http://hq.sinajs.cn/list=sz' + s_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderStockInfo(data);
@@ -160,11 +162,18 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             },
 
             renderStockChart: function (data) {
-                var price = JSON.parse(data);
-                var wrapped = stocklinechart(price);
+                /*var price = JSON.parse(data);
+                 var wrapped = stocklinechart(price);
 
-                var ctx = $("#stockChart").get(0).getContext("2d");
-                new Chart(ctx).Line(wrapped[0], wrapped[1]);
+                 var ctx = $("#stockChart").get(0).getContext("2d");
+                 new Chart(ctx).Line(wrapped[0], wrapped[1]);*/
+                if (this.s_id.indexOf("6") == 0) {
+
+                    $("#stockChart").attr("src", "http://image.sinajs.cn/newchart/daily/n/sh" + this.s_id + ".gif");
+                } else {
+                    $("#stockChart").attr("src", "http://image.sinajs.cn/newchart/daily/n/sz" + this.s_id + ".gif");
+
+                }
             },
 
             renderTitle: function (s_id, data) {
@@ -248,7 +257,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var base_url = 'http://stock.whytouch.com/stockpages/get_researches_by_analyzer.php?s_id=' + s_id + "&a_id=" + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                        ctx.renderAnalystToStock(a_id, data.researches_by_analyzer);
+                    ctx.renderAnalystToStock(a_id, data.researches_by_analyzer);
                 }, 'json');
             },
 
@@ -287,20 +296,35 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
             leftX: 0,
             topY: 0,
 
+            //0 for horizontal, 1 for vertical, -1 for unset
+            direction: -1,
+
             scrollEnd: function (ev) {
                 ev.stopPropagation();
+                this.direction = -1;
             },
 
             scroll: function (ev) {
+
                 var x_change = this.startX - ev.originalEvent.touches[0].screenX;
                 var y_change = this.startY - ev.originalEvent.touches[0].screenY;
+                if (this.direction == -1) {
+                    if (x_change > y_change * 2) {
+                        this.direction = 0;
+                    } else {
+                        this.direction = 1;
+                    }
+                }
                 var ctx = this;
                 var objs = ctx.$('.scroll');
-                _.each(objs, function (obj) {
-                    $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
-                });
-                console.log(y_change / screenRatio + ctx.topY);
-                $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
+                if (this.direction == 0) {
+                    _.each(objs, function (obj) {
+                        $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
+                    });
+                }
+                if (this.direction == 1) {
+                    $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
+                }
             }
 
         });
