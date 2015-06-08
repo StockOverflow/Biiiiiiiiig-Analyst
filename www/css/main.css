@@ -38,7 +38,6 @@ body {
 .nav-bar > .title {
     color: #FFFFFF;
     font-size: 45px;
-    padding-right: 90px;
 }
 
 .nav-icon {
@@ -61,7 +60,8 @@ body {
     float: left;
     font-size: 27px;
     color: #efefef;
-    padding-left: 30px;
+    padding-left: 10px;
+    padding-right: 30px;
 }
 
 .nav-search::after {
@@ -70,8 +70,8 @@ body {
     background: #efefef;
     position: absolute;
     top: 70px;
-    left: 200px;
-    right: 80px;
+    left: 180px;
+    right: 100px;
 }
 
 .left {

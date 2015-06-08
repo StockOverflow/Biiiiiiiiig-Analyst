@@ -14,7 +14,6 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             s_id: '1',
             el: index,
-            graph: false,
             events: {
                 'click .rt-tab': 'tabOne',
                 'click .di-tab': 'tabTwo',
@@ -35,7 +34,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 this.$('.content').append(tab1).append(tab2).append(tab3);
                 loadCSS(css);
 
-                setTimeout(this.getStockData(this.s_id, 30, true), 0);
+                setTimeout(this.getStockData(this.s_id, 20, true), 0);
                 setTimeout(this.getSinaData("601006"), 0);
                 setTimeout(this.getAnalystData(this.s_id), 1000);
                 setTimeout(this.getResearchData(this.s_id), 1000);
@@ -249,14 +248,12 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var base_url = 'http://stock.whytouch.com/stockpages/get_researches_by_analyzer.php?s_id=' + s_id + "&a_id=" + a_id;
                 var ctx = this;
                 $.get(base_url, function (data) {
-                    if (!ctx.graph) {
                         ctx.renderAnalystToStock(a_id, data.researches_by_analyzer);
-                        ctx.graph = true;
-                    }
                 }, 'json');
             },
 
             renderAnalystToStock: function (a_id, data) {
+
                 var researches = JSON.parse(data);
                 _.each(researches, function (item) {
                     var title = item.title, date = item.date;
