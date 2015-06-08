@@ -7,8 +7,9 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
         'text!html/stock/tab3_stock.html', 'text!html/stock/info_stock.html',
         'app/chartwrapper',
         'text!html/stock/stock_analyst_item.html', 'text!html/stock/stock_research_item.html'
-        , 'text!html/stock/anlayst_to_stock.html'],
-    function (index, css, tab1, tab2, tab3, info, chartwrapper, analyst_item, research_item, analyst_to_stock_item) {
+        , 'text!html/stock/anlayst_to_stock.html',
+        'text!html/analyst/stock_image.html'],
+    function (index, css, tab1, tab2, tab3, info, chartwrapper, analyst_item, research_item, analyst_to_stock_item, stock_image) {
 
         var StockView = Backbone.View.extend({
 
@@ -23,6 +24,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 'click .nav-bar>.nav-search': 'search',
                 'click .nav-bar>.right': 'search',
                 'click .stock-tounfollow': 'toFollow',
+                'click .stock-image-shadow': 'hide_stock_image',
 
                 'touchstart .scroll': 'scrollStart',
                 'touchend .scroll': 'scrollEnd',
@@ -186,12 +188,14 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var ctx = this;
                 $.get(base_url, function (data) {
                     ctx.renderAnalysts(data.analysis);
+                    ctx.analyst_data = data.analysis;
                 }, 'json');
             },
 
             renderAnalysts: function (data) {
                 var analysts = JSON.parse(data);
                 var ctx = this;
+                $('.di-div .QAQ').html('');
                 _.each(analysts, function (item) {
                     var template = HandleBars.compile(analyst_item);
                     var injected = template({
@@ -253,6 +257,8 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 });
             },
 
+            analyst_data: undefined,
+
             getAnalystToStockData: function (s_id, a_id) {
                 var base_url = 'http://stock.whytouch.com/stockpages/get_researches_by_analyzer.php?s_id=' + s_id + "&a_id=" + a_id;
                 var ctx = this;
@@ -281,6 +287,14 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 Router.navigate('search', {trigger: true});
             },
 
+            stock_image: function () {
+                $('.inner-wrapper').append(stock_image);
+            },
+
+            hide_stock_image: function () {
+                $('.stock-image-div').remove();
+            },
+
             scrollStart: function (ev) {
                 ev.stopPropagation();
                 ev.preventDefault();
@@ -301,6 +315,18 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             scrollEnd: function (ev) {
                 ev.stopPropagation();
+                var touch = ev.originalEvent.changedTouches[0];
+                //console.log(ev);
+                //click not available, use scrollEnd
+                if (touch.screenX == this.startX && touch.screenY == this.startY) {
+                    console.log(touch.screenY);
+                    if (touch.screenY < 375) {
+                        this.sort_stocks(ev.target.innerText);
+                    }
+                    else {
+                        this.stock_image();
+                    }
+                }
                 this.direction = -1;
             },
 
@@ -325,7 +351,80 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 if (this.direction == 1) {
                     $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
                 }
-            }
+            },
+
+            sort_stocks: function () {
+                var sortFromLargeToSmall = false;
+                return function (attribute) {
+                    console.log('sort: ' + attribute);
+                    var array = JSON.parse(this.analyst_data);
+                    if (this.analyst_data) {
+                        sortFromLargeToSmall = !sortFromLargeToSmall;
+                        if (attribute == 'stability' || attribute == '稳定性') {
+                            array.sort(function (a, b) {
+                                if (a.stability < b.stability == sortFromLargeToSmall) {
+                                    return 1;
+                                }
+                                return -1;
+                            });
+                        }
+                        if (attribute == 'speed' || attribute == '速度') {
+                            array.sort(function (a, b) {
+                                if (a.speed < b.speed == sortFromLargeToSmall) {
+                                    return 1;
+                                }
+                                return -1;
+                            });
+                        }
+                        if (attribute == 'accuracy' || attribute == '准确性') {
+                            array.sort(function (a, b) {
+                                if (a.accuracy < b.accuracy == sortFromLargeToSmall) {
+                                    return 1;
+                                }
+                                return -1;
+                            });
+                        }
+                        if (attribute == 'average_drift_rate' || attribute == '偏移度') {
+                            array.sort(function (a, b) {
+                                if (a.drift_rate < b.drift_rate == sortFromLargeToSmall) {
+                                    return 1;
+                                }
+                                return -1;
+                            });
+                        }
+
+                        if (attribute == 'researchCount' || attribute == '研报数') {
+                            //array.sort(function (a, b) {
+                            //    if (a.drift_rate < b.drift_rate == sortFromLargeToSmall){
+                            //        return 1;
+                            //    }
+                            //    return -1;
+                            //});
+                        }
+
+                        if (attribute == '...' || attribute == '目标价') {
+                            array.sort(function (a, b) {
+                                if (a.target_price < b.target_price == sortFromLargeToSmall) {
+                                    return 1;
+                                }
+                                return -1;
+                            });
+                        }
+                        if (attribute == '...' || attribute == '收益率') {
+                            array.sort(function (a, b) {
+                                if (a.yield_rate < b.yield_rate == sortFromLargeToSmall) {
+                                    return 1;
+                                }
+                                return -1;
+                            });
+                        }
+                        //console.log(array);
+                        //console.log(this.analyst_data);
+                        this.analyst_data = JSON.stringify(array);
+                        this.renderAnalysts(this.analyst_data);
+                    }
+                }
+            }()
 
         });
 

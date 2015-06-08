@@ -201,7 +201,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 }
             },
 
-            stock_data: undefined,
+            analyst_data: undefined,
 
             getAnalystStockData: function (a_id) {
                 var base_url = 'http://stock.whytouch.com/analyzerpages/get_analyzer_stock.php?a_id=' + a_id;
