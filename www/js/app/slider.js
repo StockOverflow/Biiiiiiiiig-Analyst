@@ -49,7 +49,8 @@ define(function () {
         slide: function (el) {
             //$('.page_center').html(el);
             //return
-            //Todo: Fix CSS problem of (position: fixed);
+            window.previousPage2 = window.previousPage1;//used for return homepage when hit back to search page
+            window.previousPage1 = location.hash;//It's a VERY BAD method!
 
             this.body = $('body');
             if (this.direction == 'left') {

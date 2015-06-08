@@ -105,7 +105,9 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
                         if (ctx.receiveCount == thisCount && data.code == 200){
                             var analystModel = $.extend({'a_id': a_id}, JSON.parse(data.basic_info));
                             var analystView = new AnalystView({model: analystModel});
-                            $('.content').append(analystView.el);
+                            if (location.hash.indexOf('#search') != -1) {
+                                $('.content').append(analystView.el);
+                            }
                         }
                     }, 'json');
             },
@@ -117,7 +119,9 @@ define(['text!html/search/index_search.html', 'text!html/search/css_search.html'
 //                            $('.content').append(ctx.stock_template(JSON.parse(data.basic_info)));
                             var stockModel = $.extend({'s_id': s_id}, JSON.parse(data.basic_info));
                             var stockView = new StockView({model: stockModel});
-                            $('.content').append(stockView.el);
+                            if (location.hash.indexOf('#search') != -1) {
+                                $('.content').append(stockView.el);
+                            }
                         }
                     }, 'json');
             },
