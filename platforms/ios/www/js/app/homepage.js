@@ -67,8 +67,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
             initialize: function () {
                 loadCSS(css);
                 this.render('accuracy');
-
-
+                this.getStockData();
             },
 
             render: function (type) {
@@ -90,7 +89,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
                     ctx.analysts.each(ctx.show, ctx);
                 }, 'json');
-                this.getStockData();
+
             },
 
             show: function (model) {
@@ -191,7 +190,9 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                         console.log(item);
                         var sina_base_url = (item.s_id.indexOf("6") == 0) ? 'http://hq.sinajs.cn/list=sh' + item.s_id : 'http://hq.sinajs.cn/list=sz' + item.s_id;
                         $.get(sina_base_url, function (data) {
-                            ctx.renderStockData(data, item.s_id);
+                            setTimeout(function () {
+                                ctx.renderStockData(data, item.s_id)
+                            }, 0);
                         }, 'html');
                     })
                 }, 'json');
