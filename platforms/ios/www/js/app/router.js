@@ -29,7 +29,13 @@ define(function () {
 
         back: function () {
             Slider.direction = 'left';
-            history.back();
+            console.log(previousPage2);
+            if (previousPage2.indexOf('#search') != -1) {
+                Router.navigate('homepage', {trigger:true});
+            }
+            else {
+                history.back();
+            }
         },
 
         homepageRoute: function () {

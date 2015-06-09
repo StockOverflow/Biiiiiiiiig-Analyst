@@ -194,14 +194,14 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                     if (result.charAt(0) == '0' && result.charAt(1) != '%') {
                         result = result.substr(1);
                     }
-                    if (num < 0){
+                    if (num < 0) {
                         return '-' + result;
                     }
                     return result;
                 }
             },
 
-            stock_data: undefined,
+            analyst_data: undefined,
 
             getAnalystStockData: function (a_id) {
                 var base_url = 'http://stock.whytouch.com/analyzerpages/get_analyzer_stock.php?a_id=' + a_id;
@@ -321,6 +321,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
             leftX: 0,
             topY: 0,
+            //0 for horizontal, 1 for vertical, -1 for unset
+            direction: -1,
+
 
             scrollEnd: function (ev) {
                 ev.stopPropagation();
@@ -336,17 +339,31 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         this.stock_image();
                     }
                 }
+                this.direction = -1;
             },
 
             scroll: function (ev) {
                 var x_change = this.startX - ev.originalEvent.touches[0].screenX;
                 var y_change = this.startY - ev.originalEvent.touches[0].screenY;
+                if (this.direction == -1) {
+                    if (x_change > y_change) {
+                        this.direction = 0;
+                    } else {
+                        this.direction = 1;
+                    }
+                }
                 var ctx = this;
                 var objs = ctx.$('.scroll');
-                _.each(objs, function (obj) {
-                    $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
-                });
-                $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
+                if (this.direction == 0) {
+                    _.each(objs, function (obj) {
+                        $(obj).scrollLeft(x_change / screenRatio + ctx.leftX);
+                    });
+                }
+                if (this.direction == 1) {
+                    $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
+                }
+
+
             },
 
             stock_image: function () {
@@ -366,7 +383,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         sortFromLargeToSmall = !sortFromLargeToSmall;
                         if (attribute == 'stability' || attribute == '稳定性') {
                             array.sort(function (a, b) {
-                                if (a.stability < b.stability == sortFromLargeToSmall){
+                                if (a.stability < b.stability == sortFromLargeToSmall) {
                                     return 1;
                                 }
                                 return -1;
@@ -374,7 +391,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         }
                         if (attribute == 'speed' || attribute == '速度') {
                             array.sort(function (a, b) {
-                                if (a.speed < b.speed == sortFromLargeToSmall){
+                                if (a.speed < b.speed == sortFromLargeToSmall) {
                                     return 1;
                                 }
                                 return -1;
@@ -382,7 +399,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         }
                         if (attribute == 'accuracy' || attribute == '准确性') {
                             array.sort(function (a, b) {
-                                if (a.accuracy < b.accuracy == sortFromLargeToSmall){
+                                if (a.accuracy < b.accuracy == sortFromLargeToSmall) {
                                     return 1;
                                 }
                                 return -1;
@@ -390,7 +407,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         }
                         if (attribute == 'average_drift_rate' || attribute == '偏移度') {
                             array.sort(function (a, b) {
-                                if (a.drift_rate < b.drift_rate == sortFromLargeToSmall){
+                                if (a.drift_rate < b.drift_rate == sortFromLargeToSmall) {
                                     return 1;
                                 }
                                 return -1;
@@ -408,7 +425,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
 
                         if (attribute == '...' || attribute == '目标价') {
                             array.sort(function (a, b) {
-                                if (a.target_price < b.target_price == sortFromLargeToSmall){
+                                if (a.target_price < b.target_price == sortFromLargeToSmall) {
                                     return 1;
                                 }
                                 return -1;
@@ -416,7 +433,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                         }
                         if (attribute == '...' || attribute == '收益率') {
                             array.sort(function (a, b) {
-                                if (a.yield_rate < b.yield_rate == sortFromLargeToSmall){
+                                if (a.yield_rate < b.yield_rate == sortFromLargeToSmall) {
                                     return 1;
                                 }
                                 return -1;

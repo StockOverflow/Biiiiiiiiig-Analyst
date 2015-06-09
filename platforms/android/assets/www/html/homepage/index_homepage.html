@@ -33,41 +33,16 @@
         </div>
 
         <div class="home-page di-div" style="display: none">
-            <div class="followed-stock followed-item unselected" style="background: rgb(237, 237, 237); height: 60px">
-                <table style="height: 60px">
-                    <tr>
-                        <td class="followed-stock col1">
-                            <span class="followed-stock name">股票名</span>
-                        </td>
-                        <td class="followed-stock col2">
-                            <span class="followed-stock price">股票价格</span>
-                        </td>
-                        <td class="followed-stock col3">
-                            <span class="followed-stock expected_price">期望价格</span>
-                        </td>
-                        <td class="followed-stock col4">
-                            <span class="followed-stock researchNumber">研报数量</span>
-                        </td>
-                    </tr>
-                </table>
+            <div class="home-page title-bar">
+                <span class="home-page title">今日排行</span>
             </div>
-            <div class="followed-stock followed-item unselected">
-                <table>
-                    <tr>
-                        <td class="followed-stock col1">
-                            <span class="followed-stock name">{{s_name}}</span>
-                        </td>
-                        <td class="followed-stock col2">
-                            <span class="followed-stock price">{{price}}</span>
-                        </td>
-                        <td class="followed-stock col3">
-                            <span class="followed-stock expected_price">{{expected_price}}</span>
-                        </td>
-                        <td class="followed-stock col4">
-                            <span class="followed-stock researchNumber">{{researchNumber}}</span>
-                        </td>
-                    </tr>
-                </table>
+            <div class="home-page homepage-items" style="
+               overflow-y: scroll;
+               overflow-x: hidden;
+             position: absolute;
+                bottom: 0;
+                top: 79px;">
+
             </div>
         </div>
 

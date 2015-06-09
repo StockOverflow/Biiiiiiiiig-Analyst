@@ -91,8 +91,12 @@ stocklinechart = function (rawdata) {
 analystRadarChart = function (rawdata) {
     console.log(rawdata);
 
-    var data_data = [rawdata.stability * 100, rawdata.speed * 100, rawdata.accuracy * 100,
-        (rawdata.average_drift_rate + 1) * 50, Math.min(100, rawdata.researchCount)];
+    //var data_data = [rawdata.stability * 100, rawdata.speed * 100, rawdata.accuracy * 100,
+    //    (rawdata.average_drift_rate + 1) * 50, Math.min(100, rawdata.researchCount)];
+    var num = 2077;
+    var data_data = [100 - rawdata.stability_rank * 100 / num, 100 - rawdata.speed_rank * 100 / num, 100 - rawdata.accuracy_rank * 100 / num,
+        100 - rawdata.average_drift_rate_rank *100 / num, 100 - rawdata.researchCount_rank * 100 / num];
+
     var data = {
         //labels: ["稳定性", "速度", "准确度", "高估程度", "低估程度"],
         labels: ["", "", "", "", ""],

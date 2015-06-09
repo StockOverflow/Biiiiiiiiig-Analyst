@@ -231,3 +231,9 @@
 .col{
     font-size: 0;
 }
+
+.info-div{
+    border-bottom: 4px dotted #cccccc;
+    padding-left: 15px;
+    overflow-x: hidden;
+}

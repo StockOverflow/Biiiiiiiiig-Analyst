@@ -4,8 +4,8 @@
 
 define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html',
         'text!html/homepage/css_homepage.html', 'app/model/AnalystRankingModel',
-        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html', 'app/chartwrapper'],
-    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal, chartwrapper) {
+        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html', 'app/chartwrapper', 'text!html/homepage/info_stock.html'],
+    function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal, chartwrapper, StockItem) {
 
         var AnalystView = Backbone.View.extend({
 
@@ -65,8 +65,9 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
 
             initialize: function () {
-                this.render('accuracy');
                 loadCSS(css);
+                this.render('accuracy');
+
 
             },
 
@@ -89,11 +90,12 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
 
                     ctx.analysts.each(ctx.show, ctx);
                 }, 'json');
+                this.getStockData();
             },
 
             show: function (model) {
                 var view = new AnalystView({model: model});
-                this.$('.homepage-items').append(view.el);
+                this.$('.rt-div>.homepage-items').append(view.el);
             },
 
 
@@ -179,6 +181,52 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                     $('.ci-div').css('display', 'none');
                     $('.ci-tab').children('img').attr('src', "img/Comments-normal.png");
                 }
+            },
+
+            getStockData: function () {
+                var stock_list_base_url = "http://stock.whytouch.com/get_hot_stocks.php";
+                var ctx = this;
+                $.get(stock_list_base_url, function (data) {
+                    _.each(data.data, function (item) {
+                        console.log(item);
+                        var sina_base_url = (item.s_id.indexOf("6") == 0) ? 'http://hq.sinajs.cn/list=sh' + item.s_id : 'http://hq.sinajs.cn/list=sz' + item.s_id;
+                        $.get(sina_base_url, function (data) {
+                            ctx.renderStockData(data, item.s_id);
+                        }, 'html');
+                    })
+                }, 'json');
+            },
+
+            renderStockData: function (data, s_id) {
+                data = data.substr(data.indexOf('"') + 1,
+                    data.indexOf('"', data.indexOf('"') + 1) - data.indexOf('"') - 1);
+                var array = [];
+                var ptr = -1;
+                while (data.indexOf(',', ptr + 1) != -1) {
+                    array.push(data.substr(ptr + 1, data.indexOf(',', ptr + 1) - ptr - 1));
+                    ptr = data.indexOf(',', ptr + 1);
+                }
+                array.push(data.substr(ptr + 1, data.length - ptr - 1));
+
+                var template = HandleBars.compile(StockItem);
+                var injected = template({
+                        'name': array[0],
+                        'price_now': array[3],
+                        'open_price': array[1],
+                        'close_price': array[2],
+                        'max_price': array[4],
+                        'min_price': array[5],
+                        'stock_amount': array[8],
+                        'money': array[9],
+                        'date': array[30],
+                        'time': array[31],
+                        's_id': s_id
+                    }
+                );
+                $('.di-div>.homepage-items').append(injected);
+                $(".s_id" + s_id).click(function () {
+                    Router.navigate('stock/' + s_id, {trigger: true});
+                });
             }
 
 
