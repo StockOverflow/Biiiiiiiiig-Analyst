@@ -9,7 +9,7 @@
 
 .stock-page .home-page .col2 {
     width: 120px;
-    position: relative;
+    /*position: relative;*/
 }
 
 .stock-page .home-page .col2 > .stock-di-time {
@@ -179,11 +179,12 @@ div.stock-di-item > table > tbody > tr > td {
 }
 
 .stock-page .home-page div.stock-di-time {
-    position: absolute;
-    bottom: 20px;
-    text-align: center;
-    width: 100%;
+    /*position: absolute;*/
+    /*bottom: 20px;*/
+    /*text-align: center;*/
+    /*width: 100%;*/
     color: rgb(181, 181, 181);
+    margin-top: -40px;
 }
 
 .stock-page .home-page div.homepage-item-detail {
@@ -203,8 +204,9 @@ div.stock-di-item > table > tbody > tr > td {
 .stock-page .home-page span.stock-title, span.stock-num {
     vertical-align: middle;
     display: inline-block;
-    width: 170px;
-    font-size: 27px!important;
+    width: 150px;
+    font-size: 29px !important;
+    margin-bottom: 5px;
 }
 
 .stock-page .home-page .green {
@@ -274,12 +276,11 @@ div.stock-di-item > table > tbody > tr > td {
     vertical-align: top;
 }
 
-.stock-page .home-page .stock-ci-stock-item div.col7{
+.stock-page .home-page .stock-ci-stock-item div.col7 {
     margin: 10px 0;
 }
 
-
 .stock-page .home-page .info-div {
     display: inline-block;
-    margin: 8px 0 0 10px;
+    margin: 20px 0 0 40px;
 }
