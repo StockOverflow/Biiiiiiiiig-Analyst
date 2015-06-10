@@ -187,7 +187,7 @@ define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_it
                 var ctx = this;
                 $.get(stock_list_base_url, function (data) {
                     _.each(data.data, function (item) {
-                        console.log(item);
+                        //console.log(item);
                         var sina_base_url = (item.s_id.indexOf("6") == 0) ? 'http://hq.sinajs.cn/list=sh' + item.s_id : 'http://hq.sinajs.cn/list=sz' + item.s_id;
                         $.get(sina_base_url, function (data) {
                             setTimeout(function () {

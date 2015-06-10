@@ -107,13 +107,17 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 $.get(base_url, function (data) {
                     ctx.renderAnalystInfo(data.basic_info);
                     ctx.renderAnalystChart(data.attribute);
-                    ctx.renderFollowedStock();
                 }, 'json');
             },
 
-            renderFollowedStock: function () {
+            renderFollowedStock: function (data) {
                 //TODO: display real data
-                $('.followed-stocks').html("近期关注个股：平安银行，招商银行...");
+                var stocks = JSON.parse(data);
+                var content = "近期关注个股： ";
+                _.each(stocks, function (item) {
+                    content += item.s_name + " "
+                });
+                $('.followed-stock-words').html(content);
             },
 
             renderAnalystInfo: function (data) {
@@ -209,6 +213,7 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 $.get(base_url, function (data) {
                     ctx.stock_data = data.analyzer_stock;
                     ctx.renderAnalystStock(data.analyzer_stock);
+                    ctx.renderFollowedStock(data.analyzer_stock);
                 }, 'json');
             },
 
@@ -331,8 +336,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 //console.log(ev);
                 //click not available, use scrollEnd
                 if (touch.screenX == this.startX && touch.screenY == this.startY) {
-                    console.log(touch.screenY);
-                    if (touch.screenY < 390) {
+                    //console.log(touch.screenY);
+                    //alert(touch.screenY);
+                    if (touch.screenY < ($('.col3').height() + $('.follow-bar').offset().top) * $('body')[0].style.zoom) {
                         this.sort_stocks(ev.target.innerText);
                     }
                     else {

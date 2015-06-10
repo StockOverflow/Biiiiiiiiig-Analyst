@@ -180,7 +180,9 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
 
             renderTitle: function (s_id, data) {
                 var basic_info = JSON.parse(data);
-                $(".nav-bar>.title").html(basic_info.name + "(" + s_id + ")");
+                if (location.hash.indexOf('stock') != -1) {
+                    $(".nav-bar>.title").html(basic_info.name + "(" + s_id + ")");
+                }
             },
 
             getAnalystData: function (s_id) {

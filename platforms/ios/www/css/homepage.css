@@ -224,15 +224,15 @@
     margin: auto 5px;
 }
 
-.table .home-page{
+.table .home-page {
     font-size: 0;
 }
 
-.col{
+.col {
     font-size: 0;
 }
 
-.home-page .info-div{
+.di-div .info-div {
     border-bottom: 4px dotted #cccccc;
     padding-left: 15px;
     overflow-x: hidden;

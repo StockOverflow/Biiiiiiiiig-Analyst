@@ -335,11 +335,12 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 var x_change = this.startX - ev.originalEvent.touches[0].screenX;
                 var y_change = this.startY - ev.originalEvent.touches[0].screenY;
                 if (this.direction == -1) {
-                    if (x_change > y_change * 5) {
+                    if (Math.abs(x_change) >= Math.abs(y_change)) {
                         this.direction = 0;
                     } else {
                         this.direction = 1;
                     }
+                    console.log("x:" + x_change + " y:" + y_change);
                 }
                 var ctx = this;
                 var objs = ctx.$('.scroll');
@@ -351,6 +352,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                 if (this.direction == 1) {
                     $('.QAQ').scrollTop(y_change / screenRatio + ctx.topY);
                 }
+                this.direction = -1;
             },
 
             sort_stocks: function () {

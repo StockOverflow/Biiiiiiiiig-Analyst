@@ -336,9 +336,9 @@ define(['text!html/analyst/index_analyst.html', 'text!html/analyst/css_analyst.h
                 //console.log(ev);
                 //click not available, use scrollEnd
                 if (touch.screenX == this.startX && touch.screenY == this.startY) {
-                    console.log(touch.screenY);
-                    alert(touch.screenY);
-                    if (touch.screenY < 390) {
+                    //console.log(touch.screenY);
+                    //alert(touch.screenY);
+                    if (touch.screenY < ($('.col3').height() + $('.follow-bar').offset().top) * $('body')[0].style.zoom) {
                         this.sort_stocks(ev.target.innerText);
                     }
                     else {
