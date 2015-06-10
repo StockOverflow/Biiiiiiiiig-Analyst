@@ -210,6 +210,7 @@ define(['text!html/stock/index_stock.html', 'text!html/stock/css_stock.html',
                             'a_id': 'aid' + item.a_id
                         }
                     );
+                    console.log(item.a_name);
                     $('.di-div .QAQ').append(injected);
                     ctx.getAnalystToStockData(ctx.s_id, item.a_id);
                     var target = $('.di-div .aid' + item.a_id).siblings();

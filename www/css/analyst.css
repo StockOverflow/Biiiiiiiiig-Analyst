@@ -50,7 +50,7 @@
 
 .analyst-page .home-page .col2 {
     width: 120px;
-    position: relative;
+    /*position: relative;*/
 }
 
 .analyst-page .home-page .col2 > .analyst-di-time {
@@ -203,11 +203,12 @@
  }
 
 .analyst-page .home-page div.analyst-di-time {
-    position: absolute;
-    bottom: 10px;
-    text-align: center;
-    width: 100%;
+    /*position: absolute;*/
+    /*bottom: 10px;*/
+    /*text-align: center;*/
+    /*width: 100%;*/
     color: rgb(181, 181, 181);
+    margin-top: -35px;
 }
 
 .analyst-page .home-page img.homepage-item-avatar-tofollow {

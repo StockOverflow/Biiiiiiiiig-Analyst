@@ -4,7 +4,7 @@
 
 define(['text!html/homepage/index_homepage.html', 'text!html/homepage/analyst_item.html',
         'text!html/homepage/css_homepage.html', 'app/model/AnalystRankingModel',
-        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html', 'app/chartwrapper', 'text!html/homepage/info_stock.html'],
+        'app/model/AnalystRankingCollection', 'text!html/homepage/rank_modal.html', 'app/chartwrapper', 'text!html/stock/info_stock.html'],
     function (index, analyst, css, AnalystRankingModel, AnalystRankingCollection, RankModal, chartwrapper, StockItem) {
 
         var AnalystView = Backbone.View.extend({
